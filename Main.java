@@ -1,8 +1,12 @@
 import javax.swing.*;
 
-class Main {
+class Main implements Runnable {
 
     public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Main());
+    }
+
+    public void run() {
         JFrame frame = new JFrame("jogo");
         Player player = new Player();
         Enemies enemies = new Enemies();
