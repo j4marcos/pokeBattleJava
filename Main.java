@@ -5,9 +5,11 @@ class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("jogo");
         Player player = new Player();
+        Enemies enemies = new Enemies();
         Background background = new Background();
 
         frame.add(player);
+        frame.add(enemies);
         frame.add(background);
         frame.setLayout(null);
         frame.setSize(650, 600);
