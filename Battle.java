@@ -10,9 +10,7 @@ public class Battle extends JPanel {
     public void editar() {
         JLabel label = new JLabel();
         label.setIcon(new ImageIcon("images/Battle Background.png"));
-        label.setBounds(0, 0, 940, 400);
         add(label);
-        setLayout(null);
-        setBounds(0, 0, 940, 400);
+        setBounds(0, 0, 915, 640);
     }
 }
