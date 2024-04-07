@@ -8,6 +8,7 @@ public class Game extends JFrame implements Runnable {
         setSize(915, 640);
         setLocationRelativeTo(null);
         add(new Battle());
+        setTitle("pokeBattle");
         
 
         setVisible(true);

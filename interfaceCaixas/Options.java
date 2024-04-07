@@ -48,7 +48,7 @@ public class Options extends JPanel {
 
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("assents/font/pokemon_fire_red.ttf"));
-            botao.setFont(customFont.deriveFont(Font.PLAIN, 30)); 
+            botao.setFont(customFont.deriveFont(Font.PLAIN, 35)); 
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
