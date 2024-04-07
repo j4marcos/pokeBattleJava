@@ -15,23 +15,17 @@ public class Options extends JPanel {
     private BufferedImage backgroundImage;
 
     public Options() {
-        try {
-            backgroundImage = ImageIO.read(new File("assents/inBattleMenu/rightMenu.png"));
-            System.out.println("background carregado");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar background");
-        }
         editar();
     }
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        // Draw the background image
+        // Colocar a imagem como plano de fundo
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, this.getWidth(), this.getHeight(), this);
         }
     }
     public void editar() {
+        definirBackground();
         setLayout(new GridLayout(2, 1));
 
         botao("FIGHT"); 
@@ -39,13 +33,22 @@ public class Options extends JPanel {
         botao("POKEMON"); 
         botao("RUN"); 
     }
-
+    private void definirBackground(){
+        // Carregar background
+        try {
+            backgroundImage = ImageIO.read(new File("assents/inBattleMenu/rightMenu.png"));
+        } catch (IOException e) {
+            e.printStackTrace(); // Erro se o arquivo não estiver lá
+        }
+    }
     public void botao(String nome) {
         JButton botao = new JButton(nome);
+        // Parte do background
         botao.setOpaque(false); // Faz que o botão fique transparante
         botao.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
-        botao.setBorderPainted(false); // tirar as bordas
-
+        botao.setBorderPainted(false); // Tirar as bordas
+        
+        // Definir fonte
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("assents/font/pokemon_fire_red.ttf"));
             botao.setFont(customFont.deriveFont(Font.PLAIN, 35)); 
