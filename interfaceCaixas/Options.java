@@ -1,5 +1,6 @@
-import java.awt.GridLayout;
+package interfaceCaixas; 
 
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
