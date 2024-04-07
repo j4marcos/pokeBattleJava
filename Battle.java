@@ -1,11 +1,15 @@
+
+
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import interfaceCaixas.InterfaceCaixaMain;
+import interfaceCaixas.InterfaceCaixa;
 
 public class Battle extends JPanel {
+    protected InterfaceCaixa interface1;
+
     public Battle() {
         editar();
     }
@@ -15,8 +19,7 @@ public class Battle extends JPanel {
         JLabel label = new JLabel();
         label.setIcon(new ImageIcon("images/Battle Background.png"));
 
-        InterfaceCaixaMain interface1 = new InterfaceCaixaMain();
-        interface1.dialogar(new String[] { "Batalha iniciada." , "Escolha sua ação."});
+        interface1 = new InterfaceCaixa();
         add(label, BorderLayout.NORTH);
         add(interface1, BorderLayout.CENTER);
 
