@@ -14,8 +14,8 @@ import java.awt.event.ActionListener;
 public class CaixaDialogo extends JPanel {
 
     private JButton nextButton;
-    private int indiceFalaAtual;
-    private String[] falas;
+    private int indiceFalaAtual = 0;
+    private String[] falas = new String[0];
     private JLabel textLabel;
     private Font Fonte;
 
@@ -76,13 +76,14 @@ public class CaixaDialogo extends JPanel {
             indiceFalaAtual++;
             System.out.println("Próxima fala.");
 
-        } else {
+        }
+
+        if (indiceFalaAtual == falas.length ) {
             nextButton.setEnabled(false);
             // Remove o textLabel da interface
-            remove(textLabel);
+            // remove(textLabel);
             revalidate(); // Atualiza o layout
             repaint(); // Redesenha a interface
-
         }
     }
 }

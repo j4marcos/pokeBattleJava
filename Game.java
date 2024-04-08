@@ -1,3 +1,4 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,14 +25,17 @@ public class Game extends JFrame implements Runnable {
         // Criando e adicionando os "cartões"
         JPanel homePanel = new JPanel();
         homePanel.add(new JLabel("Tela Inicial: home"));
+        JButton buttonHome = new JButton("Iniciar Batalha");
+        buttonHome.addActionListener(e -> mudarTela("battle"));
+        homePanel.add(buttonHome);
 
         JPanel battlePanel = new JPanel();
         battlePanel.add(new Battle());
 
-        JPanel introPanel = new JPanel();
-        introPanel.add(new Intro());
+        JPanel startGamePanel = new JPanel();
+        startGamePanel.add(new StartGame());
 
-        cardPanel.add(introPanel, "intro");
+        cardPanel.add(startGamePanel, "startGame");
         cardPanel.add(battlePanel, "battle");
         cardPanel.add(homePanel, "home");
 

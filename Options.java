@@ -62,6 +62,7 @@ public class Options extends JPanel {
         botao.addActionListener(e -> {
             if (nome.equals("FIGHT")) {
                 System.out.println(nome + " apertado!");
+                TelasRef.interfaceCaixa.mudarInterfaceBattleLayout("poderes");
             } else if (nome.equals("BAG")) {
                 TelasRef.battle.mudarTela("inventario");
                 System.out.println(nome + " apertado!");
