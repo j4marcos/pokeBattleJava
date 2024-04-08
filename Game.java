@@ -351,7 +351,7 @@ public class Game extends JFrame implements Runnable {
     
             JLabel background = new JLabel();
             background.setFocusable(true); 
-            background.setIcon(new ImageIcon("Untitled.png"));
+            background.setIcon(new ImageIcon("assents/backgroundImages/Untitled.png"));
             background.setBounds(0, 0, 910, 600);
             background.add(pressSpace());
             background.addKeyListener(new KeyAdapter() {
