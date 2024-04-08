@@ -31,7 +31,7 @@ public class Game extends JFrame implements Runnable {
 
         setTitle("pokeBattle");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 545);
+        setSize(910, 600);
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -47,12 +47,12 @@ public class Game extends JFrame implements Runnable {
         JPanel battlePanel = new JPanel();
         battlePanel.add(new Battle());
 
-        JPanel settingsPanel = new JPanel();
-        settingsPanel.add(new JLabel("Configurações"));
+        JPanel introPanel = new JPanel();
+        introPanel.add(new Intro());
 
-        cardPanel.add(battlePanel, "about");
+        cardPanel.add(introPanel, "intro");
+        cardPanel.add(battlePanel, "battle");
         cardPanel.add(homePanel, "home");
-        cardPanel.add(settingsPanel, "settings");
 
         getContentPane().add(cardPanel);
         setVisible(true);
@@ -63,6 +63,8 @@ public class Game extends JFrame implements Runnable {
     }
 
     public void mudarTelaGame(String nomeTela) {
+
+        System.out.println("Mudando para a tela " + nomeTela);
         cardLayout.show(cardPanel, nomeTela);
     }
 
@@ -74,28 +76,28 @@ public class Game extends JFrame implements Runnable {
         public Battle() {
 
             cardLayout = new CardLayout();
-            setLayout(cardLayout);
             cardPanel = new JPanel(cardLayout);
 
             // Criando e adicionando os "cartões"
             JPanel pokemonsSelectionPanel = new JPanel();
-            pokemonsSelectionPanel.add(new JLabel("Tela Inicial: home"));
+            pokemonsSelectionPanel.add(new JLabel("seleção de pokemons"));
 
             JPanel battlePanel = new JPanel();
             battlePanel.add(new PokemonsBatle());
 
-            JPanel settingsPanel = new JPanel();
-            settingsPanel.add(new JLabel("Configurações"));
+            JPanel inventarioPanel = new JPanel();
+            inventarioPanel.add(new JLabel("inventario de itens pokemon"));
 
-            cardPanel.add(settingsPanel, "settings");
-            cardPanel.add(pokemonsSelectionPanel, "pokemonsSelection");
             cardPanel.add(battlePanel, "battle"); // Corrigido aqui
+            cardPanel.add(pokemonsSelectionPanel, "pokemonsSelection");
+            cardPanel.add(inventarioPanel, "inventario");
 
             add(cardPanel);
             setVisible(true);
         }
 
         public void mudarTelaBattle(String nomeTela) {
+            System.out.println("Mudando para a tela " + nomeTela);
             cardLayout.show(cardPanel, nomeTela);
         }
 
@@ -171,8 +173,10 @@ public class Game extends JFrame implements Runnable {
                     if (nome.equals("FIGHT")) {
                         System.out.println(nome + " apertado!");
                     } else if (nome.equals("BAG")) {
+                        mudarTelaBattle("inventario");
                         System.out.println(nome + " apertado!");
                     } else if (nome.equals("POKEMON")) {
+                        mudarTelaBattle("pokemonsSelection");
                         System.out.println(nome + " apertado!");
                     } else if (nome.equals("RUN")) {
                         mudarTelaGame("home");
@@ -337,7 +341,7 @@ public class Game extends JFrame implements Runnable {
         }
     
         public void editar() {
-            setLayout(null);
+            // setLayout(null);
     
             JLabel background = new JLabel();
             background.setFocusable(true); 
@@ -348,6 +352,7 @@ public class Game extends JFrame implements Runnable {
                 public void keyPressed(KeyEvent e) {
                     if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                         System.out.println("Espaço pressionado!");
+                        mudarTelaGame("battle");
                     }
                 }
             });
