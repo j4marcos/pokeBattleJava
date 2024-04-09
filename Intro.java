@@ -21,8 +21,7 @@ public class Intro extends JPanel {
 
         JLabel background = new JLabel();
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/Untitled.png"));
-        background.setBounds(0, 0, 910, 600);
+        background.setIcon(new ImageIcon("assents/backgroundImages/intro.png"));
         background.add(pressSpace());
         background.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {

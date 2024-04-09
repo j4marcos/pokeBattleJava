@@ -18,10 +18,8 @@ public class StartGame extends JPanel {
         introPanel.add(new Intro());
 
         JPanel infoPanel = new JPanel();
-        infoPanel.add(new JLabel("autores: joaão marcos, rafael, puca vaz. CI - ufpb"));
-        JButton buttonInfo = new JButton("proximo");
-        buttonInfo.addActionListener(e -> mudarTela("tutorial"));
-        infoPanel.add(buttonInfo);
+        infoPanel.add(new Info());
+        
 
         JPanel tutorialPanel = new JPanel();
         tutorialPanel.add(new JLabel("tutorial"));
