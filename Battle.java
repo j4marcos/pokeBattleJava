@@ -26,10 +26,10 @@ public class Battle extends JPanel {
         battlePanel.add(new PokemonsBatle());
 
         JPanel inventarioPanel = new JPanel();
-        inventarioPanel.add(new JLabel("inventario de itens pokemon"));
-        JButton buttonInventario = new JButton("cancelar");
-        buttonInventario.addActionListener(e -> mudarTela("battle"));
-        inventarioPanel.add(buttonInventario);
+        inventarioPanel.add(new Bag());
+        // JButton buttonInventario = new JButton("cancelar");
+        // buttonInventario.addActionListener(e -> mudarTela("battle"));
+        // inventarioPanel.add(buttonInventario);
 
         cardPanel.add(battlePanel, "battle"); // Corrigido aqui
         cardPanel.add(pokemonsSelectionPanel, "pokemonsSelection");
