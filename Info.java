@@ -19,8 +19,8 @@ public class Info extends JPanel {
 
         JLabel pikachuIconLabel = new JLabel();
         pikachuIconLabel.setFocusable(true);
-        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pika1.png"));
-        pikachuIconLabel.setBounds(20, 20, 100, 100);
+        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); // site usado para criar o gif: https://www.piskelapp.com/p/create/sprite
+        pikachuIconLabel.setBounds(10, 5, 130, 130);
 
         JLabel infoLabel = new JLabel("Autores: João Marcos, Rafael, Puca Vaz. CI - UFPB");
         infoLabel.setBounds(50, 150, 400, 50);
