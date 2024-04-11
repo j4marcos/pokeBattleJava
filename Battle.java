@@ -27,6 +27,7 @@ public class Battle extends JPanel {
 
         JPanel inventarioPanel = new JPanel();
         inventarioPanel.add(new Bag());
+        inventarioPanel.setLayout(new GridLayout(1, 1));
         // JButton buttonInventario = new JButton("cancelar");
         // buttonInventario.addActionListener(e -> mudarTela("battle"));
         // inventarioPanel.add(buttonInventario);
@@ -42,6 +43,7 @@ public class Battle extends JPanel {
     public void mudarTela(String nomeTela) {
         System.out.println("Mudando para a tela " + nomeTela);
         cardLayout.show(cardPanel, nomeTela);
+        cardPanel.revalidate();
     }
 
 }

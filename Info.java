@@ -1,3 +1,5 @@
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,8 +24,12 @@ public class Info extends JPanel {
         pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); // site usado para criar o gif: https://www.piskelapp.com/p/create/sprite
         pikachuIconLabel.setBounds(10, 5, 130, 130);
 
-        JLabel infoLabel = new JLabel("Autores: João Marcos, Rafael, Puca Vaz. CI - UFPB");
-        infoLabel.setBounds(50, 150, 400, 50);
+        JLabel infoLabel = new JLabel("Autores: Joao Marcos, Rafael, Puca Vaz. CI - UFPB");
+        // fonte do pokemon
+        Font Fonte = DefinirFonte.fonte();
+        infoLabel.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+
+        infoLabel.setBounds(50, 150, 800, 50);
 
         JButton buttonInfo = new JButton("Próximo");
         buttonInfo.addActionListener(e -> TelasRef.startGame.mudarTela("tutorial"));
