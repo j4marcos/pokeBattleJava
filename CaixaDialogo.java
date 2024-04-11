@@ -2,11 +2,8 @@
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,19 +17,8 @@ public class CaixaDialogo extends JPanel {
     private Font Fonte;
 
     public CaixaDialogo() {
-        definirFonte();
+        Fonte = DefinirFonte.fonte();
         editar();
-    }
-
-    private void definirFonte() {
-        // Definir fonte. Problema, essa não é a fonte correta para esse botão
-        // falta encontrar a fonte correta
-        try {
-            Fonte = Font.createFont(Font.TRUETYPE_FONT, new File("assents/font/pokemon_fire_red.ttf"));
-
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
     }
 
     public void editar() {
@@ -82,7 +68,7 @@ public class CaixaDialogo extends JPanel {
             nextButton.setEnabled(false);
             // Remove o textLabel da interface
             // remove(textLabel);
-            revalidate(); // Atualiza o layout
+            revalidate  (); // Atualiza o layout
             repaint(); // Redesenha a interface
         }
     }
