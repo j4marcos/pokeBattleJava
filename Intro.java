@@ -1,7 +1,4 @@
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -11,8 +8,11 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Intro extends JPanel {
+    
+    private Font Fonte;
 
     public Intro() {
+        Fonte = DefinirFonte.fonte();
         editar();
     }
 
@@ -36,7 +36,8 @@ public class Intro extends JPanel {
 
     public JLabel pressSpace() {
         JLabel pressSpace = new JLabel("Press Space");
-        pressSpace.setFont(new Font("Arial", Font.BOLD, 50));
+
+        pressSpace.setFont(Fonte.deriveFont(Font.PLAIN,52f));
         pressSpace.setForeground(Color.WHITE);
         pressSpace.setBounds(170, 470, 350, 50);
         iniciarAnimacao(pressSpace);

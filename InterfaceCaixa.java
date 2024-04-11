@@ -19,13 +19,15 @@ public class InterfaceCaixa extends JPanel {
         leftComponent.add(caixaDialogo, "caixaDeTexto");
         leftComponent.add(new Poderes(), "poderes");
         
-        rightComponent.setBackground(Color.RED);
+
         Options options = new Options();
-        rightComponent.add(options);
+        // Não entendi qual sentido de ter esse rightComponent
+        // sendo que o options é um componete só   
+        // rightComponent.add(options);
 
         // Adicionando os componentes ao painel principal
         battleLayoutPanel.add(leftComponent);
-        battleLayoutPanel.add(rightComponent);
+        battleLayoutPanel.add(options);
 
         // Defina um layout para o JPanel principal
         setLayout(new BorderLayout());

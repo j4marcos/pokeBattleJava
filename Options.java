@@ -1,4 +1,3 @@
-
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -8,13 +7,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.FontFormatException;
 
 
 public class Options extends JPanel {
     private BufferedImage backgroundImage;
+    private Font Fonte;
 
     public Options() {
+        Fonte = DefinirFonte.fonte();
         editar();
     }
 
@@ -51,14 +51,8 @@ public class Options extends JPanel {
         botao.setOpaque(false); // Faz que o botão fique transparante
         botao.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
         botao.setBorderPainted(false); // Tirar as bordas
+        botao.setFont(Fonte.deriveFont(Font.PLAIN, 35)); // Definir fonte
 
-        // Definir fonte
-        try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("assents/font/pokemon_fire_red.ttf"));
-            botao.setFont(customFont.deriveFont(Font.PLAIN, 35));
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
         botao.addActionListener(e -> {
             if (nome.equals("FIGHT")) {
                 System.out.println(nome + " apertado!");
