@@ -16,6 +16,10 @@ import javax.swing.event.ListSelectionListener;
 public class Bag extends JPanel {
     JLabel background = new JLabel();
     Font Fonte = DefinirFonte.fonte();
+    private JButton useButton = editarBotao("USE", 663, 450);
+    private JButton cancelButton = editarBotao("CANCEL", 663, 510);
+    JLabel item;
+    JLabel imgItem;
 
     public Bag() {
         editar();
@@ -39,26 +43,28 @@ public class Bag extends JPanel {
         return itemAtual;
     }
 
-    public void botao(String nome, int x, int y) {
+    public JButton editarBotao(String nome, int x, int y) {
         JButton botao = new JButton(nome);
 
-        // botao.setOpaque(false); // Faz que o botão fique transparante
-        botao.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
-        botao.setBorderPainted(false); // Tirar as bordas
+        botao.setContentAreaFilled(false); 
+        botao.setBorderPainted(false); 
         botao.setFont(Fonte.deriveFont(Font.PLAIN,45f));
-
         botao.setBounds(x, y, 215, 50);
 
         botao.addActionListener(e -> {
             if (nome.equals("USE")) {
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("CANCEL")) {
-                
                 System.out.println(nome + " apertado!");
+                useButton.setVisible(false);
+                cancelButton.setVisible(false);
+                background.setIcon(new ImageIcon("assents/backgroundImages/base-itens.png"));
+                item.setVisible(false);
+                imgItem.setVisible(false);
             }
         });
 
-        background.add(botao);
+        return botao;   
     }
 
     public JScrollPane listaDeItens() {
@@ -81,10 +87,10 @@ public class Bag extends JPanel {
             }
         });
 
-        JLabel item = new JLabel();
+        item = new JLabel();
         item.setBounds(180, 460, 400, 100);
         item.setFont(Fonte.deriveFont(Font.PLAIN,50f));
-        JLabel imgItem = itemAtual();
+        imgItem = itemAtual();
         background.add(imgItem);
         background.add(item);
                         
@@ -99,8 +105,12 @@ public class Bag extends JPanel {
                         background.revalidate();
                         scrollPane.getParent().repaint();
                         
-                        botao("USE", 663, 450);
-                        botao("CANCEL", 663, 510);
+                        background.add(useButton);
+                        background.add(cancelButton);
+                        useButton.setVisible(true);
+                        cancelButton.setVisible(true);
+                        item.setVisible(true);
+                        imgItem.setVisible(true);
                     }
                 }
             }
