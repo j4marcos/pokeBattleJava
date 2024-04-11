@@ -19,13 +19,15 @@ public class StartGame extends JPanel {
 
         JPanel infoPanel = new JPanel();
         infoPanel.add(new Info());
-        
 
         JPanel tutorialPanel = new JPanel();
-        tutorialPanel.add(new JLabel("tutorial"));
-        JButton buttonTutorial = new JButton("proximo");
-        buttonTutorial.addActionListener(e -> mudarTela("criarPersonagem"));
-        tutorialPanel.add(buttonTutorial);
+        tutorialPanel.add(new Tutorial());
+
+        // JPanel tutorialPanel = new JPanel();
+        // tutorialPanel.add(new JLabel("tutorial"));
+        // JButton buttonTutorial = new JButton("proximo");
+        // buttonTutorial.addActionListener(e -> mudarTela("criarPersonagem"));
+        // tutorialPanel.add(buttonTutorial);
 
         JPanel criarPersonagem = new JPanel();
         criarPersonagem.add(new JLabel("criar personagem"));
