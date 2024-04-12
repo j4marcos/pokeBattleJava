@@ -36,7 +36,7 @@ public class Bag extends JPanel {
         JButton backButton = new JButton("Voltar");
         backButton.addActionListener(e -> {
             System.out.println("Voltar apertado!");
-            TelasRef.startGame.mudarTela("battle");
+            TelasRef.battle.mudarTela("battle");
         });
         backButton.setBounds(10, 10, 100, 40);
         background.add(backButton);
