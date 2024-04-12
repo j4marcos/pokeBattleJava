@@ -12,19 +12,16 @@ public class Tutorial extends JPanel {
     }
 
     public void editar() {
-        // setLayout(null); // Definindo o layout como null
-        
-        // fonte do pokemon
         Font Fonte = DefinirFonte.fonte();
 
         JLabel background = new JLabel();
         background.setFocusable(true);
         background.setIcon(new ImageIcon("assents/backgroundImages/info.png"));
-        background.setBounds(0, 0, 960, 640); // Definindo o tamanho e posição do background
+        background.setBounds(0, 0, 960, 640); 
 
         JLabel pikachuIconLabel = new JLabel();
         pikachuIconLabel.setFocusable(true);
-        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); // site usado para criar o gif: https://www.piskelapp.com/p/create/sprite
+        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); 
         pikachuIconLabel.setBounds(10, 5, 130, 130);
 
         JLabel linha1 = new JLabel("TUTORIAL");
@@ -48,11 +45,9 @@ public class Tutorial extends JPanel {
         linha5.setBounds(50, 350, 800, 50);
         linha6.setBounds(50, 400, 800, 50);
 
-        JButton buttonInfo = new JButton("Próximo");
-        buttonInfo.addActionListener(e -> TelasRef.startGame.mudarTela("criarPersonagem"));
-        buttonInfo.setBounds(800, 20, 100, 40); // Definindo a posição e tamanho do botão
-       
-        // Adicionando os componentes ao background
+        JButton nextButton = new JButton("Próximo");
+        nextButton.addActionListener(e -> TelasRef.startGame.mudarTela("criarPersonagem"));
+        nextButton.setBounds(800, 20, 100, 40);
         
         background.add(linha1);
         background.add(linha2);
@@ -60,7 +55,7 @@ public class Tutorial extends JPanel {
         background.add(linha4);
         background.add(linha5);
         background.add(linha6);
-        background.add(buttonInfo);
+        background.add(nextButton);
         background.add(pikachuIconLabel);
 
         add(background);
