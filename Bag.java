@@ -32,12 +32,20 @@ public class Bag extends JPanel {
         background.add(scrollPane);
         background.revalidate();
 
+        // esse botao deveria voltar para a tela de batalha, mas nao esta funcionando por algum motivo
+        JButton backButton = new JButton("Voltar");
+        backButton.addActionListener(e -> {
+            System.out.println("Voltar apertado!");
+            TelasRef.startGame.mudarTela("battle");
+        });
+        backButton.setBounds(10, 10, 100, 40);
+        background.add(backButton);
+
         add(background);
     }
 
     public JLabel itemAtual() {
         JLabel itemAtual = new JLabel();
-         // link do sprite: https://github.com/msikma/pokesprite/blob/master/items-outline/medicine/super-potion.png
         itemAtual.setBounds(15, 460, 98, 98);
 
         return itemAtual;
