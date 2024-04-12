@@ -16,6 +16,7 @@ public class Pokemon {
     }
 
     public Pokemon(String nome, int vida) {
+        // cria uma area preta que é o espaço que o pokemon vai ocupar, futuramente substituir por uma imagem
         imagemLabel.setSize(240, 240);
         imagemLabel.setBackground(Color.BLACK);
     }
