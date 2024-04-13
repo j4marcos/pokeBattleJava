@@ -12,33 +12,50 @@ public class Info extends JPanel {
     }
 
     public void editar() {
-        // setLayout(null); // Definindo o layout como null
+        Font Fonte = DefinirFonte.fonte();
 
         JLabel background = new JLabel();
         background.setFocusable(true);
         background.setIcon(new ImageIcon("assents/backgroundImages/info.png"));
-        background.setBounds(0, 0, 960, 640); // Definindo o tamanho e posição do background
+        background.setBounds(0, 0, 960, 640); 
 
         JLabel pikachuIconLabel = new JLabel();
         pikachuIconLabel.setFocusable(true);
-        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); // site usado para criar o gif: https://www.piskelapp.com/p/create/sprite
+        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); 
         pikachuIconLabel.setBounds(10, 5, 130, 130);
 
-        JLabel infoLabel = new JLabel("Autores: Joao Marcos, Rafael, Puca Vaz. CI - UFPB");
-        // fonte do pokemon
-        Font Fonte = DefinirFonte.fonte();
-        infoLabel.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-
-        infoLabel.setBounds(50, 150, 800, 50);
-
-        JButton buttonInfo = new JButton("Próximo");
-        buttonInfo.addActionListener(e -> TelasRef.startGame.mudarTela("tutorial"));
-        buttonInfo.setBounds(800, 20, 100, 40); // Definindo a posição e tamanho do botão
-       
-        // Adicionando os componentes ao background
+        JLabel linha0 = new JLabel("Pokemon Fire Red - Java Swing Edition");
+        JLabel linha1 = new JLabel("Autores:");
+        JLabel linha2 = new JLabel("Joao Marcos  -  Rafael  -  Puca");
+        JLabel linha3 = new JLabel("CI - UFPB");
+        JLabel linha4 = new JLabel("");
+        JLabel linha5 = new JLabel("");
         
-        background.add(infoLabel);
-        background.add(buttonInfo);
+        linha0.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        linha1.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        linha2.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        linha3.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        linha4.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        linha5.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        
+        linha0.setBounds(50, 150, 800, 50);
+        linha1.setBounds(50, 200, 800, 50);
+        linha2.setBounds(50, 250, 800, 50);
+        linha3.setBounds(50, 300, 800, 50);
+        linha4.setBounds(50, 350, 800, 50);
+        linha5.setBounds(50, 450, 800, 50);
+
+        JButton nextButton = new JButton("Próximo");
+        nextButton.addActionListener(e -> TelasRef.startGame.mudarTela("tutorial"));
+        nextButton.setBounds(800, 20, 100, 40);
+        
+        background.add(linha0);
+        background.add(linha1);
+        background.add(linha2);
+        background.add(linha3);
+        background.add(linha4);
+        background.add(linha5);
+        background.add(nextButton);
         background.add(pikachuIconLabel);
 
         add(background);

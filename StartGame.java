@@ -23,29 +23,13 @@ public class StartGame extends JPanel {
         JPanel tutorialPanel = new JPanel();
         tutorialPanel.add(new Tutorial());
 
-        // JPanel tutorialPanel = new JPanel();
-        // tutorialPanel.add(new JLabel("tutorial"));
-        // JButton buttonTutorial = new JButton("proximo");
-        // buttonTutorial.addActionListener(e -> mudarTela("criarPersonagem"));
-        // tutorialPanel.add(buttonTutorial);
-
         JPanel criarPersonagem = new JPanel();
-        criarPersonagem.add(new JLabel("criar personagem"));
-        JButton buttonCriarPersonagem = new JButton("proximo");
-        buttonCriarPersonagem.addActionListener(e -> TelasRef.game.mudarTela("home"));
-        criarPersonagem.add(buttonCriarPersonagem);
-
-        JPanel professorIntro = new JPanel();
-        professorIntro.add(new JLabel("prof carvalho bla bla bla"));
-        JButton buttonCriarPersonagem2 = new JButton("proximo");
-        buttonCriarPersonagem2.addActionListener(e -> TelasRef.game.mudarTela("home"));
-        professorIntro.add(buttonCriarPersonagem2);
+        criarPersonagem.add(new CriarPersonagemPage());
 
         cardPanel.add(introPanel, "intro");
         cardPanel.add(infoPanel, "info");
         cardPanel.add(tutorialPanel, "tutorial");
         cardPanel.add(criarPersonagem, "criarPersonagem");
-        cardPanel.add(professorIntro, "professorIntro");
 
         add(cardPanel);
         setVisible(true);

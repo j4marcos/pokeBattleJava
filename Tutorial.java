@@ -1,7 +1,6 @@
-import java.awt.Font;
+
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -12,51 +11,24 @@ public class Tutorial extends JPanel {
     }
 
     public void editar() {
-        Font Fonte = DefinirFonte.fonte();
 
         JLabel background = new JLabel();
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/info.png"));
+        background.setIcon(new ImageIcon("assents/backgroundImages/focusPage.png"));
         background.setBounds(0, 0, 960, 640); 
 
-        JLabel pikachuIconLabel = new JLabel();
-        pikachuIconLabel.setFocusable(true);
-        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); 
-        pikachuIconLabel.setBounds(10, 5, 130, 130);
+        JLabel Personagem= new JLabel();
+        Personagem.setFocusable(true);
+        Personagem.setIcon(new ImageIcon("assents/personagens/professor.png"));
+        Personagem.setBounds(  350 , -50 , 960, 640); 
 
-        JLabel linha1 = new JLabel("TUTORIAL");
-        JLabel linha2 = new JLabel("Neste jogo, voce enfrentara oponentes em ");
-        JLabel linha3 = new JLabel("batalhas de Pokemon.");
-        JLabel linha4 = new JLabel("Para atacar, selecione um ataque no menu inferior.");
-        JLabel linha5 = new JLabel("Use itens da bolsa para curar seus Pokemon ou ");
-        JLabel linha6 = new JLabel("aumentar seus atributos.");
+        JLabel TextArea= new JLabel();
+        TextArea.setFocusable(true);
+        TextArea.setIcon(new ImageIcon("assents/backgroundImages/textarea.png"));
+        TextArea.setBounds(  25,200, 960, 640); 
 
-        linha1.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha2.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha3.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha4.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha5.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha6.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-
-        linha1.setBounds(50, 150, 800, 50);
-        linha2.setBounds(50, 200, 800, 50);
-        linha3.setBounds(50, 250, 800, 50);
-        linha4.setBounds(50, 300, 800, 50);
-        linha5.setBounds(50, 350, 800, 50);
-        linha6.setBounds(50, 400, 800, 50);
-
-        JButton nextButton = new JButton("Próximo");
-        nextButton.addActionListener(e -> TelasRef.startGame.mudarTela("criarPersonagem"));
-        nextButton.setBounds(800, 20, 100, 40);
-        
-        background.add(linha1);
-        background.add(linha2);
-        background.add(linha3);
-        background.add(linha4);
-        background.add(linha5);
-        background.add(linha6);
-        background.add(nextButton);
-        background.add(pikachuIconLabel);
+        background.add(TextArea);
+        background.add(Personagem);
 
         add(background);
     }
