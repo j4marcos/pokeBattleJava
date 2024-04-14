@@ -50,7 +50,7 @@ public class CriarPersonagemPage extends JPanel{
         background.add(personagem1);
 
         ImageIcon image = new ImageIcon("assents/personagens/ash.png");
-        Image scaledImage = image.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        Image scaledImage = image.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
         JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
         imageLabel.setBounds(160, 380, 150, 150);
         background.add(imageLabel);
@@ -60,7 +60,7 @@ public class CriarPersonagemPage extends JPanel{
         background.add(personagem2);
 
         ImageIcon img = new ImageIcon("assents/personagens/girl.png");
-        Image scaledImage2 = img.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        Image scaledImage2 = img.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
         JLabel imageLabel2 = new JLabel(new ImageIcon(scaledImage2));
         imageLabel2.setBounds(480, 380, 150, 150);
 
