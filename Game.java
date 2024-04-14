@@ -41,6 +41,10 @@ public class Game extends JFrame implements Runnable {
         validate();
         repaint();
     
-        System.out.println(nomePainelAtual + " -> " + nomeNovoPainel);
+        if (nomePainelAtual != "Inicio") {
+            System.out.println(nomePainelAtual + " -> " + nomeNovoPainel);
+        } else {
+            System.out.println(nomeNovoPainel);
+        }
     }
 }
