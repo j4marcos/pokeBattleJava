@@ -1,15 +1,17 @@
 public class Player {
 
-    static Pokemon pokemonSelecionado = new Pokemon("Pokemon 007", 100, "images/charizard costas.png");;
+    static Pokemon pokemonSelecionado;
+    static String nome;
 
     public Player() {
-        pokemonSelecionado = new Pokemon("pokemonSelecionado", 100);
-        pokemonSelecionado.imagemLabel.setLocation(120, 180);
+        pokemonSelecionado = new Pokemon("Pokemon 007", 100, "images/charizard costas.png");
     }
 
-    public void atacar() {
+    public static void atacar() {
         Enemy.inimigoAtual.vida -= 10;
         System.out.println("O pokemon do player atacou o pokemon inimigo e causou 10 de dano");
+        Enemy.trocarInimigo();
+        PokemonsBatle.instance.atualizarInimigo();
     }
 
     public void curar() {

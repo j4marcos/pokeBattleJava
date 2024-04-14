@@ -21,7 +21,7 @@ public class Poderes extends JPanel {
         JButton botao = new JButton(nome);
         botao.addActionListener(e -> {
             System.out.println(nome + " disparado!!");
-
+            Player.atacar();
         });
         add(botao);
     }

@@ -16,9 +16,10 @@ public class Enemy {
     }
 
     public void geraInimigos() {
-        for (int index = 0; index < NUM_INIMIGOS; index++) {
-            Pokemon pokemon = new Pokemon("Pokemon " + (index + 1), 100,"images/charizard frente.png");
-            pokemon.imagemLabel.setLocation(550, 20);
+        String[] imagensPokemons = {"images/mewtwo frente.png", "images/charizard frente.png", "images/gyarados frente.png"};
+
+        for (int i = 0; i < NUM_INIMIGOS; i++) {
+            Pokemon pokemon = new Pokemon("Pokemon " + (i + 1), 10, imagensPokemons[i]);
             inimigos.add(pokemon);
         }
     }
@@ -28,7 +29,7 @@ public class Enemy {
         System.out.println("O pokemon inimigo atacou o " + Player.pokemonSelecionado.nome + " e causou 10 de dano");
     }
 
-    public void trocarInimigo() {
+    public static void trocarInimigo() {
         if (inimigoAtual.vida <= 0) {
             if (inimigoAtual == getInimigo(0)){
                 inimigoAtual = getInimigo(1);
@@ -38,5 +39,7 @@ public class Enemy {
                 System.out.println("Todos os inimigos foram derrotados");
             }
         }
+
+        System.out.println("trocando inimigo");
     }
 }
