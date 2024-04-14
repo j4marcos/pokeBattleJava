@@ -59,7 +59,6 @@ public class Options extends JPanel {
             if (nome.equals("FIGHT")) {
 
                 // ainda nao sei como criar esse painel sem usar TelasRef
-                TelasRef.interfaceCaixa.mudarInterfaceBattleLayout("poderes");
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("BAG")) {
                 Bag bag = new Bag(frame);

@@ -17,11 +17,6 @@ public class Battle extends JPanel {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
-        // // Instanciando Player e Enemy
-        // player = new Player();
-        // enemy = new Enemy();
-
-        // Criando e adicionando os "cartões"
         JPanel pokemonsSelectionPanel = new JPanel();
         pokemonsSelectionPanel.add(new JLabel("seleção de pokemons"));
         JButton buttonPokemonsSelection = new JButton("cancelar");
@@ -34,9 +29,6 @@ public class Battle extends JPanel {
         JPanel inventarioPanel = new JPanel();
         inventarioPanel.add(new Bag());
         inventarioPanel.setLayout(new GridLayout(1, 1));
-        // JButton buttonInventario = new JButton("cancelar");
-        // buttonInventario.addActionListener(e -> mudarTela("battle"));
-        // inventarioPanel.add(buttonInventario);
 
         cardPanel.add(battlePanel, "battle"); // Corrigido aqui
         cardPanel.add(pokemonsSelectionPanel, "pokemonsSelection");

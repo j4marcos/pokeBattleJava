@@ -11,7 +11,6 @@ public class InterfaceCaixa extends JPanel {
     JPanel rightComponent = new JPanel();
 
     public InterfaceCaixa(Game frame) {
-        TelasRef.interfaceCaixa = this;
         
         mainCardPanel.add(battleLayoutPanel, "BattleLayoutPanel");
         mainCardPanel.add(caixaDialogo, "caixaDialogo");
