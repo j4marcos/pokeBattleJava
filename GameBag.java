@@ -7,10 +7,10 @@ public class GameBag extends JFrame implements Runnable {
 
     public void editar() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(915, 640);
+        setSize(976, 684);
         setResizable(false);
         setLocationRelativeTo(null);
-        // add(new Home());
+        // add(new Bag());
 
         setVisible(true);
     }

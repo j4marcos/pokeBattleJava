@@ -16,8 +16,8 @@ import javax.swing.event.ListSelectionListener;
 public class Bag extends JPanel {
     JLabel background = new JLabel();
     Font Fonte = DefinirFonte.fonte();
-    private JButton useButton = editarBotao("USE", 663, 450);
-    private JButton cancelButton = editarBotao("CANCEL", 663, 510);
+    private JButton useButton = editarBotao("USE", 715, 485);
+    private JButton cancelButton = editarBotao("CANCEL", 715, 545);
     JLabel item;
     JLabel imgItem;
 
@@ -47,7 +47,7 @@ public class Bag extends JPanel {
 
     public JLabel itemAtual() {
         JLabel itemAtual = new JLabel();
-        itemAtual.setBounds(15, 460, 98, 98);
+        itemAtual.setBounds(30, 495, 96, 96);
 
         return itemAtual;
     }
@@ -87,7 +87,7 @@ public class Bag extends JPanel {
         listaDeItens.setBackground(new Color(0, 0, 0, 0)); // Tornando a JList transparente
         
         JScrollPane scrollPane = new JScrollPane(listaDeItens);
-        scrollPane.setBounds(340, 30, 520, 350);
+        scrollPane.setBounds(360, 40, 560, 365);
         scrollPane.getViewport().addChangeListener((e) -> scrollPane.getParent().repaint());
 
         scrollPane.addMouseWheelListener(new MouseWheelListener() {
@@ -97,7 +97,7 @@ public class Bag extends JPanel {
         });
 
         item = new JLabel();
-        item.setBounds(180, 460, 400, 100);
+        item.setBounds(200, 490, 400, 100);
         item.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         imgItem = itemAtual();
         background.add(imgItem);
