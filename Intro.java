@@ -39,9 +39,9 @@ public class Intro extends JPanel {
     public JLabel pressSpace() {
         JLabel pressSpace = new JLabel("Press Space");
 
-        pressSpace.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        pressSpace.setFont(Fonte.deriveFont(Font.PLAIN,90f));
         pressSpace.setForeground(Color.WHITE);
-        pressSpace.setBounds(170, 470, 350, 50);
+        pressSpace.setBounds(140, 460, 340, 100);
         iniciarAnimacao(pressSpace);
         return pressSpace;
     }
