@@ -12,8 +12,10 @@ import java.awt.Font;
 public class Options extends JPanel {
     private BufferedImage backgroundImage;
     private Font Fonte;
+    private Game frame;
 
-    public Options() {
+    public Options(Game frame) {
+        this.frame = frame;
         Fonte = DefinirFonte.fonte();
         editar();
     }
@@ -55,16 +57,21 @@ public class Options extends JPanel {
 
         botao.addActionListener(e -> {
             if (nome.equals("FIGHT")) {
-                System.out.println(nome + " apertado!");
+
+                // ainda nao sei como criar esse painel sem usar TelasRef
                 TelasRef.interfaceCaixa.mudarInterfaceBattleLayout("poderes");
+                System.out.println(nome + " apertado!");
             } else if (nome.equals("BAG")) {
-                TelasRef.battle.mudarTela("inventario");
+                Bag bag = new Bag(frame);
+                frame.mudarTela(bag);
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("POKEMON")) {
-                TelasRef.battle.mudarTela("pokemonsSelection");
+                Home home = new Home(frame);
+                frame.mudarTela(home);
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("RUN")) {
-                TelasRef.game.mudarTela("home");
+                Home home = new Home(frame);
+                frame.mudarTela(home);
                 System.out.println(nome + " apertado!");
             }
         });

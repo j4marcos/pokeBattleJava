@@ -7,11 +7,11 @@ import javax.swing.JPanel;
 
 public class Tutorial extends JPanel {
 
-    public Tutorial() {
-        editar();
+    public Tutorial(Game frame) {
+        editar(frame);
     }
 
-    public void editar() {
+    public void editar(Game frame) {
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -30,7 +30,10 @@ public class Tutorial extends JPanel {
 
         // adicionei esse botao temporario pra testar a batalha
         JButton nextButton = new JButton("Próximo");
-        nextButton.addActionListener(e -> TelasRef.startGame.mudarTela("criarPersonagem"));
+        nextButton.addActionListener(e -> {
+            CriarPersonagemPage criarPersonagem = new CriarPersonagemPage(frame);
+            frame.mudarTela(criarPersonagem);
+        });
         nextButton.setBounds(800, 20, 100, 40);
         background.add(nextButton);
 

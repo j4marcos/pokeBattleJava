@@ -12,16 +12,16 @@ public class PokemonsBatle extends JPanel{
     // private JLabel aliado;
     // private JLabel inimigo;
 
-    public PokemonsBatle(){
+    public PokemonsBatle(Game frame){
         instance = this;
-        setBattleCardLayout();
+        setBattleCardLayout(frame);
     }
 
-    public void setBattleCardLayout() {
+    public void setBattleCardLayout(Game frame) {
         setLayout(new BorderLayout());
         label.setIcon(new ImageIcon("images/Battle Background.png"));
 
-        interface1 = new InterfaceCaixa();
+        interface1 = new InterfaceCaixa(frame);
 
         Enemy.inimigoAtual.imagemLabel.setBounds(550, 20, 240, 240);
         Player.pokemonSelecionado.imagemLabel.setBounds(120, 180, 240, 240);

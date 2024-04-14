@@ -21,11 +21,11 @@ public class Bag extends JPanel {
     JLabel item;
     JLabel imgItem;
 
-    public Bag() {
-        editar();
+    public Bag(Game frame) {
+        editar(frame);
     }
 
-    public void editar() {
+    public void editar(Game frame) {
         background.setFocusable(true);
         background.setIcon(new ImageIcon("assents/backgroundImages/base-itens.png"));
         JScrollPane scrollPane = listaDeItens();
@@ -35,8 +35,9 @@ public class Bag extends JPanel {
         // esse botao deveria voltar para a tela de batalha, mas nao esta funcionando por algum motivo
         JButton backButton = new JButton("Voltar");
         backButton.addActionListener(e -> {
+            PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
+            frame.mudarTela(pokemonsBatle);
             System.out.println("Voltar apertado!");
-            TelasRef.battle.mudarTela("battle");
         });
         backButton.setBounds(10, 10, 100, 40);
         background.add(backButton);

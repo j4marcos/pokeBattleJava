@@ -5,11 +5,11 @@ import javax.swing.JPanel;
 
 public class CriarPersonagemPage extends JPanel{
     
-    public CriarPersonagemPage() {
-        editar();
+    public CriarPersonagemPage(Game frame) {
+        editar(frame);
     }
 
-    public void editar() {
+    public void editar(Game frame) {
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -18,7 +18,10 @@ public class CriarPersonagemPage extends JPanel{
 
         // adicionei esse botao temporario pra testar a batalha
         JButton nextButton = new JButton("Próximo");
-        nextButton.addActionListener(e -> TelasRef.game.mudarTela("home"));
+        nextButton.addActionListener(e -> {
+            Home home = new Home(frame);
+            frame.mudarTela(home);
+        });
         nextButton.setBounds(800, 20, 100, 40);
         background.add(nextButton);
 

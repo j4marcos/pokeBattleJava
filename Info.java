@@ -7,11 +7,11 @@ import javax.swing.JPanel;
 
 public class Info extends JPanel {
 
-    public Info() {
-        editar();
+    public Info(Game frame) {
+        editar(frame);
     }
 
-    public void editar() {
+    public void editar(Game frame) {
         Font Fonte = DefinirFonte.fonte();
 
         JLabel background = new JLabel();
@@ -46,7 +46,10 @@ public class Info extends JPanel {
         linha5.setBounds(50, 450, 800, 50);
 
         JButton nextButton = new JButton("Próximo");
-        nextButton.addActionListener(e -> TelasRef.startGame.mudarTela("tutorial"));
+        nextButton.addActionListener(e -> {
+            Tutorial tutorial = new Tutorial(frame);
+            frame.mudarTela(tutorial);
+        });
         nextButton.setBounds(800, 20, 100, 40);
         
         background.add(linha0);

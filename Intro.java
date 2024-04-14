@@ -11,12 +11,12 @@ public class Intro extends JPanel {
     
     private Font Fonte;
 
-    public Intro() {
+    public Intro(Game frame) {
         Fonte = DefinirFonte.fonte();
-        editar();
+        editar(frame);
     }
 
-    public void editar() {
+    public void editar(Game frame) {
         // setLayout(null);
 
         JLabel background = new JLabel();
@@ -27,7 +27,9 @@ public class Intro extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     System.out.println("Espaço pressionado!");
-                    TelasRef.startGame.mudarTela("info");
+                    // TelasRef.startGame.mudarTela("info");
+                    Info info = new Info(frame);
+                    frame.mudarTela(info);
                 }
             }
         });

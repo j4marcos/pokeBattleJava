@@ -10,7 +10,7 @@ public class InterfaceCaixa extends JPanel {
     JPanel leftComponent = new JPanel(leftcardLayout);
     JPanel rightComponent = new JPanel();
 
-    public InterfaceCaixa() {
+    public InterfaceCaixa(Game frame) {
         TelasRef.interfaceCaixa = this;
         
         mainCardPanel.add(battleLayoutPanel, "BattleLayoutPanel");
@@ -20,7 +20,7 @@ public class InterfaceCaixa extends JPanel {
         leftComponent.add(new Poderes(), "poderes");
         
 
-        Options options = new Options();
+        Options options = new Options(frame);
         // Não entendi qual sentido de ter esse rightComponent
         // sendo que o options é um componete só   
         // rightComponent.add(options);
