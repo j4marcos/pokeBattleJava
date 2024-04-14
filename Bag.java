@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseWheelEvent;
@@ -26,6 +27,7 @@ public class Bag extends JPanel {
     }
 
     public void editar(Game frame) {
+        setLayout(new BorderLayout());
         background.setFocusable(true);
         background.setIcon(new ImageIcon("assents/backgroundImages/base-itens.png"));
         JScrollPane scrollPane = listaDeItens();
@@ -42,7 +44,7 @@ public class Bag extends JPanel {
         backButton.setBounds(10, 10, 100, 40);
         background.add(backButton);
 
-        add(background);
+        add(background, BorderLayout.NORTH);
     }
 
     public JLabel itemAtual() {

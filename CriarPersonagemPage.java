@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,6 +12,7 @@ public class CriarPersonagemPage extends JPanel{
     }
 
     public void editar(Game frame) {
+        setLayout(new BorderLayout());
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -25,6 +28,6 @@ public class CriarPersonagemPage extends JPanel{
         nextButton.setBounds(800, 20, 100, 40);
         background.add(nextButton);
 
-        add(background);
+        add(background, BorderLayout.NORTH);
     }
 }

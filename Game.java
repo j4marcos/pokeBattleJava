@@ -16,7 +16,7 @@ public class Game extends JFrame implements Runnable {
 
         setTitle("pokeBattle");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(976, 684);
+        setSize(976, 679);
         setResizable(false);
         setLocationRelativeTo(null);
 

@@ -1,5 +1,7 @@
 
 
+import java.awt.BorderLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,6 +14,7 @@ public class Tutorial extends JPanel {
     }
 
     public void editar(Game frame) {
+        setLayout(new BorderLayout());
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -40,7 +43,7 @@ public class Tutorial extends JPanel {
         background.add(TextArea);
         background.add(Personagem);
 
-        add(background);
+        add(background, BorderLayout.NORTH);
     }
 
 }

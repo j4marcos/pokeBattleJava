@@ -1,5 +1,6 @@
 
 import java.awt.Font;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +17,19 @@ public class Intro extends JPanel {
         editar(frame);
     }
 
+    public Intro() {
+        setLayout(new BorderLayout());
+        Fonte = DefinirFonte.fonte();
+        JLabel background = new JLabel();
+        background.setFocusable(true);
+        background.setIcon(new ImageIcon("assents/backgroundImages/intro.png"));
+        background.add(pressSpace());
+        
+        add(background, BorderLayout.NORTH);
+    }
+
     public void editar(Game frame) {
-        // setLayout(null);
+        setLayout(new BorderLayout());
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -33,7 +45,7 @@ public class Intro extends JPanel {
                 }
             }
         });
-        add(background);
+        add(background, BorderLayout.NORTH);
     }
 
     public JLabel pressSpace() {

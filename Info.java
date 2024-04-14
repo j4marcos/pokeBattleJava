@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -12,6 +13,7 @@ public class Info extends JPanel {
     }
 
     public void editar(Game frame) {
+        setLayout(new BorderLayout());
         Font Fonte = DefinirFonte.fonte();
 
         JLabel background = new JLabel();
@@ -61,7 +63,7 @@ public class Info extends JPanel {
         background.add(nextButton);
         background.add(pikachuIconLabel);
 
-        add(background);
+        add(background, BorderLayout.NORTH);
     }
 
 }
