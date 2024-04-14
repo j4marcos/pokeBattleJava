@@ -7,8 +7,8 @@ import java.awt.*;
 public class Battle extends JPanel {
     private JPanel cardPanel;
     private CardLayout cardLayout;
-    private Player player; 
-    private Enemy enemy; 
+    // private Player player; 
+    // private Enemy enemy; 
     
 
     public Battle() {
@@ -17,9 +17,9 @@ public class Battle extends JPanel {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
-        // Instanciando Player e Enemy
-        player = new Player();
-        enemy = new Enemy();
+        // // Instanciando Player e Enemy
+        // player = new Player();
+        // enemy = new Enemy();
 
         // Criando e adicionando os "cartões"
         JPanel pokemonsSelectionPanel = new JPanel();

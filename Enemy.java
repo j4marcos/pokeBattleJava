@@ -16,7 +16,7 @@ public class Enemy {
     }
 
     public void geraInimigos() {
-        String[] imagensPokemons = {"images/mewtwo frente.png", "images/charizard frente.png", "images/gyarados frente.png"};
+        String[] imagensPokemons = {"images/mewtwo inimigo.png", "images/snorlax inimigo.png", "images/gyarados inimigo.png"};
 
         for (int i = 0; i < NUM_INIMIGOS; i++) {
             Pokemon pokemon = new Pokemon("Pokemon " + (i + 1), 10, imagensPokemons[i]);

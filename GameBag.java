@@ -10,7 +10,7 @@ public class GameBag extends JFrame implements Runnable {
         setSize(976, 684);
         setResizable(false);
         setLocationRelativeTo(null);
-        // add(new Intro());
+        // add(new PokemonsBatle());
 
         setVisible(true);
     }

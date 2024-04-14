@@ -23,8 +23,8 @@ public class PokemonsBatle extends JPanel{
 
         interface1 = new InterfaceCaixa(frame);
 
-        Enemy.inimigoAtual.imagemLabel.setBounds(550, 20, 240, 240);
-        Player.pokemonSelecionado.imagemLabel.setBounds(120, 180, 240, 240);
+        Enemy.inimigoAtual.imagemLabel.setBounds(580, 40, 256, 256);
+        Player.pokemonSelecionado.imagemLabel.setBounds(120, 208, 256, 256);
         
         // aliado = new JLabel();
         // aliado.setIcon(new ImageIcon("images/charizard costas.png"));
@@ -46,8 +46,8 @@ public class PokemonsBatle extends JPanel{
 
     public void atualizarInimigo() {
         label.removeAll();
-        Enemy.inimigoAtual.imagemLabel.setBounds(550, 20, 240, 240);
-        Player.pokemonSelecionado.imagemLabel.setBounds(120, 180, 240, 240);
+        Enemy.inimigoAtual.imagemLabel.setBounds(580, 40, 256, 256);
+        Player.pokemonSelecionado.imagemLabel.setBounds(120, 208, 256, 256);
         label.add(Enemy.inimigoAtual.imagemLabel);
         label.add(Player.pokemonSelecionado.imagemLabel);
         revalidate();
