@@ -50,6 +50,7 @@ public class Info extends JPanel {
         JButton nextButton = new JButton("Próximo");
         nextButton.addActionListener(e -> {
             Tutorial tutorial = new Tutorial(frame);
+            tutorial.setName("tutorial");   
             frame.mudarTela(tutorial);
         });
         nextButton.setBounds(800, 20, 100, 40);

@@ -35,6 +35,7 @@ public class Tutorial extends JPanel {
         JButton nextButton = new JButton("Próximo");
         nextButton.addActionListener(e -> {
             CriarPersonagemPage criarPersonagem = new CriarPersonagemPage(frame);
+            criarPersonagem.setName("criarPersonagem");
             frame.mudarTela(criarPersonagem);
         });
         nextButton.setBounds(800, 20, 100, 40);

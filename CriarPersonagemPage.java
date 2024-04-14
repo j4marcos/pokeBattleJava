@@ -32,6 +32,7 @@ public class CriarPersonagemPage extends JPanel{
         JButton nextButton = new JButton("OK");
         nextButton.addActionListener(e -> {
             Home home = new Home(frame);
+            home.setName("home");
             frame.mudarTela(home);
         });
         nextButton.setBounds(760, 520, 110, 35);

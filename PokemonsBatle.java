@@ -9,8 +9,6 @@ public class PokemonsBatle extends JPanel{
     protected InterfaceCaixa interface1;
     public static PokemonsBatle instance;
     JLabel label = new JLabel();
-    // private JLabel aliado;
-    // private JLabel inimigo;
 
     public PokemonsBatle(Game frame){
         instance = this;
@@ -25,17 +23,6 @@ public class PokemonsBatle extends JPanel{
 
         Enemy.inimigoAtual.imagemLabel.setBounds(580, 40, 256, 256);
         Player.pokemonSelecionado.imagemLabel.setBounds(120, 208, 256, 256);
-        
-        // aliado = new JLabel();
-        // aliado.setIcon(new ImageIcon("images/charizard costas.png"));
-        // aliado.setBounds(120, 180, 240, 232);
-        
-        // inimigo = new JLabel();
-        // inimigo.setIcon(new ImageIcon("images/charizard frente.png"));
-        // inimigo.setBounds(550, 20, 240, 232);
-
-        // label.add(inimigo);
-        // label.add(aliado);
 
         label.add(Enemy.inimigoAtual.imagemLabel);
         label.add(Player.pokemonSelecionado.imagemLabel);

@@ -13,9 +13,11 @@ public class Options extends JPanel {
     private BufferedImage backgroundImage;
     private Font Fonte;
     private Game frame;
+    private InterfaceCaixa interfaceCaixa;
 
-    public Options(Game frame) {
+    public Options(Game frame, InterfaceCaixa interfaceCaixa) { // Modificado
         this.frame = frame;
+        this.interfaceCaixa = interfaceCaixa;
         Fonte = DefinirFonte.fonte();
         editar();
     }
@@ -57,19 +59,23 @@ public class Options extends JPanel {
 
         botao.addActionListener(e -> {
             if (nome.equals("FIGHT")) {
+                interfaceCaixa.mudarInterfaceBattleLayout("poderes");
 
                 // ainda nao sei como criar esse painel sem usar TelasRef
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("BAG")) {
                 Bag bag = new Bag(frame);
+                bag.setName("bag");
                 frame.mudarTela(bag);
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("POKEMON")) {
                 Home home = new Home(frame);
+                home.setName("home");
                 frame.mudarTela(home);
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("RUN")) {
                 Home home = new Home(frame);
+                home.setName("home");
                 frame.mudarTela(home);
                 System.out.println(nome + " apertado!");
             }
