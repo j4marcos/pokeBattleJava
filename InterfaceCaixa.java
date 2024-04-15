@@ -19,7 +19,7 @@ public class InterfaceCaixa extends JPanel {
         leftComponent.add(new Poderes(), "poderes");
         
 
-        Options options = new Options(frame);
+        Options options = new Options(frame, this);
         // Não entendi qual sentido de ter esse rightComponent
         // sendo que o options é um componete só   
         // rightComponent.add(options);

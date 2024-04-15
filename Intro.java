@@ -38,9 +38,8 @@ public class Intro extends JPanel {
         background.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    System.out.println("Espaço pressionado!");
-                    // TelasRef.startGame.mudarTela("info");
                     Info info = new Info(frame);
+                    info.setName("info");
                     frame.mudarTela(info);
                 }
             }

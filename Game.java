@@ -1,14 +1,9 @@
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.*;
 
 
 public class Game extends JFrame implements Runnable {
     private JPanel painelAtual;
-    private JPanel cardPanel;
-    private CardLayout cardLayout;
     private Player player;
     private Enemy enemy;
 
@@ -16,7 +11,7 @@ public class Game extends JFrame implements Runnable {
 
         setTitle("pokeBattle");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(960, 675);
+        setSize(976, 679);
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -26,6 +21,7 @@ public class Game extends JFrame implements Runnable {
         setVisible(true);
 
         Intro intro = new Intro(this);
+        intro.setName("Intro");
         mudarTela(intro);
     }
 
@@ -34,6 +30,9 @@ public class Game extends JFrame implements Runnable {
     }
 
     public void mudarTela(JPanel novoPanel) {
+        String nomePainelAtual = (painelAtual != null) ? painelAtual.getName() : "Inicio";
+        String nomeNovoPainel = novoPanel.getName();
+    
         if (painelAtual != null) {
             remove(painelAtual);
         }
@@ -41,6 +40,11 @@ public class Game extends JFrame implements Runnable {
         add(painelAtual);
         validate();
         repaint();
+    
+        if (nomePainelAtual != "Inicio") {
+            System.out.println(nomePainelAtual + " -> " + nomeNovoPainel);
+        } else {
+            System.out.println(nomeNovoPainel);
+        }
     }
-
 }

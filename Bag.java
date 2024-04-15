@@ -38,6 +38,7 @@ public class Bag extends JPanel {
         JButton backButton = new JButton("Voltar");
         backButton.addActionListener(e -> {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
+            pokemonsBatle.setName("pokemonsBatle");
             frame.mudarTela(pokemonsBatle);
             System.out.println("Voltar apertado!");
         });
