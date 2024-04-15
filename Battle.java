@@ -12,7 +12,6 @@ public class Battle extends JPanel {
     
 
     public Battle() {
-        TelasRef.battle = this;
 
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);

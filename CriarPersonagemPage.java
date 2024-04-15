@@ -31,8 +31,8 @@ public class CriarPersonagemPage extends JPanel{
 
         JButton nextButton = new JButton("OK");
         nextButton.addActionListener(e -> {
-            Home home = new Home(frame);
-            frame.mudarTela(home);
+            Tutorial tutorial = new Tutorial(frame, new String[]{ "Escolha seu pokemon Inicial" }, new EscolherPokemonInicial(frame));
+            frame.mudarTela(tutorial);
         });
         nextButton.setBounds(760, 520, 110, 35);
 
@@ -45,26 +45,18 @@ public class CriarPersonagemPage extends JPanel{
         label.setBounds(200, 320, 620, 50);
         background.add(label);
 
-        JButton personagem1 = new JButton("Personagem 1");
-        personagem1.setBounds(150, 530, 200, 30);
-        background.add(personagem1);
-
         ImageIcon image = new ImageIcon("assents/personagens/ash.png");
         Image scaledImage = image.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
-        JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
-        imageLabel.setBounds(160, 380, 150, 150);
-        background.add(imageLabel);
-
-        JButton personagem2 = new JButton("Personagem 2");
-        personagem2.setBounds(450, 530, 200, 30);
-        background.add(personagem2);
+        JButton personagem1 = new JButton(new ImageIcon(scaledImage));
+        personagem1.setBounds(150, 380, 200, 200);
+        background.add(personagem1);
 
         ImageIcon img = new ImageIcon("assents/personagens/girl.png");
         Image scaledImage2 = img.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
-        JLabel imageLabel2 = new JLabel(new ImageIcon(scaledImage2));
-        imageLabel2.setBounds(480, 380, 150, 150);
+        JButton personagem2 = new JButton(new ImageIcon(scaledImage2));
+        personagem2.setBounds(450, 380, 200, 200);
+        background.add(personagem2);
 
-        background.add(imageLabel2);
 
         background.add(panelSelecaoPersonagem);
 

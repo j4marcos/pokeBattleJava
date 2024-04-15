@@ -33,7 +33,7 @@ public class Intro extends JPanel {
 
         JLabel background = new JLabel();
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/intro.png"));
+        background.setIcon(new ImageIcon("assents/backgroundImages/introR.gif"));
         background.add(pressSpace());
         background.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
