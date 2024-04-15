@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 public class Game extends JFrame implements Runnable {
     private JPanel painelAtual;
+    // Os dois abaixo não são usados
     private Player player;
     private Enemy enemy;
 

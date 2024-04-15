@@ -4,7 +4,7 @@ public class Player {
     static String nome;
 
     public Player() {
-        pokemonSelecionado = new Pokemon("Pokemon 007", 100, "images/charizard costas.png");
+        pokemonSelecionado = new Pokemon("charizard", 100, "back");
     }
 
     public static void atacar() {

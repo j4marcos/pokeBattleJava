@@ -23,10 +23,10 @@ public class Battle extends JPanel {
         pokemonsSelectionPanel.add(buttonPokemonsSelection);
 
         JPanel battlePanel = new JPanel();
-        battlePanel.add(new PokemonsBatle());
+        battlePanel.add(new PokemonsBatle(null));
 
         JPanel inventarioPanel = new JPanel();
-        inventarioPanel.add(new Bag());
+        inventarioPanel.add(new Bag(null));
         inventarioPanel.setLayout(new GridLayout(1, 1));
 
         cardPanel.add(battlePanel, "battle"); // Corrigido aqui
