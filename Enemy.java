@@ -18,11 +18,9 @@ public class Enemy {
     public void geraInimigos() {
 
         String[] nomesPokemons = {"MEWTWO", "SNORLAX", "GYARADOS"};
-        // Isso com certeza tem alguma forma de ser apenas uma coisa
-        String[] lado = {"front", "front", "front"};
 
         for (int i = 0; i < NUM_INIMIGOS; i++) {
-            Pokemon pokemon = new Pokemon(nomesPokemons[i], 10, lado[i]);
+            Pokemon pokemon = new Pokemon(nomesPokemons[i], 10, "front");
 
             inimigos.add(pokemon);
         }

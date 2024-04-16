@@ -34,7 +34,6 @@ public class Bag extends JPanel {
         background.add(scrollPane);
         background.revalidate();
 
-        // esse botao deveria voltar para a tela de batalha, mas nao esta funcionando por algum motivo
         JButton backButton = new JButton("Voltar");
         backButton.addActionListener(e -> {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
