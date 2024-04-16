@@ -9,6 +9,7 @@ public class InterfaceCaixa extends JPanel {
     CardLayout leftcardLayout = new CardLayout();
     JPanel leftComponent = new JPanel(leftcardLayout);
     JPanel rightComponent = new JPanel();
+    JLabel ataqueLabel = new JLabel();
 
     public InterfaceCaixa(Game frame) {
         
@@ -16,7 +17,7 @@ public class InterfaceCaixa extends JPanel {
         mainCardPanel.add(caixaDialogo, "caixaDialogo");
 
         leftComponent.add(caixaDialogo, "caixaDeTexto");
-        leftComponent.add(new Poderes(), "poderes");
+        leftComponent.add(new Poderes(this), "poderes");
         
 
         Options options = new Options(frame, this);
@@ -44,4 +45,21 @@ public class InterfaceCaixa extends JPanel {
         System.out.println("Mudando interface para modo " + nomeLayout);
         leftcardLayout.show(leftComponent, nomeLayout);
     }
-}
+    
+    public void mostrarAtaque() {
+    	ataqueLabel.setIcon(new ImageIcon("images/ataque background.png"));
+    	add(ataqueLabel);
+    	revalidate();
+
+    	Timer timer = new Timer(4000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	remove(ataqueLabel);
+            	revalidate();
+                repaint();
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
+    }
+}      
