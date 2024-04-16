@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,6 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CriarPersonagemPage extends JPanel{
+    JButton personagem1;
+    JButton personagem2;
+
+    JLabel setaSelection = new JLabel(new ImageIcon("assets/battleMenu/seta.png"));
+
     
     public CriarPersonagemPage(Game frame) {
         editar(frame);
@@ -47,14 +54,57 @@ public class CriarPersonagemPage extends JPanel{
 
         ImageIcon image = new ImageIcon("assets/personagens/ash.png");
         Image scaledImage = image.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
-        JButton personagem1 = new JButton(new ImageIcon(scaledImage));
+        personagem1 = new JButton(new ImageIcon(scaledImage));
         personagem1.setBounds(150, 380, 200, 200);
+        personagem1.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
+        personagem1.setBorderPainted(false); // Tirar as bordas
+        personagem1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("Mouse sobre ash");
+                personagem1.setBorderPainted(true);
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                personagem1.setBorderPainted(false);
+
+            }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                personagem1.setBackground(new Color(0,0,0,0));
+                personagem2.setBackground(new Color(0,0,0,0));
+
+                personagem1.setBackground(Color.GRAY);
+            }
+        });
         background.add(personagem1);
 
         ImageIcon img = new ImageIcon("assets/personagens/girl.png");
         Image scaledImage2 = img.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
-        JButton personagem2 = new JButton(new ImageIcon(scaledImage2));
+        personagem2 = new JButton(new ImageIcon(scaledImage2));
         personagem2.setBounds(450, 380, 200, 200);
+        personagem2.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
+        personagem2.setBorderPainted(false); // Tirar as bordas
+        personagem2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("Mouse sobre girl");
+                personagem2.setBorderPainted(true);
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                personagem2.setBorderPainted(false);
+
+            }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                personagem1.setBackground(new Color(0,0,0,0));
+                personagem2.setBackground(new Color(0,0,0,0));
+
+                personagem2.setBackground(Color.GRAY);
+            }
+        });
+        
         background.add(personagem2);
 
 
