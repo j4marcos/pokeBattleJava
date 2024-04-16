@@ -20,7 +20,7 @@ public class Enemy {
         String[] nomesPokemons = {"MEWTWO", "SNORLAX", "GYARADOS"};
 
         for (int i = 0; i < NUM_INIMIGOS; i++) {
-            Pokemon pokemon = new Pokemon(nomesPokemons[i], 10, "front");
+            Pokemon pokemon = new Pokemon(nomesPokemons[i], 30, "front");
 
             inimigos.add(pokemon);
         }

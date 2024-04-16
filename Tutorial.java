@@ -1,20 +1,13 @@
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Tutorial extends JPanel {
-    String[] falas = {
-        "Olá, bem vindo ao mundo Pokémon!",
-        "Neste jogo você enfrentar desafios", 
-        "e batalhas para se tornar um mestre Pokémon.",
-        "Agora me conte mais sobre voçe."
-    };
+    String[] falas;
     int falaIndex = 0;
     JPanel nextPage;
 
@@ -55,9 +48,7 @@ public class Tutorial extends JPanel {
        // fala.setBounds(  25,200, 160, 140);
 
        JButton caixaFalaBtn = new JButton(falas[falaIndex]);
-        caixaFalaBtn.setFont(caixaFalaBtn.getFont().deriveFont(30f));
-        caixaFalaBtn.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
-        caixaFalaBtn.setBorderPainted(false); // Tirar as bordas
+       caixaFalaBtn.setFont(caixaFalaBtn.getFont().deriveFont(30f));
         JButton DialogoBox = caixaFalaBtn;
         DialogoBox.addActionListener(e -> {
             System.out.println("Clicou no botao");

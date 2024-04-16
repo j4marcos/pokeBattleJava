@@ -1,3 +1,5 @@
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -15,7 +17,11 @@ public class Pokemon {
         this.lado = lado;
         String imagePath = "assets/pokemons/" + nome.toLowerCase() + "/" + lado + ".png"; // acredito que é bom colocar um try aqui
         System.out.println(imagePath);
-        imagemLabel.setIcon(new ImageIcon(getClass().getResource(imagePath)));
+
+        // aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x 256
+        ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
+        Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
+        imagemLabel.setIcon(new ImageIcon(image));
     }
 
     // Getter do lado 
