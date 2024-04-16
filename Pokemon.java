@@ -13,7 +13,7 @@ public class Pokemon {
         this.vida = vida;
         // Lado precisa ser front ou back
         this.lado = lado;
-        String imagePath = "assents/pokemons/" + nome.toLowerCase() + "/" + lado + ".png"; // acredito que é bom colocar um try aqui
+        String imagePath = "assets/pokemons/" + nome.toLowerCase() + "/" + lado + ".png"; // acredito que é bom colocar um try aqui
         System.out.println(imagePath);
         imagemLabel.setIcon(new ImageIcon(getClass().getResource(imagePath)));
     }

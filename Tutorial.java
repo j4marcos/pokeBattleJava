@@ -27,17 +27,17 @@ public class Tutorial extends JPanel {
 
         JLabel background = new JLabel();
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/focusPage.png"));
+        background.setIcon(new ImageIcon("assets/backgroundImages/focusPage.png"));
         background.setBounds(0, 0, 960, 640); 
 
         JLabel Personagem= new JLabel();
         Personagem.setFocusable(true);
-        Personagem.setIcon(new ImageIcon("assents/personagens/professor.png"));
+        Personagem.setIcon(new ImageIcon("assets/personagens/professor.png"));
         Personagem.setBounds(  350 , -50 , 960, 640); 
 
         JLabel TextArea= new JLabel();
         TextArea.setFocusable(true);
-        TextArea.setIcon(new ImageIcon("assents/backgroundImages/textarea.png"));
+        TextArea.setIcon(new ImageIcon("assets/backgroundImages/textarea.png"));
         TextArea.setBounds(  25,200, 960, 640); 
 
         // adicionei esse botao temporario pra testar a batalha

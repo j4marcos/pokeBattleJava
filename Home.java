@@ -19,7 +19,7 @@ public class Home extends JPanel {
         homePanel.setLayout(new BorderLayout());
 
         JLabel backgroundLabel = new JLabel();
-        backgroundLabel.setIcon(new ImageIcon("assents/backgroundImages/focusPage.png")); 
+        backgroundLabel.setIcon(new ImageIcon("assets/backgroundImages/focusPage.png")); 
         backgroundLabel.setBounds(0, 0, 960, 640);
 
         setPersonagemJogador(backgroundLabel);
@@ -58,8 +58,8 @@ public class Home extends JPanel {
         Personagem.setFocusable(true);
         Personagem.setBounds(  400 , -50 , 960, 640); 
         
-        if (tipoPersonagem == 1) Personagem.setIcon(new ImageIcon("assents/personagens/ash.png")); 
-        if (tipoPersonagem == 2) Personagem.setIcon(new ImageIcon("assents/personagens/girl.png"));
+        if (tipoPersonagem == 1) Personagem.setIcon(new ImageIcon("assets/personagens/ash.png")); 
+        if (tipoPersonagem == 2) Personagem.setIcon(new ImageIcon("assets/personagens/girl.png"));
 
         backgroundLabel.add(Personagem);
     }

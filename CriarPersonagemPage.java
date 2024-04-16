@@ -19,7 +19,7 @@ public class CriarPersonagemPage extends JPanel{
 
         JLabel background = new JLabel();
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/criarPerosnagemBackground.png"));
+        background.setIcon(new ImageIcon("assets/backgroundImages/criarPerosnagemBackground.png"));
         background.setBounds(0, 0, 960, 640); 
 
         JTextField textField = new JTextField();
@@ -45,13 +45,13 @@ public class CriarPersonagemPage extends JPanel{
         label.setBounds(200, 320, 620, 50);
         background.add(label);
 
-        ImageIcon image = new ImageIcon("assents/personagens/ash.png");
+        ImageIcon image = new ImageIcon("assets/personagens/ash.png");
         Image scaledImage = image.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
         JButton personagem1 = new JButton(new ImageIcon(scaledImage));
         personagem1.setBounds(150, 380, 200, 200);
         background.add(personagem1);
 
-        ImageIcon img = new ImageIcon("assents/personagens/girl.png");
+        ImageIcon img = new ImageIcon("assets/personagens/girl.png");
         Image scaledImage2 = img.getImage().getScaledInstance(90, 150, Image.SCALE_SMOOTH);
         JButton personagem2 = new JButton(new ImageIcon(scaledImage2));
         personagem2.setBounds(450, 380, 200, 200);

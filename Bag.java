@@ -29,7 +29,7 @@ public class Bag extends JPanel {
     public void editar(Game frame) {
         setLayout(new BorderLayout());
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/base-itens.png"));
+        background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
         JScrollPane scrollPane = listaDeItens();
         background.add(scrollPane);
         background.revalidate();
@@ -70,7 +70,7 @@ public class Bag extends JPanel {
                 System.out.println(nome + " apertado!");
                 useButton.setVisible(false);
                 cancelButton.setVisible(false);
-                background.setIcon(new ImageIcon("assents/backgroundImages/base-itens.png"));
+                background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
                 item.setVisible(false);
                 imgItem.setVisible(false);
             }
@@ -112,8 +112,8 @@ public class Bag extends JPanel {
                 if (!e.getValueIsAdjusting()) {
                     if (listaDeItens.getSelectedIndex() != -1) {
                         item.setText(String.format("%s  is  selected.", listaDeItens.getSelectedValue()));
-                        background.setIcon(new ImageIcon("assents/backgroundImages/nova-base.png"));
-                        imgItem.setIcon(new ImageIcon("assents/backgroundImages/super-potion.png"));
+                        background.setIcon(new ImageIcon("assets/backgroundImages/nova-base.png"));
+                        imgItem.setIcon(new ImageIcon("assets/backgroundImages/super-potion.png"));
                         background.revalidate();
                         scrollPane.getParent().repaint();
                         

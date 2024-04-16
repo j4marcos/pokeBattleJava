@@ -18,12 +18,12 @@ public class Info extends JPanel {
 
         JLabel background = new JLabel();
         background.setFocusable(true);
-        background.setIcon(new ImageIcon("assents/backgroundImages/info.png"));
+        background.setIcon(new ImageIcon("assets/backgroundImages/info.png"));
         background.setBounds(0, 0, 960, 640); 
 
         JLabel pikachuIconLabel = new JLabel();
         pikachuIconLabel.setFocusable(true);
-        pikachuIconLabel.setIcon(new ImageIcon("assents/backgroundImages/pikachu.gif")); 
+        pikachuIconLabel.setIcon(new ImageIcon("assets/backgroundImages/pikachu.gif")); 
         pikachuIconLabel.setBounds(10, 5, 130, 130);
 
         JLabel linha0 = new JLabel("Pokemon Fire Red - Java Swing Edition");
