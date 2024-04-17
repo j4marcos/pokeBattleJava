@@ -52,7 +52,7 @@ public class Info extends JPanel {
             Tutorial tutorial = new Tutorial(frame, new String[]{ "Olá, bem vindo ao mundo Pokémon!",
             "Neste jogo você enfrentar desafios", 
             "e batalhas para se tornar um mestre Pokémon.",
-            "Agora me conte mais sobre voçe." }, new CriarPersonagemPage(frame));
+            "Agora me conte mais sobre você." }, new CriarPersonagemPage(frame));
             frame.mudarTela(tutorial);
         });
         nextButton.setBounds(800, 20, 100, 40);
