@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class InterfaceCaixa extends JPanel {
     CaixaDialogo caixaDialogo = new CaixaDialogo();
@@ -9,6 +10,7 @@ public class InterfaceCaixa extends JPanel {
     CardLayout leftcardLayout = new CardLayout();
     JPanel leftComponent = new JPanel(leftcardLayout);
     JPanel rightComponent = new JPanel();
+    JLabel ataqueLabel = new JLabel();
 
     public InterfaceCaixa(Game frame) {
         
@@ -16,7 +18,7 @@ public class InterfaceCaixa extends JPanel {
         mainCardPanel.add(caixaDialogo, "caixaDialogo");
 
         leftComponent.add(caixaDialogo, "caixaDeTexto");
-        leftComponent.add(new Poderes(), "poderes");
+        leftComponent.add(new Poderes(this), "poderes");
         
 
         Options options = new Options(frame, this);
@@ -43,5 +45,27 @@ public class InterfaceCaixa extends JPanel {
     public void mudarInterfaceBattleLayout(String nomeLayout) {
         System.out.println("Mudando interface para modo " + nomeLayout);
         leftcardLayout.show(leftComponent, nomeLayout);
+    }
+    
+    // mostra qual ataque foi usado por 4 segundos e depois volta para a tela de batalha
+    public void mostrarAtaque() {
+        ataqueLabel.setIcon(new ImageIcon("images/ataque background.png"));
+        mainCardPanel.add(ataqueLabel, "AtaqueLabel");
+        maincardLayout.show(mainCardPanel, "AtaqueLabel"); 
+        revalidate();
+    
+        Timer timer = new Timer(4000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainCardPanel.remove(ataqueLabel);
+                ataqueLabel.removeAll(); 
+                ataqueLabel.setIcon(new ImageIcon("images/ataque background.png"));
+                maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
+                revalidate();
+                repaint();
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 }
