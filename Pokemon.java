@@ -19,9 +19,14 @@ public class Pokemon {
         System.out.println(imagePath);
 
         // aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x 256
-        ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
-        Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
-        imagemLabel.setIcon(new ImageIcon(image));
+        try {
+            ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
+            Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
+            imagemLabel.setIcon(new ImageIcon(image));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar a imagem: " + imagePath);
+        }
     }
 
     // Getter do lado 

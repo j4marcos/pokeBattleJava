@@ -27,7 +27,7 @@ public class PokemonsBatle extends JPanel{
         interface1 = new InterfaceCaixa(frame);
 
         Enemy.inimigoAtual.imagemLabel.setBounds(580, 40, 256, 256);
-        Player.pokemonSelecionado.imagemLabel.setBounds(120, 208, 256, 256);
+        Player.pokemonSelecionado.imagemLabel.setBounds(120, 232, 256, 256);
 
         inimigoHP.setIcon(new ImageIcon("images/inimigo hp.png"));
         inimigoHP.setBounds(50, 30, 400, 116);
