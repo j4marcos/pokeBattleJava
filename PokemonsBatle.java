@@ -80,7 +80,7 @@ public class PokemonsBatle extends JPanel{
         inimigoInfo.add(inimigoName);
         label.add(inimigoInfo);
         
-        Player.pokemonSelecionado.imagemLabel.setBounds(120, 208, 256, 256);
+        Player.pokemonSelecionado.imagemLabel.setBounds(120, 232, 256, 256);
         playerName.setText(Player.pokemonSelecionado.nome);   
         playerName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         playerName.setBounds(60, 13, 320, 40);

@@ -32,14 +32,13 @@ public class Enemy {
     }
 
     public static void trocarInimigo() {
-        if (inimigoAtual.vida <= 0) {
-            if (inimigoAtual == getInimigo(0)){
-                inimigoAtual = getInimigo(1);
-            } else if (inimigoAtual == getInimigo(1)){
-                inimigoAtual = getInimigo(2);
-            } else {
-                System.out.println("Todos os inimigos foram derrotados");
-            }
+        
+        if (inimigoAtual == getInimigo(0)){
+            inimigoAtual = getInimigo(1);
+        } else if (inimigoAtual == getInimigo(1)){
+            inimigoAtual = getInimigo(2);
+        } else {
+            System.out.println("Todos os inimigos foram derrotados");
         }
 
         System.out.println("trocando inimigo");

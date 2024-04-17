@@ -10,8 +10,11 @@ public class Player {
     public static void atacar() {
         Enemy.inimigoAtual.vida -= 10;
         System.out.println("O pokemon do player atacou o pokemon inimigo e causou 10 de dano");
-        Enemy.trocarInimigo();
-        PokemonsBatle.instance.atualizarInimigo();
+        if (Enemy.inimigoAtual.vida <= 0) {
+            System.out.println("O pokemon inimigo foi derrotado");
+            Enemy.trocarInimigo();
+            PokemonsBatle.instance.atualizarInimigo();
+        }
     }
 
     public void curar() {

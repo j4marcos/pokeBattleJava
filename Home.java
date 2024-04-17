@@ -34,7 +34,6 @@ public class Home extends JPanel {
         nextButton.setFont(new Font("Arial", Font.BOLD, 20)); 
         nextButton.addActionListener(e -> {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
-            pokemonsBatle.setName("pokemonsBatle");
             frame.mudarTela(pokemonsBatle);
         });
         nextButton.setBounds(700, 500, 200, 70);

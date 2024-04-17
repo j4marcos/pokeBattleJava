@@ -39,7 +39,6 @@ public class Intro extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     Info info = new Info(frame);
-                    info.setName("info");
                     frame.mudarTela(info);
                 }
             }
