@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -15,6 +16,7 @@ public class EscolherPokemonInicial extends JPanel{
 
     public void editar(Game frame) {
         setLayout(new BorderLayout());
+        Font Fonte = DefinirFonte.fonte();
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -35,7 +37,8 @@ public class EscolherPokemonInicial extends JPanel{
         background.add(bulbasaurOption);
 
         JLabel bulbasaurLabel = new JLabel("Bulbasaur");
-        bulbasaurLabel.setBounds(50, 200, 250, 186);
+        bulbasaurLabel.setFont(Fonte.deriveFont(Font.PLAIN,50f));
+        bulbasaurLabel.setBounds(50, 180, 250, 186);
         background.add(bulbasaurLabel);
 
         JButton charmanderOption = new JButton(new ImageIcon("assets/pokemons/chalizarBaby.png"));
@@ -47,7 +50,8 @@ public class EscolherPokemonInicial extends JPanel{
         background.add(charmanderOption);
 
         JLabel charmanderLabel = new JLabel("Charmander");
-        charmanderLabel.setBounds(350, 200, 250, 186);
+        charmanderLabel.setFont(Fonte.deriveFont(Font.PLAIN,50f));
+        charmanderLabel.setBounds(350, 180, 250, 186);
         background.add(charmanderLabel);
 
         JButton squirtleOption = new JButton(new ImageIcon("assets/pokemons/squitou.png"));
@@ -59,7 +63,8 @@ public class EscolherPokemonInicial extends JPanel{
         background.add(squirtleOption);
 
         JLabel squirtleLabel = new JLabel("Squirtle");
-        squirtleLabel.setBounds(650, 200, 250, 186);
+        squirtleLabel.setFont(Fonte.deriveFont(Font.PLAIN,50f));
+        squirtleLabel.setBounds(650, 180, 250, 186);
         background.add(squirtleLabel);
 
         add(background, BorderLayout.NORTH);
