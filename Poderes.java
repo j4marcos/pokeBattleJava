@@ -43,8 +43,8 @@ public class Poderes extends JPanel {
             linha0.setForeground(Color.WHITE);
             linha1.setForeground(Color.WHITE);
             
-            painel.ataqueLabel.add(linha0);
-            painel.ataqueLabel.add(linha1);
+            painel.msgLabel.add(linha0);
+            painel.msgLabel.add(linha1);
 
             painel.mostrarAtaque();
 

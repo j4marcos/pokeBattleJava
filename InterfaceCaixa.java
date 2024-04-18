@@ -10,7 +10,7 @@ public class InterfaceCaixa extends JPanel {
     CardLayout leftcardLayout = new CardLayout();
     JPanel leftComponent = new JPanel(leftcardLayout);
     JPanel rightComponent = new JPanel();
-    JLabel ataqueLabel = new JLabel();
+    JLabel msgLabel = new JLabel();
 
     public InterfaceCaixa(Game frame) {
         
@@ -47,19 +47,55 @@ public class InterfaceCaixa extends JPanel {
         leftcardLayout.show(leftComponent, nomeLayout);
     }
     
-    // mostra qual ataque foi usado por 4 segundos e depois volta para a tela de batalha
+    // mostra qual ataque foi usado por 3 segundos e depois volta para a tela de batalha
     public void mostrarAtaque() {
-        ataqueLabel.setIcon(new ImageIcon("images/ataque background.png"));
-        mainCardPanel.add(ataqueLabel, "AtaqueLabel");
-        maincardLayout.show(mainCardPanel, "AtaqueLabel"); 
+        msgLabel.setIcon(new ImageIcon("images/ataque background.png"));
+        mainCardPanel.add(msgLabel, "MsgLabel");
+        maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(4000, new ActionListener() {
+        Timer timer = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainCardPanel.remove(ataqueLabel);
-                ataqueLabel.removeAll(); 
-                ataqueLabel.setIcon(new ImageIcon("images/ataque background.png"));
+                mainCardPanel.remove(msgLabel);
+                msgLabel.removeAll(); 
+                maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
+                revalidate();
+                repaint();
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
+    }
+
+    public void inimigoDerrotado() {
+        Font Fonte = DefinirFonte.fonte();
+        msgLabel.setIcon(new ImageIcon("images/ataque background.png"));
+        
+        JLabel linha0 = new JLabel(Enemy.inimigoAtual.nome.toUpperCase() + " inimigo");
+        JLabel linha1 = new JLabel("derrotado!");
+
+        linha0.setFont(Fonte.deriveFont(Font.PLAIN,60f));
+        linha1.setFont(Fonte.deriveFont(Font.PLAIN,60f));
+
+        linha0.setBounds(50, 35, 800, 60);
+        linha1.setBounds(50, 95, 800, 60);
+
+        linha0.setForeground(Color.WHITE);
+        linha1.setForeground(Color.WHITE);
+        
+        msgLabel.add(linha0);
+        msgLabel.add(linha1);
+
+        mainCardPanel.add(msgLabel, "MsgLabel");
+        maincardLayout.show(mainCardPanel, "MsgLabel"); 
+        revalidate();
+    
+        Timer timer = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainCardPanel.remove(msgLabel);
+                msgLabel.removeAll(); 
                 maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
                 revalidate();
                 repaint();
