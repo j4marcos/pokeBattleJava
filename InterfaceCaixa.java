@@ -13,7 +13,8 @@ public class InterfaceCaixa extends JPanel {
     JLabel msgLabel = new JLabel();
 
     public InterfaceCaixa(Game frame) {
-        
+        Player.setInterfaceCaixa(this);
+
         mainCardPanel.add(battleLayoutPanel, "BattleLayoutPanel");
         mainCardPanel.add(caixaDialogo, "caixaDialogo");
 
@@ -68,25 +69,25 @@ public class InterfaceCaixa extends JPanel {
         timer.start();
     }
 
-    public void inimigoDerrotado() {
+    public void mostrarDerrotaInimigo() {
         Font Fonte = DefinirFonte.fonte();
-        msgLabel.setIcon(new ImageIcon("images/ataque background.png"));
         
         JLabel linha0 = new JLabel(Enemy.inimigoAtual.nome.toUpperCase() + " inimigo");
         JLabel linha1 = new JLabel("derrotado!");
-
+        
         linha0.setFont(Fonte.deriveFont(Font.PLAIN,60f));
         linha1.setFont(Fonte.deriveFont(Font.PLAIN,60f));
-
+        
         linha0.setBounds(50, 35, 800, 60);
         linha1.setBounds(50, 95, 800, 60);
-
+        
         linha0.setForeground(Color.WHITE);
         linha1.setForeground(Color.WHITE);
         
         msgLabel.add(linha0);
         msgLabel.add(linha1);
-
+        
+        msgLabel.setIcon(new ImageIcon("images/ataque background.png"));
         mainCardPanel.add(msgLabel, "MsgLabel");
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();

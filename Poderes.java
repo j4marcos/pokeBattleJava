@@ -1,10 +1,6 @@
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Color;
-
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class Poderes extends JPanel {
 
@@ -48,7 +44,14 @@ public class Poderes extends JPanel {
 
             painel.mostrarAtaque();
 
-            Player.atacar();
+            Timer timer = new Timer(3000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Player.atacar();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         });
         add(botao);
     }
