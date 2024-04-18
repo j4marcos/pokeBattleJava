@@ -111,7 +111,7 @@ public class Bag extends JPanel {
                     if (listaDeItens.getSelectedIndex() != -1) {
                         item.setText(String.format("%s  is  selected.", listaDeItens.getSelectedValue()));
                         background.setIcon(new ImageIcon("assets/backgroundImages/nova-base.png"));
-                        imgItem.setIcon(new ImageIcon("assets/backgroundImages/super-potion.png"));
+                        imgItem.setIcon(new ImageIcon("assets/itens/potion (1).png"));
                         background.revalidate();
                         scrollPane.getParent().repaint();
                         

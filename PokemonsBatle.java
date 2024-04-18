@@ -26,7 +26,7 @@ public class PokemonsBatle extends JPanel{
 
     public void setBattleCardLayout(Game frame) {
         setLayout(new BorderLayout());
-        label.setIcon(new ImageIcon("images/Battle Background.png"));
+        label.setIcon(new ImageIcon("assets/backgroundImages/Battle Background.png"));
 
         interface1 = new InterfaceCaixa(frame);
 
