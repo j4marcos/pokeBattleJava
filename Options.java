@@ -43,7 +43,7 @@ public class Options extends JPanel {
     private void definirBackground() {
         // Carregar background
         try {
-            backgroundImage = ImageIO.read(new File("assets/inBattleMenu/rightMenu.png"));
+            backgroundImage = ImageIO.read(new File("assets/battleElements/rightMenu.png"));
         } catch (IOException e) {
             e.printStackTrace(); // Erro se o arquivo não estiver lá
         }

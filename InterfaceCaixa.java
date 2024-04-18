@@ -50,7 +50,7 @@ public class InterfaceCaixa extends JPanel {
     
     // mostra qual ataque foi usado por 3 segundos e depois volta para a tela de batalha
     public void mostrarAtaque() {
-        msgLabel.setIcon(new ImageIcon("images/ataque background.png"));
+        msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
         mainCardPanel.add(msgLabel, "MsgLabel");
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
@@ -87,7 +87,7 @@ public class InterfaceCaixa extends JPanel {
         msgLabel.add(linha0);
         msgLabel.add(linha1);
         
-        msgLabel.setIcon(new ImageIcon("images/ataque background.png"));
+        msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
         mainCardPanel.add(msgLabel, "MsgLabel");
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();

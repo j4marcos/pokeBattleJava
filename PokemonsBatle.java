@@ -33,7 +33,7 @@ public class PokemonsBatle extends JPanel{
         Enemy.inimigoAtual.imagemLabel.setBounds(580, 40, 256, 256);
         Player.pokemonSelecionado.imagemLabel.setBounds(120, 232, 256, 256);
 
-        inimigoInfo.setIcon(new ImageIcon("images/inimigo hp.png"));
+        inimigoInfo.setIcon(new ImageIcon("assets/battleElements/inimigo hp.png"));
         inimigoInfo.setBounds(50, 30, 400, 116);
 
         inimigoName.setText(Enemy.inimigoAtual.nome);   
@@ -48,7 +48,7 @@ public class PokemonsBatle extends JPanel{
         inimigoInfo.add(inimigoName);
         label.add(inimigoInfo);
 
-        playerInfo.setIcon(new ImageIcon("images/player hp.png"));
+        playerInfo.setIcon(new ImageIcon("assets/battleElements/player hp.png"));
         playerInfo.setBounds(505, 295, 416, 148);
 
         playerName.setText(Player.pokemonSelecionado.nome);   
