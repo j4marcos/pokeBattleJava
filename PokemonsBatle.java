@@ -70,6 +70,13 @@ public class PokemonsBatle extends JPanel{
         add(interface1, BorderLayout.CENTER);
     }
 
+    public void atualizarVidaInimigo() {
+        inimigoHPValue = Enemy.inimigoAtual.vida * 192 / 30; // 30 é a vida máxima do inimigo, trocar caso a vidaa seja outro valor
+        inimigoHP.setBounds(156, 68, inimigoHPValue, 12);
+        revalidate();
+        repaint();
+    }
+
     public void atualizarInimigo() {
         label.removeAll();
         

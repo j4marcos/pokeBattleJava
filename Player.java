@@ -15,6 +15,7 @@ public class Player {
             Enemy.trocarInimigo();
             PokemonsBatle.instance.atualizarInimigo();
         }
+        PokemonsBatle.instance.atualizarVidaInimigo(); // Adicione esta linha
     }
 
     public void curar() {
