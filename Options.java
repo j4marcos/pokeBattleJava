@@ -65,17 +65,14 @@ public class Options extends JPanel {
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("BAG")) {
                 Bag bag = new Bag(frame);
-                bag.setName("bag");
                 frame.mudarTela(bag);
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("POKEMON")) {
                 Home home = new Home(frame);
-                home.setName("home");
                 frame.mudarTela(home);
                 System.out.println(nome + " apertado!");
             } else if (nome.equals("RUN")) {
                 Home home = new Home(frame);
-                home.setName("home");
                 frame.mudarTela(home);
                 System.out.println(nome + " apertado!");
             }
