@@ -8,7 +8,7 @@ public class Player {
     static InterfaceCaixa painel;
 
     public Player() {
-        pokemonSelecionado = new Pokemon("Charmander", 60, "back");
+        pokemonSelecionado = new Pokemon("Charmander", "back");
     }
 
     public static void setInterfaceCaixa(InterfaceCaixa painel) {
