@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 
 public class Game extends JFrame implements Runnable {
     private JPanel painelAtual;
+    
+    private Player currentPlayer;
 
     public void editar() {
 
@@ -12,16 +14,22 @@ public class Game extends JFrame implements Runnable {
         setSize(976, 679);
         setResizable(false);
         setLocationRelativeTo(null);
-
-        new Player();
         new Enemy();
 
         setVisible(true);
 
         Intro intro = new Intro(this);
         mudarTela(intro);
+        
     }
 
+    public void setPlayer(Player player) {
+        this.currentPlayer = player;
+    }
+
+    public Player getPlayer() {
+        return this.currentPlayer;
+    }
     public void run() {
         editar();
     }

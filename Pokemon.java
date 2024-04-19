@@ -1,8 +1,6 @@
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.nio.Buffer;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
