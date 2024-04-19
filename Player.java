@@ -46,4 +46,17 @@ public class Player {
         pokemonSelecionado.vida += 10;
         System.out.println("O pokemon do player foi curado e recuperou 10 de vida");
     }
+
+    public static int getAlturaPokemon() {
+        switch (pokemonSelecionado.nome) {
+            case "Bulbasaur":
+                return 256;
+            case "Squirtle":
+                return 252;
+            case "Charmander":
+                return 232;
+            default:
+                return 256;
+        }
+    }
 }
