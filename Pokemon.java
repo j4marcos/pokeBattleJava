@@ -8,6 +8,7 @@ public class Pokemon {
 
     public String nome;
     public int vida;
+    public int vidaMaxima;
     String lado;
     public JLabel imagemLabel = new JLabel();
 
@@ -15,6 +16,7 @@ public class Pokemon {
         this.nome = nome;
         this.lado = lado;
         this.vida = encontrarvida(nome);
+        this.vidaMaxima = this.vida;
         // Lado precisa ser front ou back
         defirImage(nome, lado);
 
@@ -75,6 +77,11 @@ public class Pokemon {
     // definir a vida
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    // pegar a vidaMaxima
+    public int getVidaMaxima() {
+        return vidaMaxima;
     }
 
     // Pegar a label da imagem

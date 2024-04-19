@@ -40,7 +40,7 @@ public class PokemonsBatle extends JPanel{
         inimigoName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         inimigoName.setBounds(25, 10, 320, 45);
 
-        inimigoHP.setBackground(new Color(112,248,168));
+        inimigoHP.setBackground(new Color(34, 139, 34));
         inimigoHP.setOpaque(true);
         inimigoHP.setBounds(156, 68, inimigoHPValue, 12); // o tamanho max do ahp é 192   
 
@@ -55,7 +55,7 @@ public class PokemonsBatle extends JPanel{
         playerName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         playerName.setBounds(60, 10, 320, 45);
 
-        playerHP.setBackground(new Color(112,248,168));
+        playerHP.setBackground(new Color(34, 139, 34));
         playerHP.setOpaque(true);
         playerHP.setBounds(192, 68, playerHPValue, 12); // o tamanho max do hp é 192 
 
@@ -71,7 +71,17 @@ public class PokemonsBatle extends JPanel{
     }
 
     public void atualizarVidaInimigo() {
-        inimigoHPValue = Enemy.inimigoAtual.vida * 192 / 30; // 30 é a vida máxima do inimigo, trocar caso a vidaa seja outro valor
+        double porcentagemVida = (double) Enemy.inimigoAtual.vida / Enemy.inimigoAtual.getVidaMaxima();
+
+        if (porcentagemVida <= 0.25) {
+            inimigoHP.setBackground(new Color(220, 20, 60)); // Vermelho
+        } else if (porcentagemVida <= 0.50) {
+            inimigoHP.setBackground(new Color(255, 223, 0)); // Amarelo
+        } else {
+            inimigoHP.setBackground(new Color(34, 139, 34)); // Verde
+        }
+
+        inimigoHPValue = Enemy.inimigoAtual.vida * 192 / Enemy.inimigoAtual.getVidaMaxima();
         inimigoHP.setBounds(156, 68, inimigoHPValue, 12);
         revalidate();
         repaint();
