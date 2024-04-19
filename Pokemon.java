@@ -1,4 +1,7 @@
 import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.Buffer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,15 +13,20 @@ public class Pokemon {
     String lado;
     public JLabel imagemLabel = new JLabel();
 
-    public Pokemon(String nome, int vida, String lado) {
+    public Pokemon(String nome, String lado) {
         this.nome = nome;
-        this.vida = vida;
-        // Lado precisa ser front ou back
         this.lado = lado;
-        String imagePath = "assets/pokemons/" + nome.toLowerCase() + "/" + lado + ".png"; // acredito que é bom colocar um try aqui
+        this.vida = encontrarvida(nome);
+        // Lado precisa ser front ou back
+        defirImage(nome, lado);
+
+    }
+    private void defirImage(String pokeString, String lado){
+        // Criar path com base no nome e lado do pokemon
+        String imagePath = "assets/pokemons/" + pokeString.toLowerCase() + "/" + lado + ".png"; 
         System.out.println(imagePath);
 
-        // aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x 256
+        // Aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x 256
         try {
             ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
             Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
@@ -28,7 +36,21 @@ public class Pokemon {
             System.out.println("Erro ao carregar a imagem: " + imagePath);
         }
     }
-
+    private static Integer encontrarvida(String pokemonNome){
+        String nomedoarquivo = "pokemonhp.csv";
+        try (BufferedReader leitor= new BufferedReader(new FileReader(nomedoarquivo))){
+            String linha;
+            while ((linha = leitor.readLine()) != null){
+                String[] partes = linha.split(",");
+                if(partes.length == 2 && partes[0].trim().equalsIgnoreCase(pokemonNome)){
+                    return Integer.parseInt(partes[1].trim());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     // Getter do lado 
     public String getLado(){
         return lado;
