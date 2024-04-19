@@ -2,15 +2,22 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Player {
-
+    private String pokemonNome;
     static Pokemon pokemonSelecionado;
     static String nome;
     static InterfaceCaixa painel;
 
-    public Player() {
-        pokemonSelecionado = new Pokemon("Charmander", "back");
+    public Player(String pokemon) {
+        this.pokemonNome = pokemon; 
+        pokemonSelecionado = new Pokemon(pokemon,  "back");
     }
 
+    public String getPokemonNome(){
+        return pokemonNome;
+    }
+    public void setPokemonNome(String pokemonNome){
+        this.pokemonNome = pokemonNome;
+    }
     public static void setInterfaceCaixa(InterfaceCaixa painel) {
         Player.painel = painel; // Adicione este método
     }

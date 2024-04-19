@@ -11,7 +11,7 @@ public class Tutorial extends JPanel {
         "Olá, bem vindo ao mundo Pokémon!",
         "Neste jogo você enfrentar desafios", 
         "e batalhas para se tornar um mestre Pokémon.",
-        "Agora me conte mais sobre voçe."
+        "Agora me conte mais sobre você."
     };
     int falaIndex = 0;
     JPanel nextPage;

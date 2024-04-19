@@ -32,6 +32,7 @@ public class EscolherPokemonInicial extends JPanel{
         bulbasaurOption.setBounds(50, 300, 250, 186);
         bulbasaurOption.addActionListener(e -> {
             System.out.println("Bulbasaur selecionado!");
+            frame.setPlayer(new Player("Bulbasaur"));
             nextPage.actionPerformed(e);
         });
         background.add(bulbasaurOption);
@@ -44,6 +45,7 @@ public class EscolherPokemonInicial extends JPanel{
         JButton charmanderOption = new JButton(new ImageIcon("assets/pokemons/chalizarBaby.png"));
         charmanderOption.setBounds(350, 300, 250, 186);
         charmanderOption.addActionListener(e -> {
+            frame.setPlayer(new Player("Charmander"));
             System.out.println("Charmander selecionado!");
             nextPage.actionPerformed(e);
         });
@@ -58,6 +60,7 @@ public class EscolherPokemonInicial extends JPanel{
         squirtleOption.setBounds(650, 300, 250, 186);
         squirtleOption.addActionListener(e -> {
             System.out.println("Squirtle selecionado!");
+            frame.setPlayer(new Player("Squirtle"));
             nextPage.actionPerformed(e);
         });
         background.add(squirtleOption);
