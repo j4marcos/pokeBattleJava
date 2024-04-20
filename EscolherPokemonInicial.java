@@ -1,12 +1,6 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class EscolherPokemonInicial extends JPanel{
 
@@ -14,7 +8,7 @@ public class EscolherPokemonInicial extends JPanel{
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
         Font Fonte = DefinirFonte.fonte();
 

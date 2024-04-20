@@ -1,11 +1,5 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 public class Home extends JPanel {
     
@@ -13,7 +7,7 @@ public class Home extends JPanel {
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
         JPanel homePanel = new JPanel();
         homePanel.setLayout(new BorderLayout());

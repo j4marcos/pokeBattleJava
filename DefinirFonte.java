@@ -1,7 +1,5 @@
-import java.io.File;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.io.IOException;
+import java.io.*;
+import java.awt.*;
 
 public class DefinirFonte {
     public static Font fonte() {
