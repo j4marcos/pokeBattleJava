@@ -1,15 +1,8 @@
-
-import java.awt.Font;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.*;
 
 public class Intro extends JPanel {
-    
     private Font Fonte;
 
     public Intro(Game frame) {
@@ -17,18 +10,7 @@ public class Intro extends JPanel {
         editar(frame);
     }
 
-    public Intro() {
-        setLayout(new BorderLayout());
-        Fonte = DefinirFonte.fonte();
-        JLabel background = new JLabel();
-        background.setFocusable(true);
-        background.setIcon(new ImageIcon("assets/backgroundImages/intro.png"));
-        background.add(pressSpace());
-        
-        add(background, BorderLayout.NORTH);
-    }
-
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
 
         JLabel background = new JLabel();
@@ -46,9 +28,8 @@ public class Intro extends JPanel {
         add(background, BorderLayout.NORTH);
     }
 
-    public JLabel pressSpace() {
+    private JLabel pressSpace() {
         JLabel pressSpace = new JLabel("Press Space");
-
         pressSpace.setFont(Fonte.deriveFont(Font.PLAIN,90f));
         pressSpace.setForeground(Color.WHITE);
         pressSpace.setBounds(140, 460, 340, 100);
@@ -56,7 +37,7 @@ public class Intro extends JPanel {
         return pressSpace;
     }
 
-    public void iniciarAnimacao(JLabel label) {
+    private void iniciarAnimacao(JLabel label) {
         Timer timer = new Timer(700, new ActionListener() {
             boolean isVisible = true;
 

@@ -1,27 +1,25 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 public class Info extends JPanel {
+    private Font fonte;
+    private JLabel background;
+    private JLabel pikachuIconLabel;
 
     public Info(Game frame) {
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
-        Font Fonte = DefinirFonte.fonte();
+        fonte = DefinirFonte.fonte();
 
-        JLabel background = new JLabel();
+        background = new JLabel();
         background.setFocusable(true);
         background.setIcon(new ImageIcon("assets/backgroundImages/info.png"));
         background.setBounds(0, 0, 960, 640); 
 
-        JLabel pikachuIconLabel = new JLabel();
+        pikachuIconLabel = new JLabel();
         pikachuIconLabel.setFocusable(true);
         pikachuIconLabel.setIcon(new ImageIcon("assets/backgroundImages/pikachu.gif")); 
         pikachuIconLabel.setBounds(10, 5, 130, 130);
@@ -33,12 +31,12 @@ public class Info extends JPanel {
         JLabel linha4 = new JLabel("");
         JLabel linha5 = new JLabel("");
         
-        linha0.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha1.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha2.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha3.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha4.setFont(Fonte.deriveFont(Font.PLAIN,52f));
-        linha5.setFont(Fonte.deriveFont(Font.PLAIN,52f));
+        linha0.setFont(fonte.deriveFont(Font.PLAIN,52f));
+        linha1.setFont(fonte.deriveFont(Font.PLAIN,52f));
+        linha2.setFont(fonte.deriveFont(Font.PLAIN,52f));
+        linha3.setFont(fonte.deriveFont(Font.PLAIN,52f));
+        linha4.setFont(fonte.deriveFont(Font.PLAIN,52f));
+        linha5.setFont(fonte.deriveFont(Font.PLAIN,52f));
         
         linha0.setBounds(50, 150, 800, 50);
         linha1.setBounds(50, 200, 800, 50);
@@ -48,7 +46,7 @@ public class Info extends JPanel {
         linha5.setBounds(50, 450, 800, 50);
 
         JButton nextButton = new JButton(" Proximo ");
-        nextButton.setFont(Fonte.deriveFont(Font.PLAIN,30f));
+        nextButton.setFont(fonte.deriveFont(Font.PLAIN,30f));
         nextButton.addActionListener(e -> {
             Tutorial tutorial = new Tutorial(frame, new String[]{ "Ola, bem vindo ao mundo Pokémon!",
             "Neste jogo voce enfrentar desafios", 
@@ -69,5 +67,4 @@ public class Info extends JPanel {
 
         add(background, BorderLayout.NORTH);
     }
-
 }

@@ -1,11 +1,10 @@
 import javax.swing.*;
-import java.awt.event.*;
 
 public class Player {
     private String pokemonNome;
-    static Pokemon pokemonSelecionado;
-    static String nome;
-    static InterfaceCaixa painel;
+    public static Pokemon pokemonSelecionado;
+    public static String nome;
+    public static InterfaceCaixa painel;
 
     public Player(String pokemon) {
         this.pokemonNome = pokemon; 
@@ -23,18 +22,15 @@ public class Player {
     }
 
     public static void atacar() {
-        Enemy.inimigoAtual.vida -= 10;
+        Enemy.inimigoAtual.setVida(Enemy.inimigoAtual.getVida() - 10);
         System.out.println("O pokemon do player atacou o pokemon inimigo e causou 10 de dano");
-        if (Enemy.inimigoAtual.vida <= 0) {
+        if (Enemy.inimigoAtual.getVida() <= 0) {
             System.out.println("O pokemon inimigo foi derrotado");
             painel.mostrarDerrotaInimigo();
-            Timer timer = new Timer(3000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Enemy.trocarInimigo();
-                    PokemonsBatle.instance.atualizarInimigo();
-                    PokemonsBatle.instance.atualizarVidaInimigo(); 
-                }
+            Timer timer = new Timer(3000, e -> {
+                Enemy.trocarInimigo();
+                PokemonsBatle.instance.atualizarInimigo();
+                PokemonsBatle.instance.atualizarVidaInimigo(); 
             });
             timer.setRepeats(false);
             timer.start();
@@ -43,12 +39,12 @@ public class Player {
     }
 
     public void curar() {
-        pokemonSelecionado.vida += 10;
+        pokemonSelecionado.setVida(pokemonSelecionado.getVida() + 10);
         System.out.println("O pokemon do player foi curado e recuperou 10 de vida");
     }
 
     public static int getAlturaPokemon() {
-        switch (pokemonSelecionado.nome) {
+        switch (pokemonSelecionado.getNome()) {
             case "Bulbasaur":
                 return 256;
             case "Squirtle":

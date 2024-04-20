@@ -1,28 +1,19 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class CriarPersonagemPage extends JPanel{
-    JButton personagem1;
-    JButton personagem2;
-    Font Fonte = DefinirFonte.fonte();
-    JLabel setaSelection = new JLabel(new ImageIcon("assets/battleMenu/seta.png"));
+    private JButton personagem1;
+    private JButton personagem2;
+    private Font Fonte = DefinirFonte.fonte();
+    private JLabel setaSelection = new JLabel(new ImageIcon("assets/battleMenu/seta.png"));
 
     
     public CriarPersonagemPage(Game frame) {
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
 
         JLabel background = new JLabel();
@@ -109,15 +100,10 @@ public class CriarPersonagemPage extends JPanel{
         
         background.add(personagem2);
 
-
         background.add(panelSelecaoPersonagem);
 
         background.add(nextButton);
 
         add(background, BorderLayout.NORTH);
     }
-
-   
-        
-    
 }

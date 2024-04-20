@@ -1,16 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class InterfaceCaixa extends JPanel {
-    CaixaDialogo caixaDialogo = new CaixaDialogo();
-    CardLayout maincardLayout = new CardLayout(); 
-    JPanel mainCardPanel = new JPanel(maincardLayout);
-    JPanel battleLayoutPanel = new JPanel(new GridLayout(1, 2)); 
-    CardLayout leftcardLayout = new CardLayout();
-    JPanel leftComponent = new JPanel(leftcardLayout);
-    JPanel rightComponent = new JPanel();
-    JLabel msgLabel = new JLabel();
+    private CaixaDialogo caixaDialogo = new CaixaDialogo();
+    private CardLayout maincardLayout = new CardLayout(); 
+    private JPanel mainCardPanel = new JPanel(maincardLayout);
+    private JPanel battleLayoutPanel = new JPanel(new GridLayout(1, 2)); 
+    private CardLayout leftcardLayout = new CardLayout();
+    private JPanel leftComponent = new JPanel(leftcardLayout);
+    private JLabel msgLabel = new JLabel();
 
     public InterfaceCaixa(Game frame) {
         Player.setInterfaceCaixa(this);
@@ -20,7 +18,6 @@ public class InterfaceCaixa extends JPanel {
 
         leftComponent.add(caixaDialogo, "caixaDeTexto");
         leftComponent.add(new Poderes(this), "poderes");
-        
 
         Options options = new Options(frame, this);
         // Não entendi qual sentido de ter esse rightComponent
@@ -55,15 +52,12 @@ public class InterfaceCaixa extends JPanel {
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainCardPanel.remove(msgLabel);
-                msgLabel.removeAll(); 
-                maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
-                revalidate();
-                repaint();
-            }
+        Timer timer = new Timer(3000, e -> {
+            mainCardPanel.remove(msgLabel);
+            msgLabel.removeAll(); 
+            maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
+            revalidate();
+            repaint();
         });
         timer.setRepeats(false);
         timer.start();
@@ -72,7 +66,7 @@ public class InterfaceCaixa extends JPanel {
     public void mostrarDerrotaInimigo() {
         Font Fonte = DefinirFonte.fonte();
         
-        JLabel linha0 = new JLabel(Enemy.inimigoAtual.nome.toUpperCase() + " inimigo");
+        JLabel linha0 = new JLabel(Enemy.inimigoAtual.getNome().toUpperCase() + " inimigo");
         JLabel linha1 = new JLabel("derrotado!");
         
         linha0.setFont(Fonte.deriveFont(Font.PLAIN,60f));
@@ -92,17 +86,18 @@ public class InterfaceCaixa extends JPanel {
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainCardPanel.remove(msgLabel);
-                msgLabel.removeAll(); 
-                maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
-                revalidate();
-                repaint();
-            }
+        Timer timer = new Timer(3000, e -> {
+            mainCardPanel.remove(msgLabel);
+            msgLabel.removeAll(); 
+            maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
+            revalidate();
+            repaint();
         });
         timer.setRepeats(false);
         timer.start();
+    }
+
+    public JLabel getMsgLabel() {
+        return msgLabel;
     }
 }
