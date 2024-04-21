@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Poderes extends JPanel {
-    private Font Fonte = DefinirFonte.fonte();
     private InterfaceCaixa painel;
     
     public Poderes(InterfaceCaixa painel) {
@@ -23,22 +22,9 @@ public class Poderes extends JPanel {
         JButton botao = new JButton(nome);
         botao.addActionListener(e -> {
             System.out.println(nome + " disparado!!");
-
-            JLabel linha0 = new JLabel(Player.pokemonSelecionado.getNome().toUpperCase() + " used");
-            JLabel linha1 = new JLabel(nome.toUpperCase() + "!");
-
-            linha0.setFont(Fonte.deriveFont(Font.PLAIN,60f));
-            linha1.setFont(Fonte.deriveFont(Font.PLAIN,60f));
-
-            linha0.setBounds(50, 35, 800, 60);
-            linha1.setBounds(50, 95, 800, 60);
-
-            linha0.setForeground(Color.WHITE);
-            linha1.setForeground(Color.WHITE);
             
-            painel.getMsgLabel().add(linha0);
-            painel.getMsgLabel().add(linha1);
-
+            painel.limparMsgTexto();
+            painel.msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + " used", nome.toUpperCase() + "!");
             painel.mostrarAtaque();
 
             Timer timer = new Timer(3000, f -> {
