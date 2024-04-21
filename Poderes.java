@@ -3,6 +3,8 @@ import java.awt.*;
 
 public class Poderes extends JPanel {
     private InterfaceCaixa painel;
+    private JLabel background = new JLabel();
+    private Font Fonte = DefinirFonte.fonte();
     
     public Poderes(InterfaceCaixa painel) {
         this.painel = painel;
@@ -10,18 +12,22 @@ public class Poderes extends JPanel {
     }
 
     public void editar() {
-        setLayout(new GridLayout(2, 1));
+        setLayout(new BorderLayout());
+        background.setIcon(new ImageIcon("assets/battleElements/fundo poderes.png"));
+        background.setLayout(null);
 
-        botao("chutao");
-        botao("cabecada");
-        botao("peido venenoso");
-        botao("mal olhado");
+        botao("chutao", 20, 40); 
+        botao("cabecada", 230, 40);
+        botao("mal olhado", 20, 100);
+        botao("peido venenoso", 230, 100);
+
+        add(background, BorderLayout.NORTH);
     }
 
-    public void botao(String nome) {
-        JButton botao = new JButton(nome);
+    public void botao(String nome, int x, int y) {
+        JButton botao = new JButton(nome.toUpperCase());
         botao.addActionListener(e -> {
-            System.out.println(nome + " disparado!!");
+            System.out.println(nome.toUpperCase() + " disparado!!");
             
             painel.limparMsgTexto();
             painel.msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + " used", nome.toUpperCase() + "!");
@@ -33,6 +39,12 @@ public class Poderes extends JPanel {
             timer.setRepeats(false);
             timer.start();
         });
-        add(botao);
+        botao.setContentAreaFilled(false); 
+        botao.setBorderPainted(false);
+        botao.setFont(Fonte.deriveFont(Font.PLAIN, 40));
+
+        botao.setBounds(x, y, botao.getPreferredSize().width, botao.getPreferredSize().height); // Definir posição e tamanho
+    
+        background.add(botao);
     }
 }

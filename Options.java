@@ -27,12 +27,12 @@ public class Options extends JPanel {
 
     private void editar() {
         definirBackground();
-        setLayout(new GridLayout(2, 1));
+        setLayout(null);
 
-        botao("FIGHT");
-        botao("BAG");
-        botao("POKEMON");
-        botao("RUN");
+        botao("FIGHT", 40, 30);
+        botao("BAG", 270, 30);
+        botao("POKEMON", 40, 100);
+        botao("RUN", 270, 100);
     }
 
     private void definirBackground() {
@@ -44,13 +44,14 @@ public class Options extends JPanel {
         }
     }
 
-    private void botao(String nome) {
+    private void botao(String nome, int x, int y) {
         JButton botao = new JButton(nome);
         // Parte do background
-        botao.setOpaque(false); // Faz que o botão fique transparante
         botao.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
         botao.setBorderPainted(false); // Tirar as bordas
-        botao.setFont(Fonte.deriveFont(Font.PLAIN, 35)); // Definir fonte
+        botao.setFont(Fonte.deriveFont(Font.PLAIN, 60)); // Definir fonte
+
+        botao.setBounds(x, y, botao.getPreferredSize().width, botao.getPreferredSize().height); // Definir posição e tamanho
 
         botao.addActionListener(e -> {
             switch (nome) {
