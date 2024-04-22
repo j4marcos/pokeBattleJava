@@ -9,18 +9,18 @@ public class Bag extends JPanel {
     private JLabel descricaol1;
     private JLabel descricaol2;
     private JLabel descricaol3; 
-    private JLabel imgItem;
-    private String[][] itemNome = { 
-        {"Dipirona", "assets/itens/potion (1).png", "Melhor amigo para", "uma dor de cabeca!", ""}, 
-        {"Paracetamol", "assets/itens/potion (2).png", "Para quando", "voce se sente um pouco febril.", ""}, 
-        {"Dorflex", "assets/itens/potion (3).png", "Diga adeus as dores", "musculares!", ""}, 
-        {"Ibuprofeno", "assets/itens/potion (4).png", "Para quando", "voce precisa de um alivio", "rapido da dor."}, 
-        {"Losartana", "assets/itens/potion (5).png", "Mantem a pressao", "arterial sob controle.", ""}, 
-        {"Xarope", "assets/itens/potion (6).png", "Para quando sua", "garganta precisa de um", "pouco de amor."}, 
-        {"Buscopan", "assets/itens/potion (7).png", "Alivio para o", "desconforto abdominal.", ""}, 
-        {"Neosoro", "assets/itens/potion (8).png", "Para quando seu", "nariz esta mais entupido que", "um transito na hora do rush."}, 
-        {"Torsilax", "assets/itens/potion (9).png", "Para quando voce", "precisa de um alivio extra", "da dor."}, 
-        {"Benzetacil", "assets/itens/potion (10).png", "Para quando", "voce precisa de um impulso", "no sistema imunologico."} 
+    private JLabel imgItemAtual;
+    private String[][] items = { 
+        {"Dipirona", "assets/itens/potion (1).png", "Eh como a pocao de cabeca ", "fresca para aquele Pokemon com ", "dor de cabeca!"}, 
+        {"Paracetamol", "assets/itens/potion (2).png", "Uma pocao refrescante para ", "Pokemon que estao um pouco ", "febris."}, 
+        {"Dorflex", "assets/itens/potion (3).png", "Esta pocao relaxante acaba ", "com as dores musculares dos ", "Pokemon!"}, 
+        {"Ibuprofeno", "assets/itens/potion (4).png", "Uma pocao rapida para alivio ", "imediato da dor para qualquer ", "Pokemon."}, 
+        {"Losartana", "assets/itens/potion (5).png", "Mantem a pressao arterial dos ", "Pokemon sob controle.", ""}, 
+        {"Xarope", "assets/itens/potion (6).png", "Esta pocao e um abraco caloroso ", "para a garganta do seu Pokemon.", ""}, 
+        {"Buscopan", "assets/itens/potion (7).png", "Uma pocao calmante para os ", "desconfortos abdominais dos ", "Pokemon."}, 
+        {"Neosoro", "assets/itens/potion (8).png", "Para aqueles Pokemon com narizes ", "tao entupidos quanto uma rota de", "migracao de Taillow."}, 
+        {"Torsilax", "assets/itens/potion (9).png", "Uma pocao poderosa para alivio ", "extra da dor dos Pokemon.", ""}, 
+        {"Benzetacil", "assets/itens/potion (10).png", "Um impulso de saude ", "para fortalecer o sistema ", "imunologico dos seus Pokemon!"} 
     };
 
     public Bag(Game frame) {
@@ -67,12 +67,6 @@ public class Bag extends JPanel {
         add(background, BorderLayout.NORTH);
     }
 
-    private JLabel itemAtual() {
-        JLabel itemAtual = new JLabel();
-        itemAtual.setBounds(30, 495, 96, 96);
-        return itemAtual;
-    }
-
     private JButton editarBotao(String nome, int x, int y) {
         JButton botao = new JButton(nome);
 
@@ -92,7 +86,7 @@ public class Bag extends JPanel {
                 descricaol1.setVisible(false);
                 descricaol2.setVisible(false);
                 descricaol3.setVisible(false);
-                imgItem.setVisible(false);
+                imgItemAtual.setVisible(false);
             }
         });
 
@@ -101,8 +95,8 @@ public class Bag extends JPanel {
 
     private JScrollPane listaDeItens() {
         DefaultListModel<String> modeloLista = new DefaultListModel<>();
-        for (int i = 0; i < itemNome.length; i++) {
-            modeloLista.addElement(itemNome[i][0]);
+        for (int i = 0; i < items.length; i++) {
+            modeloLista.addElement(items[i][0].toUpperCase());
         }
 
         JList<String> listaDeItens = new JList<>(modeloLista);
@@ -112,7 +106,6 @@ public class Bag extends JPanel {
         JScrollPane scrollPane = new JScrollPane(listaDeItens);
         scrollPane.setBounds(360, 40, 560, 365);
         scrollPane.getViewport().addChangeListener((e) -> scrollPane.getParent().repaint());
-
         scrollPane.addMouseWheelListener(e -> repaint());
 
         descricaol1 = new JLabel();
@@ -124,8 +117,11 @@ public class Bag extends JPanel {
         descricaol1.setFont(Fonte.deriveFont(Font.PLAIN,45));
         descricaol2.setFont(Fonte.deriveFont(Font.PLAIN,45));
         descricaol3.setFont(Fonte.deriveFont(Font.PLAIN,45));
-        imgItem = itemAtual();
-        background.add(imgItem);
+        
+        imgItemAtual = new JLabel();
+        imgItemAtual.setBounds(32, 497, 96, 96);
+
+        background.add(imgItemAtual);
         background.add(descricaol1);
         background.add(descricaol2);
         background.add(descricaol3);
@@ -134,11 +130,11 @@ public class Bag extends JPanel {
             if (!e.getValueIsAdjusting()) {
                 if (listaDeItens.getSelectedIndex() != -1) {
                     int i = listaDeItens.getSelectedIndex();
-                    descricaol1.setText(String.format("%s,  %s", listaDeItens.getSelectedValue(), itemNome[i][2]));
-                    descricaol2.setText(String.format("%s", itemNome[i][3]));
-                    descricaol3.setText(String.format("%s", itemNome[i][4]));
+                    descricaol1.setText(String.format("%s", items[i][2]));
+                    descricaol2.setText(String.format("%s", items[i][3]));
+                    descricaol3.setText(String.format("%s", items[i][4]));
                     background.setIcon(new ImageIcon("assets/backgroundImages/nova-base.png"));
-                    imgItem.setIcon(new ImageIcon(itemNome[i][1]));
+                    imgItemAtual.setIcon(new ImageIcon(items[i][1]));
                     background.revalidate();
                     scrollPane.getParent().repaint();
                     
@@ -149,7 +145,7 @@ public class Bag extends JPanel {
                     descricaol1.setVisible(true);
                     descricaol2.setVisible(true);
                     descricaol3.setVisible(true);
-                    imgItem.setVisible(true);
+                    imgItemAtual.setVisible(true);
                 }
             }
         });
