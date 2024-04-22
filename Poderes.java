@@ -18,8 +18,8 @@ public class Poderes extends JPanel {
 
         botao("chutao", 20, 40); 
         botao("cabecada", 230, 40);
-        botao("mal olhado", 20, 100);
-        botao("peido venenoso", 230, 100);
+        botao("mal  olhado", 20, 100);
+        botao("peido  venenoso", 230, 100);
 
         add(background, BorderLayout.NORTH);
     }
@@ -30,7 +30,7 @@ public class Poderes extends JPanel {
             System.out.println(nome.toUpperCase() + " disparado!!");
             
             painel.limparMsgTexto();
-            painel.msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + " used", nome.toUpperCase() + "!");
+            painel.msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + "  usou", nome.toUpperCase() + "!");
             painel.mostrarAtaque();
 
             Timer timer = new Timer(3000, f -> {

@@ -48,10 +48,10 @@ public class Info extends JPanel {
         JButton nextButton = new JButton(" Proximo ");
         nextButton.setFont(fonte.deriveFont(Font.PLAIN,30f));
         nextButton.addActionListener(e -> {
-            Tutorial tutorial = new Tutorial(frame, new String[]{ "Ola, bem vindo ao mundo Pokémon!",
-            "Neste jogo voce enfrentar desafios", 
-            "e batalhas para se tornar um mestre Pokémon.",
-            "Agora me conte mais sobre voce." }, new CriarPersonagemPage(frame));
+            Tutorial tutorial = new Tutorial(frame, new String[]{ "Ola,  bem  vindo  ao  mundo  Pokémon!",
+            "Neste  jogo  voce  enfrentar  desafios", 
+            "e  batalhas  para  se  tornar  um  mestre  Pokémon.",
+            "Agora  me  conte  mais  sobre  voce." }, new CriarPersonagemPage(frame));
             frame.mudarTela(tutorial);
         });
         nextButton.setBounds(800, 20, 120, 40);

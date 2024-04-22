@@ -31,7 +31,8 @@ public class CriarPersonagemPage extends JPanel{
         JButton nextButton = new JButton("OK");
         nextButton.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         nextButton.addActionListener(e -> {
-            Tutorial tutorial = new Tutorial(frame, new String[]{ "Escolha seu pokemon Inicial" }, new EscolherPokemonInicial(frame));
+            Player.nome = textField.getText();
+            Tutorial tutorial = new Tutorial(frame, new String[]{"Ola,  " + Player.nome + "!", "Estamos  animados  para  comecar nossa  aventura!" , "Agora,  escolha  seu  primeiro  Pokemon!" }, new EscolherPokemonInicial(frame));
             frame.mudarTela(tutorial);
         });
         nextButton.setBounds(760, 520, 110, 35);
@@ -68,6 +69,8 @@ public class CriarPersonagemPage extends JPanel{
                 personagem2.setBackground(new Color(0,0,0,0));
 
                 personagem1.setBackground(Color.GRAY);
+
+                Player.tipoPersonagem = "boy";
             }
         });
         background.add(personagem1);
@@ -95,6 +98,8 @@ public class CriarPersonagemPage extends JPanel{
                 personagem2.setBackground(new Color(0,0,0,0));
 
                 personagem2.setBackground(Color.GRAY);
+
+                Player.tipoPersonagem = "girl";
             }
         });
         

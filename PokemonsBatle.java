@@ -33,7 +33,7 @@ public class PokemonsBatle extends JPanel{
         inimigoInfo.setIcon(new ImageIcon("assets/battleElements/inimigo hp.png"));
         inimigoInfo.setBounds(50, 30, 400, 116);
 
-        inimigoName.setText(Enemy.inimigoAtual.getNome());   
+        inimigoName.setText(Enemy.inimigoAtual.getNome().toUpperCase());   
         inimigoName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         inimigoName.setBounds(25, 10, 320, 45);
 
@@ -48,7 +48,7 @@ public class PokemonsBatle extends JPanel{
         playerInfo.setIcon(new ImageIcon("assets/battleElements/player hp.png"));
         playerInfo.setBounds(505, 295, 416, 148);
 
-        playerName.setText(Player.pokemonSelecionado.getNome());   
+        playerName.setText(Player.pokemonSelecionado.getNome().toUpperCase());   
         playerName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         playerName.setBounds(60, 10, 320, 45);
 
@@ -88,14 +88,14 @@ public class PokemonsBatle extends JPanel{
         label.removeAll();
         
         Enemy.inimigoAtual.getImagemLabel().setBounds(580, 40, 256, 256);
-        inimigoName.setText(Enemy.inimigoAtual.getNome());   
+        inimigoName.setText(Enemy.inimigoAtual.getNome().toUpperCase());   
         inimigoName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         inimigoName.setBounds(25, 13, 320, 40);
         inimigoInfo.add(inimigoName);
         label.add(inimigoInfo);
         
         Player.pokemonSelecionado.getImagemLabel().setBounds(120, Player.getAlturaPokemon(), 256, 256);
-        playerName.setText(Player.pokemonSelecionado.getNome());   
+        playerName.setText(Player.pokemonSelecionado.getNome().toUpperCase());   
         playerName.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         playerName.setBounds(60, 13, 320, 40);
         playerInfo.add(playerName);

@@ -18,7 +18,8 @@ public class EscolherPokemonInicial extends JPanel{
         background.setBounds(0, 0, 960, 640); 
 
         ActionListener nextPage = e -> {
-            Tutorial tutorial = new Tutorial(frame, new String[]{ "Boa sorte na sua Aventura Pokemon!" }, new Home(frame));
+            String pokemonEscolhido = Player.pokemonSelecionado.getNome();
+            Tutorial tutorial = new Tutorial(frame, new String[]{ "Incrivel,  " + Player.nome + "!", pokemonEscolhido + "  eh uma otima  escolha  para  comecar.", "Boa  sorte!  em  sua  Aventura  Pokemon." }, new Home(frame));
             frame.mudarTela(tutorial);
         };
 

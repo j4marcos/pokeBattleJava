@@ -29,10 +29,10 @@ public class Options extends JPanel {
         definirBackground();
         setLayout(null);
 
-        botao("FIGHT", 40, 30);
-        botao("BAG", 270, 30);
+        botao("LUTAR", 40, 30);
+        botao("BOLSA", 270, 30);
         botao("POKEMON", 40, 100);
-        botao("RUN", 270, 100);
+        botao("SAIR", 270, 100);
     }
 
     private void definirBackground() {
@@ -55,11 +55,11 @@ public class Options extends JPanel {
 
         botao.addActionListener(e -> {
             switch (nome) {
-                case "FIGHT":
+                case "LUTAR":
                     interfaceCaixa.mudarInterfaceBattleLayout("poderes");
                     System.out.println(nome + " apertado!");
                     break;
-                case "BAG":
+                case "BOLSA":
                     Bag bag = new Bag(frame);
                     frame.mudarTela(bag);
                     System.out.println(nome + " apertado!");
@@ -69,10 +69,8 @@ public class Options extends JPanel {
                     frame.mudarTela(home);
                     System.out.println(nome + " apertado!");
                     break;
-                case "RUN":
-                    Home home1 = new Home(frame);
-                    frame.mudarTela(home1);
-                    System.out.println(nome + " apertado!");
+                case "SAIR":
+                    System.exit(0); 
                     break;
                 default:
                     break;

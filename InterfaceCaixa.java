@@ -13,7 +13,7 @@ public class InterfaceCaixa extends JPanel {
     public InterfaceCaixa(Game frame) {
         Player.setInterfaceCaixa(this);
         
-        msgTexto("What will", Player.pokemonSelecionado.getNome().toUpperCase() + " do?");
+        msgTexto("O  que  " + Player.pokemonSelecionado.getNome().toUpperCase(), "vai  fazer?");
         msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png")); 
         leftComponent.add(msgLabel, "MessageLabel"); 
     
@@ -22,9 +22,6 @@ public class InterfaceCaixa extends JPanel {
         leftComponent.add(new Poderes(this), "poderes");
     
         Options options = new Options(frame, this);
-        // Não entendi qual sentido de ter esse rightComponent
-        // sendo que o options é um componete só   
-        // rightComponent.add(options);
     
         // Adicionando os componentes ao painel principal
         battleLayoutPanel.add(leftComponent);
@@ -64,7 +61,7 @@ public class InterfaceCaixa extends JPanel {
     }
     
     public void mostrarDerrotaInimigo() {
-        msgTexto(Enemy.inimigoAtual.getNome().toUpperCase() + " inimigo", "derrotado!");
+        msgTexto(Enemy.inimigoAtual.getNome().toUpperCase() + "  inimigo", "foi  derrotado!");
         
         msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
         mainCardPanel.add(msgLabel, "MsgLabel");

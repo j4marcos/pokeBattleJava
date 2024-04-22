@@ -44,16 +44,16 @@ public class Home extends JPanel {
     }
 
     private void setPersonagemJogador(JLabel backgroundLabel) {
-        int tipoPersonagem = 1;
-        // tipo peronagem se refere se o jogador escokheu o personagem boy ou girl, issso sera definido no arquivo de save do jogador
-
         JLabel Personagem= new JLabel();
         Personagem.setFocusable(true);
         Personagem.setBounds(  400 , -50 , 960, 640); 
         
-        if (tipoPersonagem == 1) Personagem.setIcon(new ImageIcon("assets/personagens/ash.png")); 
-        if (tipoPersonagem == 2) Personagem.setIcon(new ImageIcon("assets/personagens/girl.png"));
-
+        if (Player.tipoPersonagem.equals("boy")) {
+            Personagem.setIcon(new ImageIcon("assets/personagens/ash.png"));
+        } else if (Player.tipoPersonagem.equals("girl")){ 
+            Personagem.setIcon(new ImageIcon("assets/personagens/girl.png"));
+        }
+        
         backgroundLabel.add(Personagem);
     }
 }
