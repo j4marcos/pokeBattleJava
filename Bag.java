@@ -10,17 +10,18 @@ public class Bag extends JPanel {
     private JLabel descricaol2;
     private JLabel descricaol3; 
     private JLabel imgItemAtual;
+    private int selectedIndex;
     private String[][] items = { 
-        {"Dipirona", "assets/itens/potion (1).png", "Eh como a pocao de cabeca ", "fresca para aquele Pokemon com ", "dor de cabeca!"}, 
-        {"Paracetamol", "assets/itens/potion (2).png", "Uma pocao refrescante para ", "Pokemon que estao um pouco ", "febris."}, 
-        {"Dorflex", "assets/itens/potion (3).png", "Esta pocao relaxante acaba ", "com as dores musculares dos ", "Pokemon!"}, 
-        {"Ibuprofeno", "assets/itens/potion (4).png", "Uma pocao rapida para alivio ", "imediato da dor para qualquer ", "Pokemon."}, 
-        {"Losartana", "assets/itens/potion (5).png", "Mantem a pressao arterial dos ", "Pokemon sob controle.", ""}, 
-        {"Xarope", "assets/itens/potion (6).png", "Esta pocao e um abraco caloroso ", "para a garganta do seu Pokemon.", ""}, 
-        {"Buscopan", "assets/itens/potion (7).png", "Uma pocao calmante para os ", "desconfortos abdominais dos ", "Pokemon."}, 
-        {"Neosoro", "assets/itens/potion (8).png", "Para aqueles Pokemon com narizes ", "tao entupidos quanto uma rota de", "migracao de Taillow."}, 
-        {"Torsilax", "assets/itens/potion (9).png", "Uma pocao poderosa para alivio ", "extra da dor dos Pokemon.", ""}, 
-        {"Benzetacil", "assets/itens/potion (10).png", "Um impulso de saude ", "para fortalecer o sistema ", "imunologico dos seus Pokemon!"} 
+        {"Dipirona", "assets/itens/potion (1).png", "Eh como a pocao de cabeca ", "fresca para aquele Pokemon com ", "dor de cabeca!", "15"}, 
+        {"Paracetamol", "assets/itens/potion (2).png", "Uma pocao refrescante para ", "Pokemon que estao um pouco ", "febris.", "20"}, 
+        {"Dorflex", "assets/itens/potion (3).png", "Esta pocao relaxante acaba ", "com as dores musculares dos ", "Pokemon!", "25"}, 
+        {"Ibuprofeno", "assets/itens/potion (4).png", "Uma pocao rapida para alivio ", "imediato da dor para qualquer ", "Pokemon.", "30"}, 
+        {"Losartana", "assets/itens/potion (5).png", "Mantem a pressao arterial dos ", "Pokemon sob controle.", "", "35"}, 
+        {"Xarope", "assets/itens/potion (6).png", "Esta pocao e um abraco caloroso ", "para a garganta do seu Pokemon.", "", "40"}, 
+        {"Buscopan", "assets/itens/potion (7).png", "Uma pocao calmante para os ", "desconfortos abdominais dos ", "Pokemon.", "45"}, 
+        {"Neosoro", "assets/itens/potion (8).png", "Para aqueles Pokemon com narizes ", "tao entupidos quanto uma rota de", "migracao de Taillow.", "50"}, 
+        {"Torsilax", "assets/itens/potion (9).png", "Uma pocao poderosa para alivio ", "extra da dor dos Pokemon.", "", "10"}, 
+        {"Benzetacil", "assets/itens/potion (10).png", "Um impulso de saude ", "para fortalecer o sistema ", "imunologico dos seus Pokemon!", "50"} 
     };
 
     public Bag(Game frame) {
@@ -78,11 +79,21 @@ public class Bag extends JPanel {
         botao.addActionListener(e -> {
             if (nome.equals("USE")) {
                 System.out.println(nome + " apertado!");
-            } else if (nome.equals("CANCEL")) {
-                System.out.println(nome + " apertado!");
+                if (selectedIndex != -1) {
+                    Player.curar(items[selectedIndex][5]);
+                }
+                background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
                 useButton.setVisible(false);
                 cancelButton.setVisible(false);
+                descricaol1.setVisible(false);
+                descricaol2.setVisible(false);
+                descricaol3.setVisible(false);
+                imgItemAtual.setVisible(false);
+            } else if (nome.equals("CANCEL")) {
+                System.out.println(nome + " apertado!");
                 background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
+                useButton.setVisible(false);
+                cancelButton.setVisible(false);
                 descricaol1.setVisible(false);
                 descricaol2.setVisible(false);
                 descricaol3.setVisible(false);
@@ -129,12 +140,12 @@ public class Bag extends JPanel {
         listaDeItens.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 if (listaDeItens.getSelectedIndex() != -1) {
-                    int i = listaDeItens.getSelectedIndex();
-                    descricaol1.setText(String.format("%s", items[i][2]));
-                    descricaol2.setText(String.format("%s", items[i][3]));
-                    descricaol3.setText(String.format("%s", items[i][4]));
+                    selectedIndex = listaDeItens.getSelectedIndex();
+                    descricaol1.setText(String.format("%s", items[selectedIndex][2]));
+                    descricaol2.setText(String.format("%s", items[selectedIndex][3]));
+                    descricaol3.setText(String.format("%s", items[selectedIndex][4]));
                     background.setIcon(new ImageIcon("assets/backgroundImages/nova-base.png"));
-                    imgItemAtual.setIcon(new ImageIcon(items[i][1]));
+                    imgItemAtual.setIcon(new ImageIcon(items[selectedIndex][1]));
                     background.revalidate();
                     scrollPane.getParent().repaint();
                     
