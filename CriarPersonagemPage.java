@@ -31,9 +31,13 @@ public class CriarPersonagemPage extends JPanel{
         JButton nextButton = new JButton("OK");
         nextButton.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         nextButton.addActionListener(e -> {
-            Player.nome = textField.getText();
-            Tutorial tutorial = new Tutorial(frame, new String[]{"Ola,  " + Player.nome + "!", "Estamos  animados  para  comecar nossa  aventura!" , "Agora,  escolha  seu  primeiro  Pokemon!" }, new EscolherPokemonInicial(frame));
-            frame.mudarTela(tutorial);
+            if (textField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Parece que você esqueceu de preencher seu nome. \n                  Por favor, tente novamente.", "Alerta", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                Player.nome = textField.getText();
+                Tutorial tutorial = new Tutorial(frame, new String[]{"Ola,  " + Player.nome + "!", "Estamos  animados  para  comecar nossa  aventura!" , "Agora,  escolha  seu  primeiro  Pokemon!" }, new EscolherPokemonInicial(frame));
+                frame.mudarTela(tutorial);
+            }
         });
         nextButton.setBounds(760, 520, 110, 35);
 
