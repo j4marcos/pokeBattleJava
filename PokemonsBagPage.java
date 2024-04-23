@@ -15,6 +15,7 @@ public class PokemonsBagPage extends JPanel{
         background.setIcon(new ImageIcon("assets/backgroundImages/pokeBagPage.png"));
        
         background.revalidate();
+        adicionarPokemonInicial(background);
 
         JButton backButton = new JButton(new ImageIcon("assets/backgroundImages/cancelButton0.png"));
         backButton.addActionListener(e -> {
@@ -37,10 +38,10 @@ public class PokemonsBagPage extends JPanel{
         background.add(barButton);
 
         JLabel pokeCardLabel = new JLabel(new ImageIcon("assets/backgroundImages/pokeCard0.png"));
-        pokeCardLabel.setBounds(-30, -15, 400, 400);
+        pokeCardLabel.setBounds(-20, -15, 400, 400);
         background.add(pokeCardLabel);
 
-        adicionarPokemonInicial(background);
+        
 
         
         
@@ -49,13 +50,18 @@ public class PokemonsBagPage extends JPanel{
     }
 
     private void adicionarPokemonInicial(JLabel background) {
-        // JLabel pokemonLabel = Player.
-        // pokemonLabel.setBounds(50, 50, 200, 200);
-        // background.add(pokemonLabel);
+        Pokemon pokemonSelecionado = new Pokemon(Player.pokemonNome ,  "front");
+        JLabel pokemon = pokemonSelecionado.getImagemLabel();
+        pokemon.setFocusable(isFocusable());
+        pokemon.setBounds(550, 40, 600, 80);
 
-        // JLabel pokemonLabel2 = new JLabel(new ImageIcon("assets/pokemons/squirtle.png"));
-        // pokemonLabel2.setBounds(50, 250, 200, 200);
-        // background.add(pokemonLabel2);
+        background.add(pokemon);
+
+        Pokemon pokemonSelecionado2 = new Pokemon(Player.pokemonNome ,  "front");
+        JLabel pokemon2 = pokemonSelecionado2.getImagemLabel();
+        pokemon2.setBounds(50, -15, 400, 400);
+
+        background.add(pokemon2);
         
     }
 
