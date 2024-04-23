@@ -28,6 +28,33 @@ public class Bag extends JPanel {
         editar(frame);
     }
 
+    public Bag() {
+        setLayout(new BorderLayout());
+        background.setFocusable(true);
+        background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
+        JScrollPane scrollPane = listaDeItens();
+        background.add(scrollPane);
+        background.revalidate();
+
+        // JLabel backButtonBackground = new JLabel();
+        // backButtonBackground.setIcon(new ImageIcon("assets/backgroundImages/botao voltar.png"));
+        // backButtonBackground.setBounds(10, 300, 308, 116);
+
+        JButton backButton = new JButton("Voltar");
+        backButton.addActionListener(e -> {
+            // PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
+            // frame.mudarTela(pokemonsBatle);
+            System.out.println("Voltar apertado!");
+        });
+        // backButton.setContentAreaFilled(false);
+        // backButton.setBorderPainted(false);
+
+        backButton.setBounds(13, 117, 308, 116);
+        background.add(backButton);
+
+        add(background, BorderLayout.NORTH);
+    }
+
     private void editar(Game frame) {
         setLayout(new BorderLayout());
         background.setFocusable(true);
@@ -36,14 +63,21 @@ public class Bag extends JPanel {
         background.add(scrollPane);
         background.revalidate();
 
+        JLabel backButtonBackground = new JLabel();
+        backButtonBackground.setIcon(new ImageIcon("assets/backgroundImages/botao voltar.png"));
+        backButtonBackground.setBounds(10, 10, 100, 40);
+
         JButton backButton = new JButton("Voltar");
         backButton.addActionListener(e -> {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
             frame.mudarTela(pokemonsBatle);
             System.out.println("Voltar apertado!");
         });
-        backButton.setBounds(10, 10, 100, 40);
-        background.add(backButton);
+        backButton.setContentAreaFilled(false);
+        backButton.setBorderPainted(false);
+
+        backButtonBackground.add(backButton);
+        background.add(backButtonBackground);
 
         add(background, BorderLayout.NORTH);
     }
