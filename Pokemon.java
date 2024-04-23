@@ -2,7 +2,7 @@ import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class Pokemon {
+public class Pokemon implements Serializable{
     private String nome;
     private int vida;
     private int vidaMaxima;

@@ -1,6 +1,7 @@
 import javax.swing.*;
+import java.io.*;
 
-public class Player {
+public class Player implements Serializable  {
     public static String pokemonNome;
     public static Pokemon pokemonSelecionado;
     public static String nome;
@@ -44,6 +45,38 @@ public class Player {
         System.out.println("O pokemon do player foi curado e recuperou 10 de vida");
         PokemonsBatle.instance.atualizarVidaPlayer();
     }
+
+    public static void salvarDados() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("player_data.dat"))) {
+            oos.writeObject(pokemonNome);
+            oos.writeObject(pokemonSelecionado);
+            oos.writeObject(nome);
+            oos.writeObject(tipoPersonagem);
+            oos.writeObject(painel);
+            // Salvar outros atributos conforme necessário
+            System.out.println("Dados salvos com sucesso.");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar os dados: " + e.getMessage());
+        }
+    }
+
+    public static boolean carregarDados() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("player_data.dat"))) {
+            pokemonNome = (String) ois.readObject();
+            pokemonSelecionado = (Pokemon) ois.readObject();
+            nome = (String) ois.readObject();
+            tipoPersonagem = (String) ois.readObject();
+            painel = (InterfaceCaixa) ois.readObject();
+            // Carregar outros atributos conforme necessário
+            System.out.println("Dados carregados com sucesso.");
+            return true;
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Erro ao carregar os dados: " + e.getMessage());
+            return false;
+        }
+    }
+    
+
 
     public static int getAlturaPokemon() {
         switch (pokemonSelecionado.getNome()) {

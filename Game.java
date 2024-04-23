@@ -14,8 +14,15 @@ public class Game extends JFrame implements Runnable {
 
         setVisible(true);
 
+        boolean saveExists = Player.carregarDados();
+
+        if (saveExists) {
+            Home home = new Home(this);
+            mudarTela(home);
+        } else {
         Intro intro = new Intro(this);
         mudarTela(intro);
+        }
         
     }
 

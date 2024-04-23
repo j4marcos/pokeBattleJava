@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.io.File;
+
 import javax.swing.*;
 
 public class Home extends JPanel {
@@ -35,8 +37,40 @@ public class Home extends JPanel {
         });
         nextButton.setBounds(650, 500, 300, 70);
 
+        JLabel sairTitleLabel = new JLabel("Salvar e sair");
+        sairTitleLabel.setFont(Fonte.deriveFont(Font.PLAIN, 60));
+        sairTitleLabel.setForeground(Color.WHITE);
+        sairTitleLabel.setBounds(50, 450, 800, 50);
+
+        JButton sairButton = new JButton("SAIR");
+        sairButton.setFont(Fonte.deriveFont(Font.PLAIN, 40));
+        sairButton.addActionListener(e -> {
+
+           Player.salvarDados();
+            System.exit(0);
+            
+        });
+        sairButton.setBounds(50, 500, 300, 70);
+
+
+        JButton apagarButton = new JButton("Apagar Save");
+        apagarButton.setFont(Fonte.deriveFont(Font.PLAIN, 20));
+        apagarButton.addActionListener(e -> {
+            File file = new File("player_data.dat");
+            if (file.exists()) {
+                file.delete();
+            }
+
+            System.exit(0);
+            
+        });
+        apagarButton.setBounds(10, 10, 120, 50);
+
+        backgroundLabel.add(apagarButton);
         backgroundLabel.add(titleLabel);
         backgroundLabel.add(nextButton);    
+        backgroundLabel.add(sairTitleLabel);
+        backgroundLabel.add(sairButton);
     
         add(backgroundLabel, BorderLayout.NORTH);
     }

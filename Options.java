@@ -65,12 +65,14 @@ public class Options extends JPanel {
                     System.out.println(nome + " apertado!");
                     break;
                 case "POKEMON":
+                PokemonsBagPage pokemonsBag = new PokemonsBagPage(frame);
+                frame.mudarTela(pokemonsBag);
+                System.out.println(nome + " apertado!");
+                    break;
+                case "SAIR":
                     Home home = new Home(frame);
                     frame.mudarTela(home);
                     System.out.println(nome + " apertado!");
-                    break;
-                case "SAIR":
-                    System.exit(0); 
                     break;
                 default:
                     break;
