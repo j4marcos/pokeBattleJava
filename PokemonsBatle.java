@@ -67,6 +67,23 @@ public class PokemonsBatle extends JPanel{
         add(interface1, BorderLayout.CENTER);
     }
 
+    public void atualizarVidaPlayer() {
+        double porcentagemVida = (double) Player.pokemonSelecionado.getVida() / Player.pokemonSelecionado.getVidaMaxima();
+
+        if (porcentagemVida <= 0.25) {
+            playerHP.setBackground(new Color(220, 20, 60)); // Vermelho
+        } else if (porcentagemVida <= 0.50) {
+            playerHP.setBackground(new Color(255, 223, 0)); // Amarelo
+        } else {
+            playerHP.setBackground(new Color(34, 139, 34)); // Verde
+        }
+
+        playerHPValue = (int) (porcentagemVida * 192);
+        playerHP.setBounds(192, 68, playerHPValue, 12);
+        revalidate();
+        repaint();
+    }
+
     public void atualizarVidaInimigo() {
         double porcentagemVida = (double) Enemy.inimigoAtual.getVida() / Enemy.inimigoAtual.getVidaMaxima();
 

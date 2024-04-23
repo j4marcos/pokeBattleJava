@@ -42,6 +42,7 @@ public class Player {
     public static void curar(String curaValor) {
         pokemonSelecionado.setVida(pokemonSelecionado.getVida() + Integer.parseInt(curaValor));
         System.out.println("O pokemon do player foi curado e recuperou 10 de vida");
+        PokemonsBatle.instance.atualizarVidaPlayer();
     }
 
     public static int getAlturaPokemon() {
