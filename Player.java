@@ -58,8 +58,6 @@ public class Player implements Serializable  {
             oos.writeObject(pokemonSelecionado);
             oos.writeObject(nome);
             oos.writeObject(tipoPersonagem);
-            // oos.writeObject(painel);
-            // Salvar outros atributos conforme necessÃ¡rio
             System.out.println("Dados salvos com sucesso.");
         } catch (IOException e) {
             System.out.println("Erro ao salvar os dados: " + e.getMessage());
@@ -72,8 +70,6 @@ public class Player implements Serializable  {
             pokemonSelecionado = (Pokemon) ois.readObject();
             nome = (String) ois.readObject();
             tipoPersonagem = (String) ois.readObject();
-            // painel = (InterfaceCaixa) ois.readObject();
-            // Carregar outros atributos conforme necessÃ¡rio
             System.out.println("Dados carregados com sucesso.");
             return true;
         } catch (IOException | ClassNotFoundException e) {
