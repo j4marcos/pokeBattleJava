@@ -1,13 +1,8 @@
-import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import java.awt.Font;
-
+import java.io.*;
+import javax.imageio.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.*;
 
 public class Options extends JPanel {
     private BufferedImage backgroundImage;
@@ -30,14 +25,14 @@ public class Options extends JPanel {
         }
     }
 
-    public void editar() {
+    private void editar() {
         definirBackground();
-        setLayout(new GridLayout(2, 1));
+        setLayout(null);
 
-        botao("FIGHT");
-        botao("BAG");
-        botao("POKEMON");
-        botao("RUN");
+        botao("LUTAR", 40, 30);
+        botao("BOLSA", 270, 30);
+        botao("POKEMON", 40, 100);
+        botao("SAIR", 270, 100);
     }
 
     private void definirBackground() {
@@ -49,32 +44,38 @@ public class Options extends JPanel {
         }
     }
 
-    public void botao(String nome) {
+    private void botao(String nome, int x, int y) {
         JButton botao = new JButton(nome);
         // Parte do background
-        botao.setOpaque(false); // Faz que o botão fique transparante
         botao.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
         botao.setBorderPainted(false); // Tirar as bordas
-        botao.setFont(Fonte.deriveFont(Font.PLAIN, 35)); // Definir fonte
+        botao.setFont(Fonte.deriveFont(Font.PLAIN, 60)); // Definir fonte
+
+        botao.setBounds(x, y, botao.getPreferredSize().width, botao.getPreferredSize().height); // Definir posição e tamanho
 
         botao.addActionListener(e -> {
-            if (nome.equals("FIGHT")) {
-                interfaceCaixa.mudarInterfaceBattleLayout("poderes");
-
-                // ainda nao sei como criar esse painel sem usar TelasRef
+            switch (nome) {
+                case "LUTAR":
+                    interfaceCaixa.mudarInterfaceBattleLayout("poderes");
+                    System.out.println(nome + " apertado!");
+                    break;
+                case "BOLSA":
+                    Bag bag = new Bag(frame);
+                    frame.mudarTela(bag);
+                    System.out.println(nome + " apertado!");
+                    break;
+                case "POKEMON":
+                PokemonsBagPage pokemonsBag = new PokemonsBagPage(frame);
+                frame.mudarTela(pokemonsBag);
                 System.out.println(nome + " apertado!");
-            } else if (nome.equals("BAG")) {
-                Bag bag = new Bag(frame);
-                frame.mudarTela(bag);
-                System.out.println(nome + " apertado!");
-            } else if (nome.equals("POKEMON")) {
-                Home home = new Home(frame);
-                frame.mudarTela(home);
-                System.out.println(nome + " apertado!");
-            } else if (nome.equals("RUN")) {
-                Home home = new Home(frame);
-                frame.mudarTela(home);
-                System.out.println(nome + " apertado!");
+                    break;
+                case "SAIR":
+                    Home home = new Home(frame);
+                    frame.mudarTela(home);
+                    System.out.println(nome + " apertado!");
+                    break;
+                default:
+                    break;
             }
         });
         add(botao);

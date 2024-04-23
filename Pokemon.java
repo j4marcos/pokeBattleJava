@@ -1,24 +1,23 @@
-import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
 
-public class Pokemon {
-
-    public String nome;
-    public int vida;
-    String lado;
-    public JLabel imagemLabel = new JLabel();
+public class Pokemon implements Serializable{
+    private String nome;
+    private int vida;
+    private int vidaMaxima;
+    private String lado;
+    private JLabel imagemLabel = new JLabel();
 
     public Pokemon(String nome, String lado) {
         this.nome = nome;
         this.lado = lado;
         this.vida = encontrarvida(nome);
+        this.vidaMaxima = this.vida;
         // Lado precisa ser front ou back
         defirImage(nome, lado);
-
     }
+
     private void defirImage(String pokeString, String lado){
         // Criar path com base no nome e lado do pokemon
         String imagePath = "assets/pokemons/" + pokeString.toLowerCase() + "/" + lado + ".png"; 
@@ -34,6 +33,7 @@ public class Pokemon {
             System.out.println("Erro ao carregar a imagem: " + imagePath);
         }
     }
+    
     private static Integer encontrarvida(String pokemonNome){
         String nomedoarquivo = "pokemonhp.csv";
         try (BufferedReader leitor= new BufferedReader(new FileReader(nomedoarquivo))){
@@ -75,6 +75,11 @@ public class Pokemon {
     // definir a vida
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    // pegar a vidaMaxima
+    public int getVidaMaxima() {
+        return vidaMaxima;
     }
 
     // Pegar a label da imagem

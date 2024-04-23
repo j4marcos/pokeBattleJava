@@ -1,28 +1,19 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class CriarPersonagemPage extends JPanel{
-    JButton personagem1;
-    JButton personagem2;
-    Font Fonte = DefinirFonte.fonte();
-    JLabel setaSelection = new JLabel(new ImageIcon("assets/battleMenu/seta.png"));
+    private JButton personagem1;
+    private JButton personagem2;
+    private Font Fonte = DefinirFonte.fonte();
+    private JLabel setaSelection = new JLabel(new ImageIcon("assets/battleMenu/seta.png"));
 
     
     public CriarPersonagemPage(Game frame) {
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
 
         JLabel background = new JLabel();
@@ -40,8 +31,13 @@ public class CriarPersonagemPage extends JPanel{
         JButton nextButton = new JButton("OK");
         nextButton.setFont(Fonte.deriveFont(Font.PLAIN,50f));
         nextButton.addActionListener(e -> {
-            Tutorial tutorial = new Tutorial(frame, new String[]{ "Escolha seu pokemon Inicial" }, new EscolherPokemonInicial(frame));
-            frame.mudarTela(tutorial);
+            if (textField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "Parece que você esqueceu de preencher seu nome. \n                  Por favor, tente novamente.", "Alerta", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                Player.nome = textField.getText();
+                Tutorial tutorial = new Tutorial(frame, new String[]{"Ola,  " + Player.nome + "!", "Estamos  animados  para  comecar nossa  aventura!" , "Agora,  escolha  seu  primeiro  Pokemon!" }, new EscolherPokemonInicial(frame));
+                frame.mudarTela(tutorial);
+            }
         });
         nextButton.setBounds(760, 520, 110, 35);
 
@@ -77,6 +73,8 @@ public class CriarPersonagemPage extends JPanel{
                 personagem2.setBackground(new Color(0,0,0,0));
 
                 personagem1.setBackground(Color.GRAY);
+
+                Player.tipoPersonagem = "boy";
             }
         });
         background.add(personagem1);
@@ -104,11 +102,12 @@ public class CriarPersonagemPage extends JPanel{
                 personagem2.setBackground(new Color(0,0,0,0));
 
                 personagem2.setBackground(Color.GRAY);
+
+                Player.tipoPersonagem = "girl";
             }
         });
         
         background.add(personagem2);
-
 
         background.add(panelSelecaoPersonagem);
 
@@ -116,8 +115,4 @@ public class CriarPersonagemPage extends JPanel{
 
         add(background, BorderLayout.NORTH);
     }
-
-   
-        
-    
 }

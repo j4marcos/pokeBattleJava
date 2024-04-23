@@ -1,14 +1,10 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
+import javax.swing.*;
 
 public class Game extends JFrame implements Runnable {
     private JPanel painelAtual;
-    
     private Player currentPlayer;
 
     public void editar() {
-
         setTitle("pokeBattle");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(976, 679);
@@ -18,8 +14,15 @@ public class Game extends JFrame implements Runnable {
 
         setVisible(true);
 
+        boolean saveExists = Player.carregarDados();
+
+        if (saveExists) {
+            Home home = new Home(this);
+            mudarTela(home);
+        } else {
         Intro intro = new Intro(this);
         mudarTela(intro);
+        }
         
     }
 

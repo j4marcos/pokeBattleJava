@@ -1,12 +1,6 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class EscolherPokemonInicial extends JPanel{
 
@@ -14,7 +8,7 @@ public class EscolherPokemonInicial extends JPanel{
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
         Font Fonte = DefinirFonte.fonte();
 
@@ -24,7 +18,8 @@ public class EscolherPokemonInicial extends JPanel{
         background.setBounds(0, 0, 960, 640); 
 
         ActionListener nextPage = e -> {
-            Tutorial tutorial = new Tutorial(frame, new String[]{ "Boa sorte na sua Aventura Pokemon!" }, new Home(frame));
+            String pokemonEscolhido = Player.pokemonSelecionado.getNome();
+            Tutorial tutorial = new Tutorial(frame, new String[]{ "Incrivel,  " + Player.nome + "!", pokemonEscolhido + "  eh  uma  otima  escolha  para  comecar.", "Boa  sorte!  em  sua  Aventura  Pokemon." }, new Home(frame));
             frame.mudarTela(tutorial);
         };
 

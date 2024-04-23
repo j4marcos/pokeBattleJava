@@ -1,32 +1,34 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import java.awt.*;
+import javax.swing.*;
 
 public class Bag extends JPanel {
-    JLabel background = new JLabel();
-    Font Fonte = DefinirFonte.fonte();
+    private JLabel background = new JLabel();
+    private Font Fonte = DefinirFonte.fonte();
     private JButton useButton = editarBotao("USE", 715, 485);
     private JButton cancelButton = editarBotao("CANCEL", 715, 545);
-    JLabel item;
-    JLabel imgItem;
+    private JLabel descricaol1;
+    private JLabel descricaol2;
+    private JLabel descricaol3; 
+    private JLabel imgItemAtual;
+    private int selectedIndex;
+    private String[][] items = { 
+        {"Dipirona", "assets/itens/potion (1).png", "Eh como a pocao de cabeca ", "fresca para aquele Pokemon com ", "dor de cabeca!", "15"}, 
+        {"Paracetamol", "assets/itens/potion (2).png", "Uma pocao refrescante para ", "Pokemon que estao um pouco ", "febris.", "20"}, 
+        {"Dorflex", "assets/itens/potion (3).png", "Esta pocao relaxante acaba ", "com as dores musculares dos ", "Pokemon!", "25"}, 
+        {"Ibuprofeno", "assets/itens/potion (4).png", "Uma pocao rapida para alivio ", "imediato da dor para qualquer ", "Pokemon.", "30"}, 
+        {"Losartana", "assets/itens/potion (5).png", "Mantem a pressao arterial dos ", "Pokemon sob controle.", "", "35"}, 
+        {"Xarope", "assets/itens/potion (6).png", "Esta pocao e um abraco caloroso ", "para a garganta do seu Pokemon.", "", "40"}, 
+        {"Buscopan", "assets/itens/potion (7).png", "Uma pocao calmante para os ", "desconfortos abdominais dos ", "Pokemon.", "45"}, 
+        {"Neosoro", "assets/itens/potion (8).png", "Para aqueles Pokemon com narizes ", "tao entupidos quanto uma rota de", "migracao de Taillow.", "50"}, 
+        {"Torsilax", "assets/itens/potion (9).png", "Uma pocao poderosa para alivio ", "extra da dor dos Pokemon.", "", "10"}, 
+        {"Benzetacil", "assets/itens/potion (10).png", "Um impulso de saude ", "para fortalecer o sistema ", "imunologico dos seus Pokemon!", "50"} 
+    };
 
     public Bag(Game frame) {
         editar(frame);
     }
 
-    public void editar(Game frame) {
+    private void editar(Game frame) {
         setLayout(new BorderLayout());
         background.setFocusable(true);
         background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
@@ -46,14 +48,7 @@ public class Bag extends JPanel {
         add(background, BorderLayout.NORTH);
     }
 
-    public JLabel itemAtual() {
-        JLabel itemAtual = new JLabel();
-        itemAtual.setBounds(30, 495, 96, 96);
-
-        return itemAtual;
-    }
-
-    public JButton editarBotao(String nome, int x, int y) {
+    private JButton editarBotao(String nome, int x, int y) {
         JButton botao = new JButton(nome);
 
         botao.setContentAreaFilled(false); 
@@ -64,23 +59,35 @@ public class Bag extends JPanel {
         botao.addActionListener(e -> {
             if (nome.equals("USE")) {
                 System.out.println(nome + " apertado!");
-            } else if (nome.equals("CANCEL")) {
-                System.out.println(nome + " apertado!");
+                if (selectedIndex != -1) {
+                    Player.curar(items[selectedIndex][5]);
+                }
+                background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
                 useButton.setVisible(false);
                 cancelButton.setVisible(false);
+                descricaol1.setVisible(false);
+                descricaol2.setVisible(false);
+                descricaol3.setVisible(false);
+                imgItemAtual.setVisible(false);
+            } else if (nome.equals("CANCEL")) {
+                System.out.println(nome + " apertado!");
                 background.setIcon(new ImageIcon("assets/backgroundImages/base-itens.png"));
-                item.setVisible(false);
-                imgItem.setVisible(false);
+                useButton.setVisible(false);
+                cancelButton.setVisible(false);
+                descricaol1.setVisible(false);
+                descricaol2.setVisible(false);
+                descricaol3.setVisible(false);
+                imgItemAtual.setVisible(false);
             }
         });
 
         return botao;   
     }
 
-    public JScrollPane listaDeItens() {
+    private JScrollPane listaDeItens() {
         DefaultListModel<String> modeloLista = new DefaultListModel<>();
-        for (int i = 0; i < 20; i++) {
-            modeloLista.addElement(String.format("ITEM  %02d", (i + 1)));
+        for (int i = 0; i < items.length; i++) {
+            modeloLista.addElement(items[i][0].toUpperCase());
         }
 
         JList<String> listaDeItens = new JList<>(modeloLista);
@@ -90,44 +97,51 @@ public class Bag extends JPanel {
         JScrollPane scrollPane = new JScrollPane(listaDeItens);
         scrollPane.setBounds(360, 40, 560, 365);
         scrollPane.getViewport().addChangeListener((e) -> scrollPane.getParent().repaint());
+        scrollPane.addMouseWheelListener(e -> repaint());
 
-        scrollPane.addMouseWheelListener(new MouseWheelListener() {
-            public void mouseWheelMoved(MouseWheelEvent e) {
-                repaint(); 
-            }
-        });
+        descricaol1 = new JLabel();
+        descricaol2 = new JLabel();
+        descricaol3 = new JLabel(); 
+        descricaol1.setBounds(185, 475, 470, 50);
+        descricaol2.setBounds(185, 515, 470, 50);
+        descricaol3.setBounds(185, 555, 470, 50);
+        descricaol1.setFont(Fonte.deriveFont(Font.PLAIN,45));
+        descricaol2.setFont(Fonte.deriveFont(Font.PLAIN,45));
+        descricaol3.setFont(Fonte.deriveFont(Font.PLAIN,45));
+        
+        imgItemAtual = new JLabel();
+        imgItemAtual.setBounds(32, 497, 96, 96);
 
-        item = new JLabel();
-        item.setBounds(200, 490, 400, 100);
-        item.setFont(Fonte.deriveFont(Font.PLAIN,50f));
-        imgItem = itemAtual();
-        background.add(imgItem);
-        background.add(item);
-                        
+        background.add(imgItemAtual);
+        background.add(descricaol1);
+        background.add(descricaol2);
+        background.add(descricaol3);
 
-        listaDeItens.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    if (listaDeItens.getSelectedIndex() != -1) {
-                        item.setText(String.format("%s  is  selected.", listaDeItens.getSelectedValue()));
-                        background.setIcon(new ImageIcon("assets/backgroundImages/nova-base.png"));
-                        imgItem.setIcon(new ImageIcon("assets/itens/potion (1).png"));
-                        background.revalidate();
-                        scrollPane.getParent().repaint();
-                        
-                        background.add(useButton);
-                        background.add(cancelButton);
-                        useButton.setVisible(true);
-                        cancelButton.setVisible(true);
-                        item.setVisible(true);
-                        imgItem.setVisible(true);
-                    }
+        listaDeItens.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                if (listaDeItens.getSelectedIndex() != -1) {
+                    selectedIndex = listaDeItens.getSelectedIndex();
+                    descricaol1.setText(String.format("%s", items[selectedIndex][2]));
+                    descricaol2.setText(String.format("%s", items[selectedIndex][3]));
+                    descricaol3.setText(String.format("%s", items[selectedIndex][4]));
+                    background.setIcon(new ImageIcon("assets/backgroundImages/nova-base.png"));
+                    imgItemAtual.setIcon(new ImageIcon(items[selectedIndex][1]));
+                    background.revalidate();
+                    scrollPane.getParent().repaint();
+                    
+                    background.add(useButton);
+                    background.add(cancelButton);
+                    useButton.setVisible(true);
+                    cancelButton.setVisible(true);
+                    descricaol1.setVisible(true);
+                    descricaol2.setVisible(true);
+                    descricaol3.setVisible(true);
+                    imgItemAtual.setVisible(true);
                 }
             }
         });
         
-
-        scrollPane.setBackground(new Color(0, 0, 0, 0)); // Tornando o JScrollPane transparente
+        scrollPane.setBackground(new Color(0, 0, 0, 0));
         scrollPane.revalidate();
         return scrollPane;
     }
