@@ -35,6 +35,15 @@ public class Poderes extends JPanel {
 
             Timer timer = new Timer(3000, f -> {
                 Player.atacar();
+
+                if (Enemy.inimigoAtual.getVida() > 0) {
+                    painel.mostrarAtaqueInimigo();
+                    Timer timer2 = new Timer(3000, g -> {
+                        Enemy.atacar();
+                    });
+                    timer2.setRepeats(false);
+                    timer2.start();
+                }
             });
             timer.setRepeats(false);
             timer.start();

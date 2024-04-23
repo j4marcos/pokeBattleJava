@@ -12,6 +12,7 @@ public class InterfaceCaixa extends JPanel {
 
     public InterfaceCaixa(Game frame) {
         Player.setInterfaceCaixa(this);
+        Enemy.setInterfaceCaixa(this);
         
         msgTexto("O  que  " + Player.pokemonSelecionado.getNome().toUpperCase(), "vai  fazer?");
         msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png")); 
@@ -59,9 +60,49 @@ public class InterfaceCaixa extends JPanel {
         timer.setRepeats(false);
         timer.start();
     }
+
+    public void mostrarAtaqueInimigo() {
+        String[] poderes = {"chutao", "cabecada", "mal  olhado", "peido  venenoso"};
+        String nomeAtaque = poderes[(int) (Math.random() * poderes.length)];
+
+        msgTexto(Enemy.inimigoAtual.getNome().toUpperCase() + " usou", nomeAtaque.toUpperCase() + "!");
+        msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
+        mainCardPanel.add(msgLabel, "MsgLabel");
+        maincardLayout.show(mainCardPanel, "MsgLabel"); 
+        revalidate();
+    
+        Timer timer = new Timer(3000, e -> {
+            mainCardPanel.remove(msgLabel);
+            msgLabel.removeAll(); 
+            maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
+            revalidate();
+            repaint();
+        });
+        timer.setRepeats(false);
+        timer.start();
+    }
     
     public void mostrarDerrotaInimigo() {
         msgTexto(Enemy.inimigoAtual.getNome().toUpperCase() + "  inimigo", "foi  derrotado!");
+        
+        msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
+        mainCardPanel.add(msgLabel, "MsgLabel");
+        maincardLayout.show(mainCardPanel, "MsgLabel"); 
+        revalidate();
+    
+        Timer timer = new Timer(3000, e -> {
+            mainCardPanel.remove(msgLabel);
+            msgLabel.removeAll(); 
+            maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
+            revalidate();
+            repaint();
+        });
+        timer.setRepeats(false);
+        timer.start();
+    }
+
+    public void mostrarDerrotaPlayer() {
+        msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + "  foi  derrotado", "!");
         
         msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
         mainCardPanel.add(msgLabel, "MsgLabel");
