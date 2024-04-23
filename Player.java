@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Player {
-    private String pokemonNome;
+    public static String pokemonNome;
     public static Pokemon pokemonSelecionado;
     public static String nome;
     public static String tipoPersonagem = "boy";
