@@ -27,16 +27,31 @@ public class PokemonsBagPage extends JPanel{
         backButton.setBackground(new Color(0, 0, 0, 0));
         background.add(backButton);
 
-        JButton barButton = new JButton(new ImageIcon("assets/backgroundImages/pokeBar0.png"));
-        barButton.addActionListener(e -> {
-            PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
-            pokemonsBatle.atualizarVidaPlayer();
-            frame.mudarTela(pokemonsBatle);
-            System.out.println("Próximo apertado!");
+        JButton saveButton = new JButton("Salvar Progresso" );
+        saveButton.setFont(Fonte.deriveFont(Font.PLAIN, 40));
+        saveButton.addActionListener(e -> {
+            
+            Player.salvarDados();
+            saveButton.setText("Salvo com sucesso!");
+            System.out.println("salvo o progresso!");
+            repaint();
         });
-        barButton.setBounds(350, 30, 600, 100);
-        barButton.setBackground(new Color(0, 0, 0, 0));
-        background.add(barButton);
+        saveButton.setBounds(025,525, 700, 100);
+        saveButton.setBackground(new Color(0, 0, 0, 0));
+        background.add(saveButton);
+
+
+
+        // JButton barButton = new JButton(new ImageIcon("assets/backgroundImages/pokeBar0.png"));
+        // barButton.addActionListener(e -> {
+        //     PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
+        //     pokemonsBatle.atualizarVidaPlayer();
+        //     frame.mudarTela(pokemonsBatle);
+        //     System.out.println("Próximo apertado!");
+        // });
+        // barButton.setBounds(350, 30, 600, 100);
+        // barButton.setBackground(new Color(0, 0, 0, 0));
+        // background.add(barButton);
 
         JLabel pokeCardLabel = new JLabel(new ImageIcon("assets/backgroundImages/pokeCard0.png"));
         pokeCardLabel.setBounds(-20, -15, 400, 400);
@@ -47,12 +62,12 @@ public class PokemonsBagPage extends JPanel{
     }
 
     private void adicionarPokemonInicial(JLabel background) {
-        Pokemon pokemonSelecionado = new Pokemon(Player.pokemonNome ,  "front");
-        JLabel pokemon = pokemonSelecionado.getImagemLabel();
-        pokemon.setFocusable(isFocusable());
-        pokemon.setBounds(550, 40, 600, 80);
+        // Pokemon pokemonSelecionado = new Pokemon(Player.pokemonNome ,  "front");
+        // JLabel pokemon = pokemonSelecionado.getImagemLabel();
+        // pokemon.setFocusable(isFocusable());
+        // pokemon.setBounds(550, 40, 600, 80);
 
-        background.add(pokemon);
+        // background.add(pokemon);
 
         Pokemon pokemonSelecionado2 = new Pokemon(Player.pokemonNome ,  "front");
         JLabel pokemon2 = pokemonSelecionado2.getImagemLabel();
