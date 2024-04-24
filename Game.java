@@ -1,8 +1,15 @@
+import java.io.Serializable;
+
 import javax.swing.*;
 
 public class Game extends JFrame implements Runnable {
     private JPanel painelAtual;
     private Player currentPlayer;
+    static Game game;
+
+    public void run() {
+        editar();
+    }
 
     public void editar() {
         setTitle("pokeBattle");
@@ -33,9 +40,7 @@ public class Game extends JFrame implements Runnable {
     public Player getPlayer() {
         return this.currentPlayer;
     }
-    public void run() {
-        editar();
-    }
+   
 
     public void mudarTela(JPanel novoPanel) {
         if (painelAtual != null) {
