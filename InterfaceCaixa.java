@@ -14,6 +14,7 @@ public class InterfaceCaixa extends JPanel implements Serializable {
     public InterfaceCaixa(Game frame) {
         Player.setInterfaceCaixa(this);
         Enemy.setInterfaceCaixa(this);
+        Enemy.setGameFrame(frame);
         
         msgTexto("O  que  " + Player.pokemonSelecionado.getNome().toUpperCase(), "vai  fazer?");
         msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png")); 
@@ -103,7 +104,7 @@ public class InterfaceCaixa extends JPanel implements Serializable {
     }
 
     public void mostrarDerrotaPlayer() {
-        msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + "  foi  derrotado", "!");
+        msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + "  foi  derrotado!", "");
         
         msgLabel.setIcon(new ImageIcon("assets/battleElements/ataque background.png"));
         mainCardPanel.add(msgLabel, "MsgLabel");

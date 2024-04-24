@@ -4,69 +4,55 @@ import java.awt.*;
 
 public class Final extends JPanel {
     private Font Fonte;
-
-    public Final(Game frame) {
-        Fonte = DefinirFonte.fonte();
-        editar(frame);
-    }
+    private boolean resultado = Player.resultado;
 
     public Final() {
         Fonte = DefinirFonte.fonte();
         setLayout(new BorderLayout());
 
-        JPanel background = new JPanel();
+        JPanel background = new JPanel(new GridBagLayout());
         background.setFocusable(true);
         background.setBackground(Color.BLACK);
         background.setOpaque(true);
-        background.add(pressEnter());
-        background.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    // Aqui você pode definir o que acontece quando o usuário pressiona Enter
-                }
-            }
-        });
-        background.setBounds(0, 0, 976, 679);
-        add(background, BorderLayout.CENTER); // Altere NORTH para CENTER
-    }
+        JLabel gameOverLabel = resultado ? congratulationsMsg() : finalMsg();
+        gameOverLabel.setForeground(Color.RED);
+        background.add(gameOverLabel);
+        add(background, BorderLayout.CENTER);
 
-    private void editar(Game frame) {
-        setLayout(new BorderLayout());
+        Timer colorChangeTimer = new Timer(500, new ActionListener() {
+            private boolean colorFlag = false;
 
-        JPanel background = new JPanel();
-        background.setFocusable(true);
-        background.setBackground(Color.BLACK);
-        background.setOpaque(true);
-        background.add(pressEnter());
-        background.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    // Aqui você pode definir o que acontece quando o usuário pressiona Enter
-                }
-            }
-        });
-        background.setBounds(0, 0, 976, 679);
-        add(background, BorderLayout.CENTER); // Altere NORTH para CENTER
-    }
-
-    private JLabel pressEnter() {
-        JLabel pressEnter = new JLabel("GAMER OVER");
-        pressEnter.setFont(Fonte.deriveFont(Font.PLAIN,90f));
-        pressEnter.setForeground(Color.WHITE);
-        pressEnter.setBounds(0, 600, 340, 100);
-        iniciarAnimacao(pressEnter);
-        return pressEnter;
-    }
-
-    private void iniciarAnimacao(JLabel label) {
-        Timer timer = new Timer(700, new ActionListener() {
-            boolean isVisible = true;
-
+            @Override
             public void actionPerformed(ActionEvent e) {
-                label.setForeground(isVisible ? Color.WHITE : Color.BLACK);
-                isVisible = !isVisible;
+                if (colorFlag) {
+                    gameOverLabel.setForeground(Color.RED);
+                } else {
+                    gameOverLabel.setForeground(Color.YELLOW);
+                }
+                colorFlag = !colorFlag;
             }
         });
-        timer.start();
+        colorChangeTimer.start();
+
+        Timer exitTimer = new Timer(7000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        exitTimer.setRepeats(false); // Isso garante que o timer só será acionado uma vez
+        exitTimer.start();
+    }
+
+    private JLabel finalMsg() {
+        JLabel finalMsg = new JLabel("GAME OVER");
+        finalMsg.setFont(Fonte.deriveFont(Font.PLAIN,90f));
+        return finalMsg;
+    }
+
+    private JLabel congratulationsMsg() {
+        JLabel congratulationsMsg = new JLabel("CONGRATULATIONS");
+        congratulationsMsg.setFont(Fonte.deriveFont(Font.PLAIN,90f));
+        return congratulationsMsg;
     }
 }
