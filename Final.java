@@ -13,7 +13,7 @@ public class Final extends JPanel {
     public Final() {
         Fonte = DefinirFonte.fonte();
         setLayout(new BorderLayout());
-    
+
         JPanel background = new JPanel();
         background.setFocusable(true);
         background.setBackground(Color.BLACK);
@@ -32,7 +32,7 @@ public class Final extends JPanel {
 
     private void editar(Game frame) {
         setLayout(new BorderLayout());
-    
+
         JPanel background = new JPanel();
         background.setFocusable(true);
         background.setBackground(Color.BLACK);

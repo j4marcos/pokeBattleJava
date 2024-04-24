@@ -14,6 +14,7 @@ public class Player implements Serializable  {
 
     public Player(String pokemon, Game frame) {
         this.pokemonNome = pokemon; 
+        this.frame = frame;
         pokemonSelecionado = new Pokemon(pokemon,  "back");
     }
 
@@ -51,7 +52,7 @@ public class Player implements Serializable  {
         if (XP % 2 != 0 && XP > 0 && XP < 6) {
             System.out.println("O pokemon do player subiu de nivel");
             pokemonSelecionado.evoluir(XP);
-            // frame.mudarTela(new EvolucaoPage(frame, pokemonSelecionado));
+            frame.mudarTela(new EvolucaoPage(frame, pokemonSelecionado));
         }
 
 

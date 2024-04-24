@@ -11,6 +11,14 @@ public class Pokemon implements Serializable {
     private int nivel = 0;
     private String nomeAnterior ;
 
+    public String getNomeAnterior() {
+        return nomeAnterior;
+    }
+
+    public void setNomeAnterior(String nomeAnterior) {
+        this.nomeAnterior = nomeAnterior;
+    }
+
     public Pokemon(String nome, String lado) {
         this.nome = nome;
         this.lado = lado;
