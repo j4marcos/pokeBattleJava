@@ -30,6 +30,7 @@ public class PokemonsBagPage extends JPanel{
         JButton barButton = new JButton(new ImageIcon("assets/backgroundImages/pokeBar0.png"));
         barButton.addActionListener(e -> {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
+            pokemonsBatle.atualizarVidaPlayer();
             frame.mudarTela(pokemonsBatle);
             System.out.println("Próximo apertado!");
         });
@@ -41,10 +42,6 @@ public class PokemonsBagPage extends JPanel{
         pokeCardLabel.setBounds(-20, -15, 400, 400);
         background.add(pokeCardLabel);
 
-        
-
-        
-        
         
         add(background, BorderLayout.NORTH);
     }

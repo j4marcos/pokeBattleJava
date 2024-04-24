@@ -2,12 +2,14 @@ import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class Pokemon implements Serializable{
+public class Pokemon implements Serializable {
     private String nome;
     private int vida;
     private int vidaMaxima;
     private String lado;
     private JLabel imagemLabel = new JLabel();
+    private int nivel = 0;
+    private String nomeAnterior ;
 
     public Pokemon(String nome, String lado) {
         this.nome = nome;
@@ -18,12 +20,13 @@ public class Pokemon implements Serializable{
         defirImage(nome, lado);
     }
 
-    private void defirImage(String pokeString, String lado){
+    private void defirImage(String pokeString, String lado) {
         // Criar path com base no nome e lado do pokemon
-        String imagePath = "assets/pokemons/" + pokeString.toLowerCase() + "/" + lado + ".png"; 
+        String imagePath = "assets/pokemons/" + pokeString.toLowerCase() + "/" + lado + ".png";
         System.out.println(imagePath);
 
-        // Aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x 256
+        // Aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x
+        // 256
         try {
             ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
             Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
@@ -33,14 +36,14 @@ public class Pokemon implements Serializable{
             System.out.println("Erro ao carregar a imagem: " + imagePath);
         }
     }
-    
-    private static Integer encontrarvida(String pokemonNome){
+
+    private static Integer encontrarvida(String pokemonNome) {
         String nomedoarquivo = "pokemonhp.csv";
-        try (BufferedReader leitor= new BufferedReader(new FileReader(nomedoarquivo))){
+        try (BufferedReader leitor = new BufferedReader(new FileReader(nomedoarquivo))) {
             String linha;
-            while ((linha = leitor.readLine()) != null){
+            while ((linha = leitor.readLine()) != null) {
                 String[] partes = linha.split(",");
-                if(partes.length == 2 && partes[0].trim().equalsIgnoreCase(pokemonNome)){
+                if (partes.length == 2 && partes[0].trim().equalsIgnoreCase(pokemonNome)) {
                     return Integer.parseInt(partes[1].trim());
                 }
             }
@@ -49,14 +52,17 @@ public class Pokemon implements Serializable{
         }
         return null;
     }
-    // Getter do lado 
-    public String getLado(){
+
+    // Getter do lado
+    public String getLado() {
         return lado;
     }
+
     // Setter do lado
-    public void setLado(String lado){
+    public void setLado(String lado) {
         this.lado = lado;
     }
+
     // Getter do name
     public String getNome() {
         return nome;
@@ -85,5 +91,30 @@ public class Pokemon implements Serializable{
     // Pegar a label da imagem
     public JLabel getImagemLabel() {
         return imagemLabel;
+    }
+
+    public void evoluir(int i) {
+        vidaMaxima += 5 * i;
+        vida += 5 * i;
+        nivel++;
+
+        nomeAnterior = nome;
+        aplicarEvolucao();
+        Player.pokemonNome = nome;
+        defirImage(nome, "back");
+
+        System.out.println("O pokemon evoluiu para " + nome);
+
+    }
+
+    private void aplicarEvolucao() {
+        
+        if (nome == "Bulbasaur") nome = "Ivysaur";
+        else if (nome == "Ivysaur") nome = "Venusaur";
+        else if (nome == "Charmander") nome = "Charmeleon";
+        else if (nome == "Charmeleon") nome = "Charizard";
+        else if (nome == "Squirtle") nome = "Wartortle";
+        else if (nome == "Wartortle") nome = "Blastoise";
+    
     }
 }

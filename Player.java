@@ -7,9 +7,12 @@ public class Player implements Serializable  {
     public static String nome;
     public static String tipoPersonagem = "boy";
     public static InterfaceCaixa painel;
+    public static Game frame;
+    
+    private static int XP = 0;
     
 
-    public Player(String pokemon) {
+    public Player(String pokemon, Game frame) {
         this.pokemonNome = pokemon; 
         pokemonSelecionado = new Pokemon(pokemon,  "back");
     }
@@ -34,11 +37,24 @@ public class Player implements Serializable  {
                 Enemy.trocarInimigo();
                 PokemonsBatle.instance.atualizarInimigo();
                 PokemonsBatle.instance.atualizarVidaInimigo(); 
+                ganharExperiencia();
             });
             timer.setRepeats(false);
             timer.start();
         }
         PokemonsBatle.instance.atualizarVidaInimigo(); 
+    }
+
+    private static void ganharExperiencia() {
+        XP++;
+
+        if (XP % 2 != 0 && XP > 0 && XP < 6) {
+            System.out.println("O pokemon do player subiu de nivel");
+            pokemonSelecionado.evoluir(XP);
+            // frame.mudarTela(new EvolucaoPage(frame, pokemonSelecionado));
+        }
+
+
     }
 
     public static void curar(String curaValor) {
