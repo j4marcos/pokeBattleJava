@@ -41,7 +41,17 @@ public class Enemy {
             System.out.println("O pokemon do player foi derrotado");
             painel.mostrarDerrotaPlayer();
             Timer timer = new Timer(3000, e -> {
-                PokemonsBatle.instance.atualizarVidaPlayer();
+                
+                try {
+                    PokemonsBatle.instance.atualizarVidaPlayer();
+                    Player.resultado = false;
+                    Thread.sleep(3000);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                } 
+
+                Final finalPanel = new Final();
+                frame.mudarTela(finalPanel);
             });
             timer.setRepeats(false);
             timer.start();
@@ -59,8 +69,8 @@ public class Enemy {
             inimigoAtual = getInimigo(3);   
         } else {
             System.out.println("Todos os inimigos foram derrotados");
-            Player.resultado = true;
 
+            Player.resultado = true;
             Final finalPanel = new Final();
             frame.mudarTela(finalPanel);
         }

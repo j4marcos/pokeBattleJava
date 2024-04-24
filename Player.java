@@ -14,8 +14,8 @@ public class Player implements Serializable  {
     
 
     public Player(String pokemon, Game frame) {
-        this.pokemonNome = pokemon; 
-        this.frame = frame;
+        Player.pokemonNome = pokemon; 
+        Player.frame = frame;
         pokemonSelecionado = new Pokemon(pokemon,  "back");
     }
 
@@ -23,7 +23,7 @@ public class Player implements Serializable  {
         return pokemonNome;
     }
     public void setPokemonNome(String pokemonNome){
-        this.pokemonNome = pokemonNome;
+        Player.pokemonNome = pokemonNome;
     }
     public static void setInterfaceCaixa(InterfaceCaixa painel) {
         Player.painel = painel; // Adicione este método
@@ -96,28 +96,26 @@ public class Player implements Serializable  {
         }
     }
     
-
-
     public static int getAlturaPokemon() {
         switch (pokemonSelecionado.getNome()) {
             case "Bulbasaur":
-                return 256; // 16 no final
+                return 256; 
             case "Ivysaur":
-                return 232; // 10 no final
+                return 232; 
             case "Venusaur": 
-                return 232; // 10 no final
+                return 232; 
             case "Squirtle":
-                return 252; // 15 no final
+                return 252; 
             case "Wartortle":
-                return 232; // 10 no final
+                return 232;
             case "Blastoise":
-                return 232; // 10 no final
+                return 232; 
             case "Charmander":
-                return 232; //10 no final
+                return 232; 
             case "Charmeleon":
-                return 220; //7 no final
+                return 220; 
             case "Charizard":
-                return 208; //4 no final
+                return 208; 
             default:
                 return 256;
         }

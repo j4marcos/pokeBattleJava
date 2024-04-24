@@ -13,7 +13,7 @@ public class PokemonsBatle extends JPanel {
     private JLabel playerName = new JLabel();
     private JLabel playerHP = new JLabel();
 
-    private int playerHPValue = 192;
+    public static int playerHPValue = 192;
     public static int inimigoHPValue = 192;
 
     public PokemonsBatle(Game frame){
