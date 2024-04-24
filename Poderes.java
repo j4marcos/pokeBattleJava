@@ -23,11 +23,35 @@ public class Poderes extends JPanel {
                 botao("Razor Leaf", 20, 100);
                 botao("Seed Bomb", 230, 100);
                 break;
+            case "Ivysaur":
+                botao("Tackle", 20, 40); 
+                botao("Vine Whip", 230, 40);
+                botao("Razor Leaf", 20, 100);
+                botao("Solar Beam", 230, 100);
+                break;
+            case "Venusaur":
+                botao("Tackle", 20, 40); 
+                botao("Vine Whip", 230, 40);
+                botao("Razor Leaf", 20, 100);
+                botao("Solar Beam", 230, 100);
+                break;
             case "Squirtle":
                 botao("Tackle", 20, 40); 
                 botao("Water Gun", 230, 40);
                 botao("Bite", 20, 100);
                 botao("Hydro Pump", 230, 100);
+                break;
+            case "Wartortle":
+                botao("Tackle", 20, 40); 
+                botao("Water Gun", 230, 40);
+                botao("Bite", 20, 100);
+                botao("Hydro Cannon", 230, 100);
+                break;
+            case "Blastoise":
+                botao("Tackle", 20, 40); 
+                botao("Water Gun", 230, 40);
+                botao("Bite", 20, 100);
+                botao("Hydro Cannon", 230, 100);
                 break;
             case "Charmander":
                 botao("Scratch", 20, 40); 
@@ -35,7 +59,19 @@ public class Poderes extends JPanel {
                 botao("Flamethrower", 20, 100);
                 botao("Fire Blast", 230, 100);
                 break;
-        }
+            case "Charmeleon":
+                botao("Scratch", 20, 40); 
+                botao("Ember", 230, 40);
+                botao("Flamethrower", 20, 100);
+                botao("Fire Blast", 230, 100);
+                break;
+            case "Charizard":
+                botao("Scratch", 20, 40); 
+                botao("Ember", 230, 40);
+                botao("Flamethrower", 20, 100);
+                botao("Fire Blast", 230, 100);
+                break;
+        }        
 
         add(background, BorderLayout.NORTH);
     }

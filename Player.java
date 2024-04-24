@@ -8,6 +8,7 @@ public class Player implements Serializable  {
     public static String tipoPersonagem = "boy";
     public static InterfaceCaixa painel;
     public static Game frame;
+    public static boolean resultado;
     
     private static int XP = 0;
     
@@ -100,11 +101,23 @@ public class Player implements Serializable  {
     public static int getAlturaPokemon() {
         switch (pokemonSelecionado.getNome()) {
             case "Bulbasaur":
-                return 256;
+                return 256; // 16 no final
+            case "Ivysaur":
+                return 232; // 10 no final
+            case "Venusaur": 
+                return 232; // 10 no final
             case "Squirtle":
-                return 252;
+                return 252; // 15 no final
+            case "Wartortle":
+                return 232; // 10 no final
+            case "Blastoise":
+                return 232; // 10 no final
             case "Charmander":
-                return 232;
+                return 232; //10 no final
+            case "Charmeleon":
+                return 220; //7 no final
+            case "Charizard":
+                return 208; //4 no final
             default:
                 return 256;
         }

@@ -2,10 +2,11 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Enemy {
-    private final int NUM_INIMIGOS = 3;
+    private final int NUM_INIMIGOS = 4;
     public static ArrayList<Pokemon> inimigos = new ArrayList<>();
     public static Pokemon inimigoAtual;
     public static InterfaceCaixa painel;
+    public static Game frame;
 
     public Enemy() {
         geraInimigos();
@@ -13,7 +14,11 @@ public class Enemy {
     }
 
     public static void setInterfaceCaixa(InterfaceCaixa painel) {
-        Player.painel = painel; // Adicione este método
+        Enemy.painel = painel; // Adicione este método
+    }
+
+    public static void setGameFrame(Game frame) {
+        Enemy.frame = frame; 
     }
 
     public static Pokemon getInimigo(int i) {
@@ -21,7 +26,7 @@ public class Enemy {
     }
 
     private void geraInimigos() {
-        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie"};
+        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie", "Pikachu"};
 
         for (int i = 0; i < NUM_INIMIGOS; i++) {
             Pokemon pokemon = new Pokemon(nomesPokemons[i], "front");
@@ -50,8 +55,14 @@ public class Enemy {
             inimigoAtual = getInimigo(1);
         } else if (inimigoAtual == getInimigo(1)){
             inimigoAtual = getInimigo(2);
+        } else if (inimigoAtual == getInimigo(2)){
+            inimigoAtual = getInimigo(3);   
         } else {
             System.out.println("Todos os inimigos foram derrotados");
+            Player.resultado = true;
+
+            Final finalPanel = new Final();
+            frame.mudarTela(finalPanel);
         }
 
         System.out.println("trocando inimigo");
