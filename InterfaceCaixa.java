@@ -52,7 +52,7 @@ public class InterfaceCaixa extends JPanel implements Serializable {
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(3000, e -> {
+        Timer timer = new Timer(1000, e -> {
             mainCardPanel.remove(msgLabel);
             msgLabel.removeAll(); 
             maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
@@ -73,7 +73,7 @@ public class InterfaceCaixa extends JPanel implements Serializable {
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(3000, e -> {
+        Timer timer = new Timer(1000, e -> {
             mainCardPanel.remove(msgLabel);
             msgLabel.removeAll(); 
             maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
@@ -92,7 +92,7 @@ public class InterfaceCaixa extends JPanel implements Serializable {
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(3000, e -> {
+        Timer timer = new Timer(1000, e -> {
             mainCardPanel.remove(msgLabel);
             msgLabel.removeAll(); 
             maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 
@@ -111,7 +111,7 @@ public class InterfaceCaixa extends JPanel implements Serializable {
         maincardLayout.show(mainCardPanel, "MsgLabel"); 
         revalidate();
     
-        Timer timer = new Timer(3000, e -> {
+        Timer timer = new Timer(1000, e -> {
             mainCardPanel.remove(msgLabel);
             msgLabel.removeAll(); 
             maincardLayout.show(mainCardPanel, "BattleLayoutPanel"); 

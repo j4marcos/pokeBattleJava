@@ -36,7 +36,7 @@ public class Player implements Serializable  {
         if (Enemy.inimigoAtual.getVida() <= 0) {
             System.out.println("O pokemon inimigo foi derrotado");
             painel.mostrarDerrotaInimigo();
-            Timer timer = new Timer(3000, e -> {
+            Timer timer = new Timer(1000, e -> {
                 Enemy.trocarInimigo();
                 PokemonsBatle.instance.atualizarInimigo();
                 PokemonsBatle.instance.atualizarVidaInimigo(); 
@@ -78,6 +78,7 @@ public class Player implements Serializable  {
             oos.writeObject(nome);
             oos.writeObject(tipoPersonagem);
             oos.writeObject(frame);
+            oos.writeObject(XP);
             oos.writeObject(Enemy.inimigoAtual);
             oos.writeObject(Enemy.inimigos);
             oos.writeObject(PokemonsBatle.inimigoLv);
@@ -97,15 +98,17 @@ public class Player implements Serializable  {
             nome = (String) ois.readObject();
             tipoPersonagem = (String) ois.readObject();
             frame = (Game) ois.readObject();
+            XP = (int) ois.readObject();
             Enemy.inimigoAtual = (Pokemon) ois.readObject();
             Enemy.inimigos = (ArrayList<Pokemon>) ois.readObject();
             PokemonsBatle.inimigoLv = (int) ois.readObject();
             PokemonsBatle.playerLv = (int) ois.readObject();
 
+
             System.out.println("Dados carregados com sucesso.");
             return true;
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao carregar os dados: " + e.getMessage());
+            System.out.println("Erro ao carregar os dados do save: " + e.getMessage());
             return false;
         }
     }

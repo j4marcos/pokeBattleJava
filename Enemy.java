@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Random;
+
 import javax.swing.*;
 
 public class Enemy {
-    private final int NUM_INIMIGOS = 4;
     public static ArrayList<Pokemon> inimigos = new ArrayList<>();
     public static Pokemon inimigoAtual;
     public static InterfaceCaixa painel;
@@ -26,9 +27,19 @@ public class Enemy {
     }
 
     private void geraInimigos() {
-        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie", "Pikachu"};
+        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie", "Pikachu", "Spearow", "Weedle", "Nidoran_f", "Nidoran_m"};
 
-        for (int i = 0; i < NUM_INIMIGOS; i++) {
+        // Random random = new Random();
+
+
+        // for (int i = 0; i < nomesPokemons.length ; i++) {
+        //     int randomIndex = random.nextInt(nomesPokemons.length);
+        //     String randomPokemon = nomesPokemons[randomIndex];
+        //     Pokemon pokemon = new Pokemon(randomPokemon, "front");
+        //     inimigos.add(pokemon);
+        // }
+
+        for (int i = 0; i < 8; i++) {
             Pokemon pokemon = new Pokemon(nomesPokemons[i], "front");
             inimigos.add(pokemon);
         }
@@ -40,12 +51,12 @@ public class Enemy {
         if(Player.pokemonSelecionado.getVida() <= 0) {
             System.out.println("O pokemon do player foi derrotado");
             painel.mostrarDerrotaPlayer();
-            Timer timer = new Timer(3000, e -> {
+            Timer timer = new Timer(1000, e -> {
                 
                 try {
                     PokemonsBatle.instance.atualizarVidaPlayer();
                     Player.resultado = false;
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
                 } 
@@ -61,20 +72,36 @@ public class Enemy {
 
     public static void trocarInimigo() {
         
-        if (inimigoAtual == getInimigo(0)){
-            inimigoAtual = getInimigo(1);
-        } else if (inimigoAtual == getInimigo(1)){
-            inimigoAtual = getInimigo(2);
-        } else if (inimigoAtual == getInimigo(2)){
-            inimigoAtual = getInimigo(3);   
-        } else {
-            System.out.println("Todos os inimigos foram derrotados");
+        // for (int i = 0 ; i <= 7 ; i++) {
+        //     if (inimigoAtual == getInimigo(i)) {
+        //         inimigoAtual = getInimigo(i + 1);
+        //         System.out.println("inimigo trocado");
+        //         return;
+        //     } 
+        // }
 
-            Player.resultado = true;
-            Final finalPanel = new Final();
-            frame.mudarTela(finalPanel);
+        for(int i = 0; i < 8; i++) {
+            if(inimigoAtual == getInimigo(i)) {
+                inimigoAtual = getInimigo(i + 1);
+                System.out.println("inimigo trocado");
+                break;
+            }
         }
 
-        System.out.println("trocando inimigo");
+        // if (inimigoAtual == getInimigo(0)){
+        //     inimigoAtual = getInimigo(1);
+        // } else if (inimigoAtual == getInimigo(1)){
+        //     inimigoAtual = getInimigo(2);
+        // } else if (inimigoAtual == getInimigo(2)){
+        //     inimigoAtual = getInimigo(3);   
+        // } else {
+        //     System.out.println("Todos os inimigos foram derrotados");
+        //     Player.resultado = true;
+
+        //     Final finalPanel = new Final();
+        //     frame.mudarTela(finalPanel);
+        // }
+
+        System.out.println("Todos os inimigos foram derrotados");
     }
 }

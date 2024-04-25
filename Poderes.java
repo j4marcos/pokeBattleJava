@@ -85,12 +85,12 @@ public class Poderes extends JPanel {
             painel.msgTexto(Player.pokemonSelecionado.getNome().toUpperCase() + "  usou", nome.toUpperCase() + "!");
             painel.mostrarAtaque();
 
-            Timer timer = new Timer(3000, f -> {
+            Timer timer = new Timer(1000, f -> {
                 Player.atacar();
 
                 if (Enemy.inimigoAtual.getVida() > 0) {
                     painel.mostrarAtaqueInimigo();
-                    Timer timer2 = new Timer(3000, g -> {
+                    Timer timer2 = new Timer(1000, g -> {
                         Enemy.atacar();
                     });
                     timer2.setRepeats(false);

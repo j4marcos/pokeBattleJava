@@ -1,5 +1,3 @@
-import java.io.Serializable;
-
 import javax.swing.*;
 
 public class Game extends JFrame implements Runnable {

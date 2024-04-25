@@ -35,6 +35,7 @@ public class Home extends JPanel {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
             pokemonsBatle.atualizarVidaPlayer();
             pokemonsBatle.atualizarVidaInimigo();
+            pokemonsBatle.repaint();
             frame.mudarTela(pokemonsBatle);
         });
         nextButton.setBounds(650, 500, 300, 70);
