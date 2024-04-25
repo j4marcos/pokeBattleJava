@@ -34,6 +34,7 @@ public class Home extends JPanel {
         nextButton.addActionListener(e -> {
             PokemonsBatle pokemonsBatle = new PokemonsBatle(frame);
             pokemonsBatle.atualizarVidaPlayer();
+            pokemonsBatle.atualizarVidaInimigo();
             frame.mudarTela(pokemonsBatle);
         });
         nextButton.setBounds(650, 500, 300, 70);
