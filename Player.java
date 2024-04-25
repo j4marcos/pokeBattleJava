@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class Player implements Serializable  {
     public static String pokemonNome;
@@ -78,6 +79,7 @@ public class Player implements Serializable  {
             oos.writeObject(tipoPersonagem);
             oos.writeObject(frame);
             oos.writeObject(Enemy.inimigoAtual);
+            oos.writeObject(Enemy.inimigos);
             oos.writeObject(PokemonsBatle.inimigoLv);
             oos.writeObject(PokemonsBatle.playerLv);
             
@@ -95,6 +97,7 @@ public class Player implements Serializable  {
             tipoPersonagem = (String) ois.readObject();
             frame = (Game) ois.readObject();
             Enemy.inimigoAtual = (Pokemon) ois.readObject();
+            Enemy.inimigos = (ArrayList<Pokemon>) ois.readObject();
             PokemonsBatle.inimigoLv = (int) ois.readObject();
             PokemonsBatle.playerLv = (int) ois.readObject();
 
