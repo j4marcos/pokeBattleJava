@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class Player implements Serializable  {
     public static String pokemonNome;
@@ -77,13 +78,18 @@ public class Player implements Serializable  {
             oos.writeObject(nome);
             oos.writeObject(tipoPersonagem);
             oos.writeObject(frame);
-            oos.writeObject(painel);
+            oos.writeObject(Enemy.inimigoAtual);
+            oos.writeObject(Enemy.inimigos);
+            oos.writeObject(PokemonsBatle.inimigoLv);
+            oos.writeObject(PokemonsBatle.playerLv);
+            
             System.out.println("Dados salvos com sucesso.");
         } catch (IOException e) {
             System.out.println("Erro ao salvar os dados: " + e.getMessage());
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static boolean carregarDados() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("player_data.dat"))) {
             pokemonNome = (String) ois.readObject();
@@ -91,7 +97,12 @@ public class Player implements Serializable  {
             nome = (String) ois.readObject();
             tipoPersonagem = (String) ois.readObject();
             frame = (Game) ois.readObject();
-            painel = (InterfaceCaixa) ois.readObject();
+
+            Enemy.inimigoAtual = (Pokemon) ois.readObject();
+            Enemy.inimigos = (ArrayList<Pokemon>) ois.readObject();
+            PokemonsBatle.inimigoLv = (int) ois.readObject();
+            PokemonsBatle.playerLv = (int) ois.readObject();
+
 
             System.out.println("Dados carregados com sucesso.");
             return true;

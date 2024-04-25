@@ -24,20 +24,22 @@ public class PokemonsBagPage extends JPanel{
             System.out.println("Voltar apertado!");
         });
         backButton.setBounds(725,525, 230, 100);
-        backButton.setBackground(new Color(0, 0, 0, 0));
+        backButton.setOpaque(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setBorderPainted(false);
         background.add(backButton);
 
         JButton saveButton = new JButton("Salvar Progresso" );
         saveButton.setFont(Fonte.deriveFont(Font.PLAIN, 40));
         saveButton.addActionListener(e -> {
-            
             Player.salvarDados();
             saveButton.setText("Salvo com sucesso!");
             System.out.println("salvo o progresso!");
-            repaint();
         });
         saveButton.setBounds(025,525, 700, 100);
-        saveButton.setBackground(new Color(0, 0, 0, 0));
+        saveButton.setOpaque(false);
+        saveButton.setContentAreaFilled(false);
+        saveButton.setBorderPainted(false);
         background.add(saveButton);
 
 
@@ -56,7 +58,6 @@ public class PokemonsBagPage extends JPanel{
         JLabel pokeCardLabel = new JLabel(new ImageIcon("assets/backgroundImages/pokeCard0.png"));
         pokeCardLabel.setBounds(-20, -15, 400, 400);
         background.add(pokeCardLabel);
-
         
         add(background, BorderLayout.NORTH);
     }
@@ -69,13 +70,27 @@ public class PokemonsBagPage extends JPanel{
 
         // background.add(pokemon);
 
-        Pokemon pokemonSelecionado2 = new Pokemon(Player.pokemonNome ,  "front");
-        JLabel pokemon2 = pokemonSelecionado2.getImagemLabel();
-        pokemon2.setBounds(50, -15, 400, 400);
+        // Pokemon pokemonSelecionado2 = new Pokemon(Player.pokemonNome ,  "front"); original
+        // Pokemon pokemonSelecionado2 = new Pokemon("Blastoise" ,  "front");
+        JLabel pokemon = new JLabel();
+        ImageIcon icon = new ImageIcon(getClass().getResource("assets/pokemons/" + Player.pokemonNome.toLowerCase() + "/front.png"));
+        Image image = icon.getImage().getScaledInstance(128, 128, Image.SCALE_SMOOTH);
+        pokemon.setIcon(new ImageIcon(image));
+        pokemon.setBounds(215, -35, 400, 400);
 
-        background.add(pokemon2);
+        JLabel pokemonNome = new JLabel(Player.pokemonNome);
+        pokemonNome.setFont(Fonte.deriveFont(Font.PLAIN, 40));
+        pokemonNome.setForeground(new Color(0, 0, 0));
+        pokemonNome.setBounds(75, 65, 400, 400);
+
+        JLabel pokemonLv = new JLabel();
+        pokemonLv.setText(Integer.toString(PokemonsBatle.inimigoLv));
+        pokemonLv.setFont(Fonte.deriveFont(Font.PLAIN, 50));
+        pokemonLv.setForeground(new Color(255, 255, 255));
+        pokemonLv.setBounds(204, 0, 400, 400);
         
+        background.add(pokemonLv);
+        background.add(pokemonNome);
+        background.add(pokemon);
     }
-
-   
 }
