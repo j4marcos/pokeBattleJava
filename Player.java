@@ -89,6 +89,7 @@ public class Player implements Serializable  {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static boolean carregarDados() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("player_data.dat"))) {
             pokemonNome = (String) ois.readObject();
