@@ -67,7 +67,7 @@ public class Player implements Serializable  {
             pokemonSelecionado.setVida(pokemonSelecionado.getVidaMaxima());
         }
 
-        System.out.println("O pokemon do player foi curado e recuperou 10 de vida");
+        System.out.println("O pokemon do player foi curado e recuperou " + curaValor + " de vida");
         PokemonsBatle.instance.atualizarVidaPlayer();
     }
 

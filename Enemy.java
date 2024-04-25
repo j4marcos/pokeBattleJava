@@ -1,6 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
-
 import javax.swing.*;
 
 public class Enemy {
@@ -8,6 +9,7 @@ public class Enemy {
     public static Pokemon inimigoAtual;
     public static InterfaceCaixa painel;
     public static Game frame;
+    private static int numeroDeInimigo;
 
     public Enemy() {
         geraInimigos();
@@ -27,19 +29,48 @@ public class Enemy {
     }
 
     private void geraInimigos() {
-        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie", "Pikachu", "Spearow", "Weedle", "Nidoran_f", "Nidoran_m"};
+        ArrayList<String> tempArray = new ArrayList<>();
 
-        // Random random = new Random();
+        try (BufferedReader br = new BufferedReader(new FileReader("pokemonhp.csv"))) {
+            String line = "";
+            
+            // Ignorando o inicio do arquivo CSV
+            for(int i = 0; i < 10; i++) {
+                br.readLine();
+            }
 
+            while ((line = br.readLine()) != null) {
+                String[] pokemonInfo = line.split(",");
+                String nomePokemon = pokemonInfo[0];
+                tempArray.add(nomePokemon);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        // for (int i = 0; i < nomesPokemons.length ; i++) {
-        //     int randomIndex = random.nextInt(nomesPokemons.length);
-        //     String randomPokemon = nomesPokemons[randomIndex];
-        //     Pokemon pokemon = new Pokemon(randomPokemon, "front");
-        //     inimigos.add(pokemon);
+        String[] nomesPokemons = tempArray.toArray(new String[0]);
+        numeroDeInimigo = nomesPokemons.length;
+
+        // System.out.println("array original");
+        // for (String string : nomesPokemons) {
+        //     System.out.println(string);
         // }
 
-        for (int i = 0; i < 8; i++) {
+        // embaralha os nomes dos inimigos garantinto que sejam sempre diferentes
+        for(int i = 0; i < nomesPokemons.length; i++) {
+            int randomIndex = (int) (Math.random() * nomesPokemons.length);
+
+            String temp = nomesPokemons[i];
+            nomesPokemons[i] = nomesPokemons[randomIndex];
+            nomesPokemons[randomIndex] = temp;
+        }
+
+        // System.out.println("\narray embaralhado");
+        // for (String string : nomesPokemons) {
+        //     System.out.println(string);
+        // }
+
+        for (int i = 0; i < nomesPokemons.length; i++) {
             Pokemon pokemon = new Pokemon(nomesPokemons[i], "front");
             inimigos.add(pokemon);
         }
@@ -71,36 +102,13 @@ public class Enemy {
     }
 
     public static void trocarInimigo() {
-        
-        // for (int i = 0 ; i <= 7 ; i++) {
-        //     if (inimigoAtual == getInimigo(i)) {
-        //         inimigoAtual = getInimigo(i + 1);
-        //         System.out.println("inimigo trocado");
-        //         return;
-        //     } 
-        // }
-
-        for(int i = 0; i < 8; i++) {
+        for(int i = 0; i < numeroDeInimigo - 1; i++) {
             if(inimigoAtual == getInimigo(i)) {
                 inimigoAtual = getInimigo(i + 1);
                 System.out.println("inimigo trocado");
                 break;
             }
         }
-
-        // if (inimigoAtual == getInimigo(0)){
-        //     inimigoAtual = getInimigo(1);
-        // } else if (inimigoAtual == getInimigo(1)){
-        //     inimigoAtual = getInimigo(2);
-        // } else if (inimigoAtual == getInimigo(2)){
-        //     inimigoAtual = getInimigo(3);   
-        // } else {
-        //     System.out.println("Todos os inimigos foram derrotados");
-        //     Player.resultado = true;
-
-        //     Final finalPanel = new Final();
-        //     frame.mudarTela(finalPanel);
-        // }
 
         System.out.println("Todos os inimigos foram derrotados");
     }
