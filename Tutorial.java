@@ -1,12 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.*;
 public class Tutorial extends JPanel {
     private String[] falas = {
-        "Olá, bem vindo ao mundo Pokémon!",
+        "Ola, bem vindo ao mundo Pokemon!",
         "Neste jogo você enfrentar desafios", 
-        "e batalhas para se tornar um mestre Pokémon.",
-        "Agora me conte mais sobre você."
+        "e batalhas para se tornar um mestre Pokemon.",
+        "Agora me conte mais sobre voce."
     };
     private int falaIndex = 0;
     private JPanel nextPage;
@@ -41,6 +41,24 @@ public class Tutorial extends JPanel {
         caixaFalaBtn.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
         caixaFalaBtn.setBorderPainted(false); // Tirar as bordas
         JButton DialogoBox = caixaFalaBtn;
+        
+        background.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "spacePressed");
+        background.getActionMap().put("spacePressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (falaIndex < falas.length - 1) {
+                    System.out.println("Proxima fala");
+                    falaIndex++;
+                    DialogoBox.setText(falas[falaIndex]);
+                    revalidate();
+                    repaint();
+                } else {
+                    System.out.println("proxima cena");
+                    frame.mudarTela(nextPage);
+                }
+            }
+        });
+        
         DialogoBox.addActionListener(e -> {
             System.out.println("Clicou no botao");
             if (falaIndex < falas.length - 1) {

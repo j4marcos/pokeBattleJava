@@ -97,15 +97,17 @@ public class Player implements Serializable  {
             nome = (String) ois.readObject();
             tipoPersonagem = (String) ois.readObject();
             frame = (Game) ois.readObject();
+
             Enemy.inimigoAtual = (Pokemon) ois.readObject();
             Enemy.inimigos = (ArrayList<Pokemon>) ois.readObject();
             PokemonsBatle.inimigoLv = (int) ois.readObject();
             PokemonsBatle.playerLv = (int) ois.readObject();
 
+
             System.out.println("Dados carregados com sucesso.");
             return true;
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao carregar os dados: " + e.getMessage());
+            System.out.println("Erro ao carregar os dados do save: " + e.getMessage());
             return false;
         }
     }
