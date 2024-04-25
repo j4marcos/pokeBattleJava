@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.*;
 public class Tutorial extends JPanel {
     private String[] falas = {
         "Ola, bem vindo ao mundo Pokemon!",
@@ -41,6 +41,24 @@ public class Tutorial extends JPanel {
         caixaFalaBtn.setContentAreaFilled(false); // Tirar qualquer coisa que faça os botões ficarem coloridos
         caixaFalaBtn.setBorderPainted(false); // Tirar as bordas
         JButton DialogoBox = caixaFalaBtn;
+        
+        background.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("SPACE"), "spacePressed");
+        background.getActionMap().put("spacePressed", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (falaIndex < falas.length - 1) {
+                    System.out.println("Proxima fala");
+                    falaIndex++;
+                    DialogoBox.setText(falas[falaIndex]);
+                    revalidate();
+                    repaint();
+                } else {
+                    System.out.println("proxima cena");
+                    frame.mudarTela(nextPage);
+                }
+            }
+        });
+        
         DialogoBox.addActionListener(e -> {
             System.out.println("Clicou no botao");
             if (falaIndex < falas.length - 1) {
