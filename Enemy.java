@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Random;
+
 import javax.swing.*;
 
 public class Enemy {
@@ -26,10 +28,15 @@ public class Enemy {
     }
 
     private void geraInimigos() {
-        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie", "Pikachu"};
+        String[] nomesPokemons = {"Pidgey", "Rattata", "Caterpie", "Pikachu", "Spearow", "Weedle", "Nidoran_f", "Nidoran_m"};
+
+        Random random = new Random();
+
 
         for (int i = 0; i < NUM_INIMIGOS; i++) {
-            Pokemon pokemon = new Pokemon(nomesPokemons[i], "front");
+            int randomIndex = random.nextInt(nomesPokemons.length);
+            String randomPokemon = nomesPokemons[randomIndex];
+            Pokemon pokemon = new Pokemon(randomPokemon, "front");
             inimigos.add(pokemon);
         }
     }

@@ -3,10 +3,10 @@ import java.awt.*;
 
 public class Tutorial extends JPanel {
     private String[] falas = {
-        "Olá, bem vindo ao mundo Pokémon!",
+        "Ola, bem vindo ao mundo Pokemon!",
         "Neste jogo você enfrentar desafios", 
-        "e batalhas para se tornar um mestre Pokémon.",
-        "Agora me conte mais sobre você."
+        "e batalhas para se tornar um mestre Pokemon.",
+        "Agora me conte mais sobre voce."
     };
     private int falaIndex = 0;
     private JPanel nextPage;

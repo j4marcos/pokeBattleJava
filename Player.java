@@ -93,14 +93,10 @@ public class Player implements Serializable  {
             frame = (Game) ois.readObject();
             painel = (InterfaceCaixa) ois.readObject();
 
-
-
-
-
             System.out.println("Dados carregados com sucesso.");
             return true;
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao carregar os dados: " + e.getMessage());
+            System.out.println("Erro ao carregar os dados do save: " + e.getMessage());
             return false;
         }
     }
