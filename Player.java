@@ -78,6 +78,8 @@ public class Player implements Serializable  {
             oos.writeObject(tipoPersonagem);
             oos.writeObject(frame);
             oos.writeObject(Enemy.inimigoAtual);
+            oos.writeObject(PokemonsBatle.inimigoLv);
+            oos.writeObject(PokemonsBatle.playerLv);
             
             System.out.println("Dados salvos com sucesso.");
         } catch (IOException e) {
@@ -93,6 +95,8 @@ public class Player implements Serializable  {
             tipoPersonagem = (String) ois.readObject();
             frame = (Game) ois.readObject();
             Enemy.inimigoAtual = (Pokemon) ois.readObject();
+            PokemonsBatle.inimigoLv = (int) ois.readObject();
+            PokemonsBatle.playerLv = (int) ois.readObject();
 
             System.out.println("Dados carregados com sucesso.");
             return true;

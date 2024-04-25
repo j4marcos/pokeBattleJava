@@ -9,12 +9,17 @@ public class PokemonsBatle extends JPanel {
     private JLabel inimigoInfo = new JLabel();
     private JLabel inimigoName = new JLabel();
     private JLabel inimigoHP = new JLabel();
+    private JLabel inimigoLabelLv = new JLabel();
     private JLabel playerInfo = new JLabel();
     private JLabel playerName = new JLabel();
     private JLabel playerHP = new JLabel();
+    private JLabel playerLabelLv = new JLabel();
 
     public static int playerHPValue = 192;
     public static int inimigoHPValue = 192;
+
+    public static int playerLv = 1;
+    public static int inimigoLv = 1;
 
     public PokemonsBatle(Game frame){
         instance = this;
@@ -39,10 +44,14 @@ public class PokemonsBatle extends JPanel {
 
         inimigoHP.setBackground(new Color(34, 139, 34));
         inimigoHP.setOpaque(true);
-        inimigoHP.setBounds(156, 68, inimigoHPValue, 12); // o tamanho max do ahp é 192   
+        inimigoHP.setBounds(156, 68, inimigoHPValue, 12); // o tamanho max do ahp é 192  
+        
+        inimigoLabelLv.setText(Integer.toString(inimigoLv));
+        inimigoLabelLv.setFont(Fonte.deriveFont(Font.PLAIN,50f));
+        inimigoLabelLv.setBounds(327, 10, 100, 45);
 
+        inimigoInfo.add(inimigoLabelLv);
         inimigoInfo.add(inimigoHP);
-
         inimigoInfo.add(inimigoName);
 
         label.add(inimigoInfo);
@@ -58,8 +67,12 @@ public class PokemonsBatle extends JPanel {
         playerHP.setOpaque(true);
         playerHP.setBounds(192, 68, playerHPValue, 12); // o tamanho max do hp é 192 
 
-        playerInfo.add(playerHP);
+        playerLabelLv.setText(Integer.toString(playerLv));
+        playerLabelLv.setFont(Fonte.deriveFont(Font.PLAIN,50f));
+        playerLabelLv.setBounds(363, 10, 100, 45);
 
+        playerInfo.add(playerLabelLv);
+        playerInfo.add(playerHP);
         playerInfo.add(playerName);
         
         label.add(playerInfo);
@@ -107,6 +120,9 @@ public class PokemonsBatle extends JPanel {
 
     public void atualizarInimigo() {
         label.removeAll();
+
+        playerLv++;
+        inimigoLv++;
         
         Enemy.inimigoAtual.getImagemLabel().setBounds(580, 40, 256, 256);
         inimigoName.setText(Enemy.inimigoAtual.getNome().toUpperCase());   
@@ -122,7 +138,10 @@ public class PokemonsBatle extends JPanel {
         playerName.setBounds(60, 13, 320, 40);
         playerInfo.add(playerName);
         label.add(playerInfo);
-
+        
+        inimigoLabelLv.setText(Integer.toString(inimigoLv));
+        playerLabelLv.setText(Integer.toString(playerLv));
+    
         label.add(Enemy.inimigoAtual.getImagemLabel());
         label.add(Player.pokemonSelecionado.getImagemLabel());
 

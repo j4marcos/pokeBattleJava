@@ -83,6 +83,13 @@ public class PokemonsBagPage extends JPanel{
         pokemonNome.setForeground(new Color(0, 0, 0));
         pokemonNome.setBounds(75, 65, 400, 400);
 
+        JLabel pokemonLv = new JLabel();
+        pokemonLv.setText(Integer.toString(PokemonsBatle.inimigoLv));
+        pokemonLv.setFont(Fonte.deriveFont(Font.PLAIN, 50));
+        pokemonLv.setForeground(new Color(255, 255, 255));
+        pokemonLv.setBounds(204, 0, 400, 400);
+        
+        background.add(pokemonLv);
         background.add(pokemonNome);
         background.add(pokemon);
     }
