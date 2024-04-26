@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Player implements Serializable  {
+    private static final long serialVersionUID = 1L;
     public static String pokemonNome;
     public static Pokemon pokemonSelecionado;
     public static String nome;
@@ -10,9 +11,7 @@ public class Player implements Serializable  {
     public static InterfaceCaixa painel;
     public static Game frame;
     public static boolean resultado;
-    
-    private static int XP = 0;
-    
+    public static int ataqueValue = 15;
 
     public Player(String pokemon, Game frame) {
         Player.pokemonNome = pokemon; 
@@ -31,8 +30,8 @@ public class Player implements Serializable  {
     }
 
     public static void atacar() {
-        Enemy.inimigoAtual.setVida(Enemy.inimigoAtual.getVida() - 10);
-        System.out.println("O pokemon do player atacou o pokemon inimigo e causou 10 de dano");
+        Enemy.inimigoAtual.setVida(Enemy.inimigoAtual.getVida() - ataqueValue);
+        System.out.println("O pokemon do player atacou o pokemon inimigo e causou " + ataqueValue + " de dano");
         if (Enemy.inimigoAtual.getVida() <= 0) {
             System.out.println("O pokemon inimigo foi derrotado");
             painel.mostrarDerrotaInimigo();
@@ -40,24 +39,12 @@ public class Player implements Serializable  {
                 Enemy.trocarInimigo();
                 PokemonsBatle.instance.atualizarInimigo();
                 PokemonsBatle.instance.atualizarVidaInimigo(); 
-                ganharExperiencia();
+                pokemonSelecionado.evoluir(PokemonsBatle.playerLv, frame);
             });
             timer.setRepeats(false);
             timer.start();
         }
         PokemonsBatle.instance.atualizarVidaInimigo(); 
-    }
-
-    private static void ganharExperiencia() {
-        XP++;
-
-        if (XP % 2 != 0 && XP > 0 && XP < 6) {
-            System.out.println("O pokemon do player subiu de nivel");
-            pokemonSelecionado.evoluir(XP);
-            frame.mudarTela(new EvolucaoPage(frame, pokemonSelecionado));
-        }
-
-
     }
 
     public static void curar(String curaValor) {
@@ -78,13 +65,13 @@ public class Player implements Serializable  {
             oos.writeObject(nome);
             oos.writeObject(tipoPersonagem);
             oos.writeObject(frame);
-            oos.writeObject(XP);
+            oos.writeObject(ataqueValue);
             oos.writeObject(Enemy.inimigoAtual);
             oos.writeObject(Enemy.inimigos);
             oos.writeObject(PokemonsBatle.inimigoLv);
             oos.writeObject(PokemonsBatle.playerLv);
             
-            System.out.println("Dados salvos com sucesso.");
+            System.out.println("Dados salvos com sucesso!");
         } catch (IOException e) {
             System.out.println("Erro ao salvar os dados: " + e.getMessage());
         }
@@ -92,23 +79,28 @@ public class Player implements Serializable  {
 
     @SuppressWarnings("unchecked")
     public static boolean carregarDados() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("player_data.dat"))) {
+        File file = new File("player_data.dat");
+        if (!file.exists()) {
+            System.out.println("Nenhum save do jogo encontrado.");
+            return false;
+        }
+    
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
             pokemonNome = (String) ois.readObject();
             pokemonSelecionado = (Pokemon) ois.readObject();
             nome = (String) ois.readObject();
             tipoPersonagem = (String) ois.readObject();
             frame = (Game) ois.readObject();
-            XP = (int) ois.readObject();
+            ataqueValue = (int) ois.readObject();
             Enemy.inimigoAtual = (Pokemon) ois.readObject();
             Enemy.inimigos = (ArrayList<Pokemon>) ois.readObject();
             PokemonsBatle.inimigoLv = (int) ois.readObject();
             PokemonsBatle.playerLv = (int) ois.readObject();
-
-
-            System.out.println("Dados carregados com sucesso.");
+    
+            System.out.println("Dados carregados com sucesso!");
             return true;
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao carregar os dados do save: " + e.getMessage());
+            System.out.println("Erro ao carregar os dados: " + e.getMessage());
             return false;
         }
     }

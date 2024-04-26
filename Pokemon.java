@@ -8,7 +8,6 @@ public class Pokemon implements Serializable {
     private int vidaMaxima;
     private String lado;
     private JLabel imagemLabel = new JLabel();
-    private int nivel = 0;
     private String nomeAnterior ;
 
     public String getNomeAnterior() {
@@ -101,28 +100,36 @@ public class Pokemon implements Serializable {
         return imagemLabel;
     }
 
-    public void evoluir(int i) {
-        vidaMaxima += 5 * i;
-        vida += 5 * i;
-        nivel++;
-
+    public void evoluir(int nivel, Game frame) {
+        vidaMaxima += 5 * nivel;
+        vida += 5 * nivel;
+        Player.ataqueValue += (int) (nivel / 2);
         nomeAnterior = nome;
-        aplicarEvolucao();
-        Player.pokemonNome = nome;
-        defirImage(nome, "back");
 
-        System.out.println("O pokemon evoluiu para " + nome);
-
+        if (PokemonsBatle.playerLv == 2 || PokemonsBatle.playerLv == 3) {
+            aplicarEvolucao();
+            Player.pokemonNome = nome;
+            defirImage(nome, "back");
+            System.out.println("O pokemon evoluiu para " + nome);
+            frame.mudarTela(new EvolucaoPage(frame, Player.pokemonSelecionado));
+        }
+        System.out.println("O pokemon do player subiu de nivel");
     }
 
     private void aplicarEvolucao() {
         
-        if (nome == "Bulbasaur") nome = "Ivysaur";
-        else if (nome == "Ivysaur") nome = "Venusaur";
-        else if (nome == "Charmander") nome = "Charmeleon";
-        else if (nome == "Charmeleon") nome = "Charizard";
-        else if (nome == "Squirtle") nome = "Wartortle";
-        else if (nome == "Wartortle") nome = "Blastoise";
-    
+        if (nome.equals("Bulbasaur")) {
+            nome = "Ivysaur";
+        } else if (nome.equals("Ivysaur")) {
+            nome = "Venusaur";
+        } else if (nome.equals("Charmander")) {
+            nome = "Charmeleon";
+        } else if (nome.equals("Charmeleon")) {
+            nome = "Charizard";
+        } else if (nome.equals("Squirtle")) {
+            nome = "Wartortle";
+        } else if (nome.equals("Wartortle")) {
+            nome = "Blastoise";
+        }
     }
 }

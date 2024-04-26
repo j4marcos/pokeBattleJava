@@ -106,10 +106,9 @@ public class Enemy {
             if(inimigoAtual == getInimigo(i)) {
                 inimigoAtual = getInimigo(i + 1);
                 System.out.println("inimigo trocado");
-                break;
-            }
+                return;
+            } 
         }
-
         System.out.println("Todos os inimigos foram derrotados");
     }
 }
