@@ -25,8 +25,8 @@ public class Game extends JFrame implements Runnable {
             Home home = new Home(this);
             mudarTela(home);
         } else {
-        Intro intro = new Intro(this);
-        mudarTela(intro);
+            Intro intro = new Intro(this);
+            mudarTela(intro);
         }
         
     }
@@ -39,7 +39,6 @@ public class Game extends JFrame implements Runnable {
         return this.currentPlayer;
     }
    
-
     public void mudarTela(JPanel novoPanel) {
         if (painelAtual != null) {
             remove(painelAtual);

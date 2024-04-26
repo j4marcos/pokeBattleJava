@@ -1,13 +1,5 @@
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.awt.*;
+import javax.swing.*;
 
 public class EvolucaoPage extends JPanel {
     Game frame;
@@ -18,14 +10,13 @@ public class EvolucaoPage extends JPanel {
     public EvolucaoPage(Game frameGame, Pokemon pokemon) {
         this.frame = frameGame;
         this.pokemon = pokemon;
-        editar(frame);
-
+        System.out.println("Mudando para tela de evolução...");
+        editar();
     }
 
-    private void editar(Game frameGame) {
+    private void editar() {
         setLayout(new BorderLayout());
         Font Fonte = DefinirFonte.fonte();
-        frame = frameGame;
 
         JLabel background = new JLabel();
         background.setFocusable(true);
@@ -58,17 +49,9 @@ public class EvolucaoPage extends JPanel {
 
         add(background, BorderLayout.NORTH);
 
-        // ...
-
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                atualizarPokemonTransformacao();
-            }
-
-        }, 3000);
-
+        Timer timer = new Timer(3000, e -> atualizarPokemonTransformacao());
+        timer.setRepeats(false);
+        timer.start();
     }
 
     private void atualizarPokemonTransformacao() {
@@ -78,12 +61,8 @@ public class EvolucaoPage extends JPanel {
         Personagem.setIcon(new ImageIcon(image));
         caixaFala.setText("O seu pokemon evoluiu para " + pokemon.getNome());
 
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                frame.mudarTela(new PokemonsBatle(frame));
-            }
-        }, 3000);
+        Timer timer = new Timer(3000, e -> frame.mudarTela(new PokemonsBatle(frame)));
+        timer.setRepeats(false);
+        timer.start();
     }
 }
