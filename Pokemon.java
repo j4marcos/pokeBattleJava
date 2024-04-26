@@ -31,7 +31,7 @@ public class Pokemon implements Serializable {
     private void defirImage(String pokeString, String lado) {
         // Criar path com base no nome e lado do pokemon
         String imagePath = "assets/pokemons/" + pokeString.toLowerCase() + "/" + lado + ".png";
-        System.out.println(imagePath);
+        // System.out.println(imagePath);
 
         // Aqui todas as imagens estao sendo redimencionadas para o tamanho padra 256 x
         // 256

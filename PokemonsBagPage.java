@@ -4,8 +4,12 @@ import javax.swing.*;
 public class PokemonsBagPage extends JPanel{
     private JLabel background = new JLabel();
     private Font Fonte = DefinirFonte.fonte();
+    private JLabel playerHP = new JLabel();
+    public static PokemonsBagPage instance;
+
 
     public PokemonsBagPage(Game frame) {
+        instance = this;
         editar(frame);
     }
 
@@ -42,6 +46,11 @@ public class PokemonsBagPage extends JPanel{
         saveButton.setBorderPainted(false);
         background.add(saveButton);
 
+        playerHP.setBackground(new Color(34, 139, 34));
+        playerHP.setOpaque(true);
+        playerHP.setBounds(132, 231, PokemonsBatle.playerHPValue, 12);
+        background.add(playerHP);
+
 
 
         // JButton barButton = new JButton(new ImageIcon("assets/backgroundImages/pokeBar0.png"));
@@ -72,6 +81,8 @@ public class PokemonsBagPage extends JPanel{
 
         // Pokemon pokemonSelecionado2 = new Pokemon(Player.pokemonNome ,  "front"); original
         // Pokemon pokemonSelecionado2 = new Pokemon("Blastoise" ,  "front");
+
+
         JLabel pokemon = new JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("assets/pokemons/" + Player.pokemonNome.toLowerCase() + "/front.png"));
         Image image = icon.getImage().getScaledInstance(128, 128, Image.SCALE_SMOOTH);
