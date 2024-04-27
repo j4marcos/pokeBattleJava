@@ -8,10 +8,12 @@ public class EvolucaoPage extends JPanel {
     JLabel caixaFala;
 
     public EvolucaoPage(Game frameGame, Pokemon pokemon) {
+        editar();
+        revalidate();
+        repaint();
         this.frame = frameGame;
         this.pokemon = pokemon;
         System.out.println("Mudando para tela de evolução...");
-        editar();
     }
 
     private void editar() {
@@ -26,8 +28,7 @@ public class EvolucaoPage extends JPanel {
         Personagem = new JLabel();
         Personagem.setFocusable(true);
 
-        ImageIcon icon = new ImageIcon(
-                "assets/pokemons/" + pokemon.getNomeAnterior().toLowerCase() + "/" + "front" + ".png");
+        ImageIcon icon = new ImageIcon("assets/pokemons/" + pokemon.getNomeAnterior().toLowerCase() + "/" + "front" + ".png");
         Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
         Personagem.setIcon(new ImageIcon(image));
         Personagem.setBounds(350, 0, 960, 640);
@@ -49,9 +50,9 @@ public class EvolucaoPage extends JPanel {
 
         add(background, BorderLayout.NORTH);
 
-        Timer timer = new Timer(3000, e -> atualizarPokemonTransformacao());
-        timer.setRepeats(false);
-        timer.start();
+        Timer timerEvolucao  = new Timer(3000, e -> atualizarPokemonTransformacao());
+        timerEvolucao.setRepeats(false);
+        timerEvolucao.start();
     }
 
     private void atualizarPokemonTransformacao() {
@@ -61,8 +62,11 @@ public class EvolucaoPage extends JPanel {
         Personagem.setIcon(new ImageIcon(image));
         caixaFala.setText("O seu pokemon evoluiu para " + pokemon.getNome());
 
-        Timer timer = new Timer(3000, e -> frame.mudarTela(new PokemonsBatle(frame)));
-        timer.setRepeats(false);
-        timer.start();
+        revalidate();
+        repaint();  
+
+        Timer timerMudanca = new Timer(3000, e -> frame.mudarTela(new PokemonsBatle(frame)));
+        timerMudanca.setRepeats(false);
+        timerMudanca.start();
     }
 }

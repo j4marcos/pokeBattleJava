@@ -41,11 +41,23 @@ public class Game extends JFrame implements Runnable {
    
     public void mudarTela(JPanel novoPanel) {
         if (painelAtual != null) {
-            remove(painelAtual);
+            remove(painelAtual); 
+            painelAtual = null; 
         }
         painelAtual = novoPanel;
         add(painelAtual);
-        validate();
+        
+        if (painelAtual instanceof PokemonsBatle) {
+            PokemonsBatle battlePanel = (PokemonsBatle) painelAtual;
+            battlePanel.atualizarVidaPlayer();
+            battlePanel.atualizarVidaInimigo();
+        } else if (painelAtual instanceof EvolucaoPage) {
+            EvolucaoPage evolucaoPage = (EvolucaoPage) painelAtual;
+            evolucaoPage.revalidate();
+            evolucaoPage.repaint();
+        }
+
+        revalidate();
         repaint();
     }
 }

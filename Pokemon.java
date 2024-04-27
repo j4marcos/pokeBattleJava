@@ -111,7 +111,9 @@ public class Pokemon implements Serializable {
             Player.pokemonNome = nome;
             defirImage(nome, "back");
             System.out.println("O pokemon evoluiu para " + nome);
-            frame.mudarTela(new EvolucaoPage(frame, Player.pokemonSelecionado));
+            
+            EvolucaoPage evolucaoPage = new EvolucaoPage(frame, Player.pokemonSelecionado);
+            frame.mudarTela(evolucaoPage);
         }
         System.out.println("O pokemon do player subiu de nivel");
     }
