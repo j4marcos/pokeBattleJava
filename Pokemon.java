@@ -101,19 +101,21 @@ public class Pokemon implements Serializable {
     }
 
     public void evoluir(int nivel, Game frame) {
-        vidaMaxima += 5 * nivel;
-        vida += 5 * nivel;
-        Player.ataqueValue += (int) (nivel / 2);
-        nomeAnterior = nome;
+        
 
         if (PokemonsBatle.playerLv == 2 || PokemonsBatle.playerLv == 3) {
+
+            vidaMaxima += 5 * nivel;
+            vida += 5 * nivel;
+            Player.ataqueValue += (int) (nivel / 2);
+            nomeAnterior = nome;
             aplicarEvolucao();
             Player.pokemonNome = nome;
             defirImage(nome, "back");
             System.out.println("O pokemon evoluiu para " + nome);
             
-            EvolucaoPage evolucaoPage = new EvolucaoPage(frame, Player.pokemonSelecionado);
-            frame.mudarTela(evolucaoPage);
+            EvolucaoPage evolucaoPage = new EvolucaoPage(Game.game, Player.pokemonSelecionado);
+            Game.game.mudarTela(evolucaoPage);
         }
         System.out.println("O pokemon do player subiu de nivel");
     }

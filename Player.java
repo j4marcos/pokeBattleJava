@@ -35,11 +35,12 @@ public class Player implements Serializable  {
         if (Enemy.inimigoAtual.getVida() <= 0) {
             System.out.println("O pokemon inimigo foi derrotado");
             painel.mostrarDerrotaInimigo();
-            Timer timer = new Timer(1000, e -> {
+            Timer timer = new Timer(1000, e -> { 
+                
                 Enemy.trocarInimigo();
                 PokemonsBatle.instance.atualizarInimigo();
                 PokemonsBatle.instance.atualizarVidaInimigo(); 
-                pokemonSelecionado.evoluir(PokemonsBatle.playerLv, frame);
+             pokemonSelecionado.evoluir(PokemonsBatle.playerLv, frame);
             });
             timer.setRepeats(false);
             timer.start();

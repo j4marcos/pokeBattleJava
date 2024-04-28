@@ -6,6 +6,7 @@ public class Game extends JFrame implements Runnable {
     static Game game;
 
     public void run() {
+        Game.game = this;
         editar();
     }
 

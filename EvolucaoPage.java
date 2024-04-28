@@ -1,5 +1,13 @@
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class EvolucaoPage extends JPanel {
     Game frame;
@@ -8,12 +16,10 @@ public class EvolucaoPage extends JPanel {
     JLabel caixaFala;
 
     public EvolucaoPage(Game frameGame, Pokemon pokemon) {
-        editar();
-        revalidate();
-        repaint();
         this.frame = frameGame;
         this.pokemon = pokemon;
-        System.out.println("Mudando para tela de evolução...");
+        editar();
+
     }
 
     private void editar() {
@@ -28,7 +34,8 @@ public class EvolucaoPage extends JPanel {
         Personagem = new JLabel();
         Personagem.setFocusable(true);
 
-        ImageIcon icon = new ImageIcon("assets/pokemons/" + pokemon.getNomeAnterior().toLowerCase() + "/" + "front" + ".png");
+        ImageIcon icon = new ImageIcon(
+                "assets/pokemons/" + pokemon.getNomeAnterior().toLowerCase() + "/" + "front" + ".png");
         Image image = icon.getImage().getScaledInstance(256, 256, Image.SCALE_SMOOTH);
         Personagem.setIcon(new ImageIcon(image));
         Personagem.setBounds(350, 0, 960, 640);
@@ -50,9 +57,17 @@ public class EvolucaoPage extends JPanel {
 
         add(background, BorderLayout.NORTH);
 
-        Timer timerEvolucao  = new Timer(3000, e -> atualizarPokemonTransformacao());
-        timerEvolucao.setRepeats(false);
-        timerEvolucao.start();
+        // ...
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                atualizarPokemonTransformacao();
+            }
+
+        }, 3000);
+
     }
 
     private void atualizarPokemonTransformacao() {
@@ -62,11 +77,12 @@ public class EvolucaoPage extends JPanel {
         Personagem.setIcon(new ImageIcon(image));
         caixaFala.setText("O seu pokemon evoluiu para " + pokemon.getNome());
 
-        revalidate();
-        repaint();  
-
-        Timer timerMudanca = new Timer(3000, e -> frame.mudarTela(new PokemonsBatle(frame)));
-        timerMudanca.setRepeats(false);
-        timerMudanca.start();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                frame.mudarTela(new PokemonsBatle(frame));
+            }
+        }, 3000);
     }
 }
